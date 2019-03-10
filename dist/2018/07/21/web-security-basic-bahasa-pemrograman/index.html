@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author"
+    content="cacadosman">
+<meta name="description"
+    content="Semua aplikasi pastinya dibuat dengan menggunakan bahasa pemrograman, oleh karena itu agar kita dapat menemukan suatu celah keamanan dari aplikasi kita harus menguasai bahasa pemrograman terlebih dahulu untuk dapat menganalisa source code (baik source code utuh maupun dengan reverse engineering). Kebanyakan anak jaman now seringkali saya jumpai ingin menjadi hacker tapi secara instan dengan mengandalkan tools dan dorking, namun malas untuk mempelajari dasar bahasa pemrograman dan konsep dari eksploitasinya. Hal seperti itulah yang harus kita hindari, kita harus mempunyai pondasi yang mantap sebelum ke tahap selanjutnya." />
+<meta name="keywords" content="tutorial, computer, computer science, programming, php, html, python, js, javascript" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://cacadosman.web.id/2018/07/21/web-security-basic-bahasa-pemrograman/" />
+
+
+<title>
+    
+    Web Security Basic - Bahasa Pemrograman :: Infinite Overflow  — Sebuah Coretan Tak Bermakna
+    
+</title>
+
+
+
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Source+Code+Pro" rel="stylesheet"
+    type="text/css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+<link rel="stylesheet" href="https://cacadosman.web.id/scss/main.min.099699ab246bf26f50616f7c9f00c79d46110459d1bd727b2d07d6fc09ece082.css">
+
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#252627">
+<link rel="shortcut icon" href="/favicon.ico">
+<meta name="theme-color" content="#252627">
+<meta itemprop="name" content="Web Security Basic - Bahasa Pemrograman">
+<meta itemprop="description" content="Semua aplikasi pastinya dibuat dengan menggunakan bahasa pemrograman, oleh karena itu agar kita dapat menemukan suatu celah keamanan dari aplikasi kita harus menguasai bahasa pemrograman terlebih dahulu untuk dapat menganalisa source code (baik source code utuh maupun dengan reverse engineering). Kebanyakan anak jaman now seringkali saya jumpai ingin menjadi hacker tapi secara instan dengan mengandalkan tools dan dorking, namun malas untuk mempelajari dasar bahasa pemrograman dan konsep dari eksploitasinya. Hal seperti itulah yang harus kita hindari, kita harus mempunyai pondasi yang mantap sebelum ke tahap selanjutnya.">
+
+
+<meta itemprop="datePublished" content="2018-07-21T02:18:21&#43;00:00" />
+<meta itemprop="dateModified" content="2018-07-21T02:18:21&#43;00:00" />
+<meta itemprop="wordCount" content="877">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://cacadosman.web.id/"/>
+
+<meta name="twitter:title" content="Web Security Basic - Bahasa Pemrograman"/>
+<meta name="twitter:description" content="Semua aplikasi pastinya dibuat dengan menggunakan bahasa pemrograman, oleh karena itu agar kita dapat menemukan suatu celah keamanan dari aplikasi kita harus menguasai bahasa pemrograman terlebih dahulu untuk dapat menganalisa source code (baik source code utuh maupun dengan reverse engineering). Kebanyakan anak jaman now seringkali saya jumpai ingin menjadi hacker tapi secara instan dengan mengandalkan tools dan dorking, namun malas untuk mempelajari dasar bahasa pemrograman dan konsep dari eksploitasinya. Hal seperti itulah yang harus kita hindari, kita harus mempunyai pondasi yang mantap sebelum ke tahap selanjutnya."/>
+
+
+
+<meta property="article:section" content="CTF" />
+<meta property="article:section" content="Cyber Security" />
+<meta property="article:section" content="Tutorial" />
+
+<meta property="article:published_time" content="2018-07-21 02:18:21 &#43;0000 &#43;0000" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">Infinite Overflow</span>
+            <span class="logo__cursor"></span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://cacadosman.web.id/about">About</a></li><li><a href="https://cacadosman.web.id/posts">Posts</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="https://cacadosman.web.id/2018/07/21/web-security-basic-bahasa-pemrograman/">Web Security Basic - Bahasa Pemrograman</a></h2>
+
+            
+
+            <div class="post-content">
+                <p>Semua aplikasi pastinya dibuat dengan menggunakan bahasa pemrograman, oleh karena itu agar kita dapat menemukan suatu celah keamanan dari aplikasi kita harus menguasai bahasa pemrograman terlebih dahulu untuk dapat menganalisa source code (baik source code utuh maupun dengan reverse engineering). Kebanyakan anak jaman now seringkali saya jumpai ingin menjadi hacker tapi secara instan dengan mengandalkan tools dan dorking, namun malas untuk mempelajari dasar bahasa pemrograman dan konsep dari eksploitasinya. Hal seperti itulah yang harus kita hindari, kita harus mempunyai pondasi yang mantap sebelum ke tahap selanjutnya.</p>
+
+<p><strong>HTML (HyperText Markup Language)</strong></p>
+
+<p>Hal yang perlu diperhatikan ialah HTML bukan bahasa pemrograman.</p>
+
+<p>HTML sendiri ialah bahasa markup yang digunakan untuk membuat struktur sebuah halaman web (Seperti rangka pada tubuh).</p>
+
+<p>Lalu apa pentingnya HTML ?</p>
+
+<p>Karena HTML merupakan struktur dari sebuah web, ya setidaknya perlu mengetahui bagaimana HTML bekerja. Salah satu penerapannya ialah jika kita ingin mengeksploitasi bagian client side maka kita perlu menganalisa kode HTML web tsb.</p>
+
+<p>Mempelajari HTML:</p>
+
+<p><a href="https://www.google.com/url?q=https://www.w3schools.com/Html/&amp;sa=D&amp;ust=1532108601626000">https://www.w3schools.com/Html/</a></p>
+
+<p><a href="https://www.google.com/url?q=https://sekolahkoding.com/kelas/belajar-html-dari-dasar&amp;sa=D&amp;ust=1532108601626000">https://sekolahkoding.com/kelas/belajar-html-dari-dasar</a></p>
+
+<p><strong>JavaScript</strong></p>
+
+<p>Sebuah bahasa scripting yang sangat luar biasa.</p>
+
+<p><img src="/wp-content/2018/07/image22.png" alt="" /></p>
+
+<p>Javascript pada awalnya merupakan bahasa client side yang digunakan pada web untuk dapat menjadikan halaman web lebih interaktif, walaupun sekarang trend javascript digunakan pada backend.</p>
+
+<p>Ada banyak sekali saya temui website yang masih memproses data sensitif pada client side, sehingga memunculkan celah keamanan yang serius. Oleh karena itu kita perlu mempelajari JS agar dapat menganalisa source code dan mencari kelemahannya.</p>
+
+<p>Mempelajari JavaScript:</p>
+
+<p><a href="https://www.google.com/url?q=https://www.w3schools.com/js/&amp;sa=D&amp;ust=1532108601630000">https://www.w3schools.com/js/</a></p>
+
+<p><a href="https://www.google.com/url?q=https://sekolahkoding.com/track/menguasai-javascript&amp;sa=D&amp;ust=1532108601630000">https://sekolahkoding.com/track/menguasai-javascript</a></p>
+
+<p><strong>PHP (Hypertext PreProcessor)</strong></p>
+
+<p>Sebuah bahasa scripting yang dikususkan untuk sisi backend, salah satu bahasa favorit penulis. Walaupun sekarang performanya banyak dibilang kalah dengan pesaingnya seperti JS, Ruby, Go, dll.</p>
+
+<p>Tapi PHP merupakan bahasa yang secara luas masih digunakan oleh masyarakat umum (kususnya Indonesia) untuk membuat sebuah web dan api sekala kecil-menengah. Jika kita perhatikan, web hosting pun msh menggunakan Linux + Apache + MySQL + PHP sebagai stack utamanya. PHP juga memiliki dukungan komunitas yang luar biasa besar, termasuk Indonesia. Hampir semua website pun didominasi oleh PHP. Sehingga bahasa ini perlu perhatian kusus, terutama dalam ranah security, karena kadangkala terdapat banyak sekali celah pada bahasa pemrograman ini (banyak sekali deprecated function yang vuln).</p>
+
+<p>Mempelajari PHP:
+<a href="https://www.google.com/url?q=https://www.w3schools.com/php/&amp;sa=D&amp;ust=1532108601632000">https://www.w3schools.com/php/</a></p>
+
+<p><a href="https://www.google.com/url?q=https://sekolahkoding.com/track/backend-website&amp;sa=D&amp;ust=1532108601633000">https://sekolahkoding.com/track/backend-website</a></p>
+
+<p><strong>Python</strong></p>
+
+<p>Sebuah bahasa scripting yang simpel dan powerful, sangat banyak dukungan library yang dapat memudahkan pengguna. Sehingga bisa kita sebut bahwa python ini sebuah bahasa yang fokus untuk memberikan kemudahan kepada penggunanya (Bandingkan dengan compiled language seperti C++ dan Java yang sangat strict).</p>
+
+<p>Oleh karena itu, seringkali python digunakan dalam membuat sebuah tools eksploitasi. Penulis juga sering menggunakan python untuk membuat tools otomatisasi untuk melakukan eksploitasi.</p>
+
+<p>Bahasa lain selain python yang sering digunakan untuk membuat tools adalah ruby. Jika berminat mungkin pembaca bisa mempelajarinya juga.</p>
+
+<p>Mempelajari Python:</p>
+
+<p><a href="https://www.google.com/url?q=https://www.tutorialspoint.com/python/index.htm&amp;sa=D&amp;ust=1532108601634000">https://www.tutorialspoint.com/python/index.htm</a></p>
+
+<p>Latihan:</p>
+
+<p><a href="https://www.google.com/url?q=http://natas6.natas.labs.overthewire.org/&amp;sa=D&amp;ust=1532108601636000">http://natas6.natas.labs.overthewire.org/</a></p>
+
+<p>Mari kita buka URL diatas. Terdapat hal yang menarik, yaitu kita diberikan sebuah source code. Berikut ini adalah penggalan source code PHP:</p>
+
+<table class="c8" >
+<tbody >
+<tr class="c19" >
+
+<td colspan="1" rowspan="1" class="c16" >
+
+    
+    <?
+    
+    include "includes/secret.inc";
+    
+        if(array_key_exists("submit", $_POST)) {
+    
+            if($secret == $_POST['secret']) {
+    
+               print "Access granted. The password for natas7 is <censored>";
+    
+            } else {
+    
+               print "Wrong secret";
+    
+           }
+    
+        }
+    
+    ?>
+
+
+
+</td>
+</tr>
+</tbody>
+</table>
+
+<p>Jika kita perhatikan source code diatas, kita bisa mengetahui bahwa flag akan didapatkan apabila value/nilai dari variabel $secret itu sama dengan nilai dari variabel $_POST[‘secret’] yang kita inputkan melalui form dibawah ini</p>
+
+<table class="c8" >
+<tbody >
+<tr class="c19" >
+
+<td colspan="1" rowspan="1" class="c16" >
+
+    
+    <form method=post>
+    
+    Input secret: <input name=secret><br>
+    
+    <input type=submit name=submit>
+    
+    </form>
+
+
+
+</td>
+</tr>
+</tbody>
+</table>
+
+<p> </p>
+
+<p>Jika kita analisis lebih dalam kode php tsb, kita bisa menduga bahwa variabel $secret berasal dari file secret.inc yang diinclude.</p>
+
+<p>Oleh karena itu, mari kita cek /includes/secret.inc</p>
+
+<p>Setelah kita cek, ternyata kosong hehehe.</p>
+
+<p>Hah? Kosong?</p>
+
+<p>Eits . . jangan panik dulu, coba kita lihat source code nya dengan ctrl+u.</p>
+
+<p>Akhirnya kita menemukan nilai dari variabel $secret yay.</p>
+
+<p>Selanjutnya adalah kita akan menginputkan nilai dari var $secret tsb kedalam form, sehingga kita akan mendapatkan flagnya.</p>
+
+<p><img src="/wp-content/2018/07/image15.png" alt="" /></p>
+
+<p>Jeng Jeng !!!</p>
+
+<p><img src="/wp-content/2018/07/image4.png" alt="" /></p>
+
+<p>Selamat.</p>
+
+<p><strong>Membuat Script Otomatisasi Dengan Python</strong></p>
+
+<p>Saya asumsikan pembaca sudah memahami dasar python.</p>
+
+<p>Salah satu kegunaan bahasa pemrograman adalah membuat script/tools untuk otomatisasi, salah satunya adalah untuk melakukan bruteforcing.</p>
+
+<p>Ayo kita langsung mempraktikkannya.</p>
+
+<p>Pertama, siapkan python 2.7 (Karena saya biasa menggunakan versi 2.7)</p>
+
+<p>Lalu kita jalankan perintah berikut pada cmd/bash untuk menginstall modul requests</p>
+
+<table class="c8" >
+<tbody >
+<tr class="c19" >
+
+<td colspan="1" rowspan="1" class="c16" >
+
+    
+    pip install requests
+    
+    atau
+    
+    sudo pip install requests
+
+
+
+</td>
+</tr>
+</tbody>
+</table>
+
+<p>Untuk dokumentasi python requests, bisa kita lihat pada web berikut</p>
+
+<p><a href="https://www.google.com/url?q=http://docs.python-requests.org/en/master/&amp;sa=D&amp;ust=1532108601649000">http://docs.python-requests.org/en/master/</a></p>
+
+<p>Setelah selesai, mari kita buka url berikut.</p>
+
+<p><a href="https://www.google.com/url?q=http://ctf.asgama.tk:40001/&amp;sa=D&amp;ust=1532108601650000">http://ctf.asgama.tk:40001/</a></p>
+
+<p>Terdapat sebuah deskripsi</p>
+
+<table class="c8" >
+<tbody >
+<tr class="c19" >
+
+<td colspan="1" rowspan="1" class="c16" >
+
+
+<blockquote>
+
+> 
+> Selamat datang, silakan menebak angka dari 1-100 menggunakan ?guess=
+> 
+> 
+</blockquote>
+
+
+
+</td>
+</tr>
+</tbody>
+</table>
+
+<p>Kita diberi instruksi untuk menebak angka, dan inputan menggunakan metode get dengan parameter guess, sehingga kita perlu menambahkan ?guess=nilai pada url, contoh:</p>
+
+<table class="c8" >
+<tbody >
+<tr class="c19" >
+
+<td colspan="1" rowspan="1" class="c16" >
+
+
+<blockquote>
+
+> 
+> http://ctf.asgama.tk:40001/?guess=1
+> 
+> 
+</blockquote>
+
+
+
+</td>
+</tr>
+</tbody>
+</table>
+
+<p>Lalu kita mendapatkan sebuah pesan</p>
+
+<table class="c8" >
+<tbody >
+<tr class="c19" >
+
+<td colspan="1" rowspan="1" class="c16" >
+
+
+<blockquote>
+
+> 
+> Tebakan anda salah, coba lagi.
+> 
+> 
+</blockquote>
+
+
+
+</td>
+</tr>
+</tbody>
+</table>
+
+<p>Oke, artinya kita salah menebak angka yang artinya bukan angka 1. Sebenarnya kita bisa saja menebak secara manual dari 1-100 berhubung angkanya sedikit. Namun apabila sudah sampai ratusan bahkan ribuan, jelas akan menghabiskan waktu kita dan juga jari bakalan pegal pegal :’(</p>
+
+<p>Solusinya adalah kita akan membuat script otomatisasi dengan python yang akan menebak angka dari 1-100, apabila sudah ketemu hasilnya maka otomatis script akan berhenti dan memberi tahu kita outputnya :)</p>
+
+<p>Buatlah sebuah file dengan nama bebas dengan ekstensi .py</p>
+
+<p>Misal guessnum.py</p>
+
+<p>Lalu kita pastekan kode dibawah ini</p>
+
+<table class="c8" >
+<tbody >
+<tr class="c19" >
+
+<td colspan="1" rowspan="1" class="c16" >
+
+    
+    import requests
+    
+    url = "http://ctf.asgama.tk:40001/?guess="
+    
+    for i in range(101):
+    
+       r = requests.get(url + str(i))
+    
+       if "salah" not in r.text:
+    
+           print r.text
+    
+           break
+    
+       else:
+    
+           print "Bukan " + str(i)
+
+
+
+</td>
+</tr>
+</tbody>
+</table>
+
+<p>Jadi kita akan melakukan loop for i dari 0 sampai 100 dimana nanti akan kita cek hasil/output nya, jika terdapat kata “salah” maka kita akan meneruskan iterasi. Namun apabila tidak terdapat kata salah, maka bisa kita pastikan itu adalah jawabannya lalu print outputnya dan kita hentikan iterasi.</p>
+
+<p>Hasil running program:</p>
+
+<p><img src="/wp-content/2018/07/image28.png" alt="" /></p>
+
+<p>Selamat, kita mendapatkan flagnya.</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+  			</div>
+
+        
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2019</span>
+            
+            <span>cacadosman</span>
+            <span> <a href="https://cacadosman.web.id/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+            <span>Made with &#10084; by <a href="https://github.com/rhazdon">rhazdon</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+
+<script type="text/javascript" src="https://cacadosman.web.id/js/bundle.39e9a47febcec1a326d3c4a9b36fc4401073cb0b91b97aad920bbb5456da655960cb5c5cc3f1a0a82c27e21d4113ad35f884c26bfd76350814cb0551eb9797b9.js" integrity="sha512-Oemkf&#43;vOwaMm08Sps2/EQBBzywuRuXqtkgu7VFbaZVlgy1xcw/GgqCwn4h1BE601&#43;ITCa/12NQgUywVR65eXuQ=="></script>
+
+
+
+    <script data-no-instant>document.write('<script src="/livereload.js?port=80&mindelay=10"></' + 'script>')</script></body>
+</html>

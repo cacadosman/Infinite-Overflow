@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Infinite Overflow</title>
+    <link>https://cacadosman.web.id/tags/</link>
+    <description>Recent content in Tags on Infinite Overflow</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>cacadosman</copyright>
+    <lastBuildDate>Thu, 04 Oct 2018 07:12:19 +0000</lastBuildDate>
+    
+	<atom:link href="https://cacadosman.web.id/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Ctf</title>
+      <link>https://cacadosman.web.id/tags/ctf/</link>
+      <pubDate>Thu, 04 Oct 2018 07:12:19 +0000</pubDate>
+      
+      <guid>https://cacadosman.web.id/tags/ctf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Gemastik</title>
+      <link>https://cacadosman.web.id/tags/gemastik/</link>
+      <pubDate>Thu, 04 Oct 2018 07:12:19 +0000</pubDate>
+      
+      <guid>https://cacadosman.web.id/tags/gemastik/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Gemastik 11</title>
+      <link>https://cacadosman.web.id/tags/gemastik-11/</link>
+      <pubDate>Thu, 04 Oct 2018 06:37:23 +0000</pubDate>
+      
+      <guid>https://cacadosman.web.id/tags/gemastik-11/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Gemastik Xi</title>
+      <link>https://cacadosman.web.id/tags/gemastik-xi/</link>
+      <pubDate>Thu, 04 Oct 2018 06:37:23 +0000</pubDate>
+      
+      <guid>https://cacadosman.web.id/tags/gemastik-xi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tutorial</title>
+      <link>https://cacadosman.web.id/tags/tutorial/</link>
+      <pubDate>Thu, 04 Oct 2018 07:12:19 +0000</pubDate>
+      
+      <guid>https://cacadosman.web.id/tags/tutorial/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Web Exploit</title>
+      <link>https://cacadosman.web.id/tags/web-exploit/</link>
+      <pubDate>Thu, 04 Oct 2018 06:37:23 +0000</pubDate>
+      
+      <guid>https://cacadosman.web.id/tags/web-exploit/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Writeup</title>
+      <link>https://cacadosman.web.id/tags/writeup/</link>
+      <pubDate>Thu, 04 Oct 2018 07:12:19 +0000</pubDate>
+      
+      <guid>https://cacadosman.web.id/tags/writeup/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
