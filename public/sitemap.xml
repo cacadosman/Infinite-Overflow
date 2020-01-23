@@ -138,11 +138,6 @@
   </url>
   
   <url>
-    <loc>/2018/07/21/web-security-basic-remote-code-execution/</loc>
-    <lastmod>2018-07-21T08:15:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/web-security-basic-cross-site-scripting/</loc>
     <lastmod>2018-07-21T08:09:25+00:00</lastmod>
   </url>

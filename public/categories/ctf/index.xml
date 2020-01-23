@@ -72,24 +72,6 @@ Yaitu pada **data.php **dan kita bisa memasukkan inputan pada parameter id denga
     </item>
     
     <item>
-      <title>Web Security Basic - Remote Code Execution</title>
-      <link>/2018/07/21/web-security-basic-remote-code-execution/</link>
-      <pubDate>Sat, 21 Jul 2018 08:15:00 +0000</pubDate>
-      
-      <guid>/2018/07/21/web-security-basic-remote-code-execution/</guid>
-      <description>Requirements:
- * Basic Linux * PHP * Pantang Menyerah :3  Apa itu RCE ?
-https://searchwindowsserver.techtarget.com/definition/remote-code-execution-RCE
-RCE memungkinkan kita untuk mendapatkan kendali terhadap resource yang terdapat pada server si korban (Mengkontrol device korban) dengan melakukan injeksi perintah pada sistem operasi (mengeksekusi cmd/bash).
-Latihan:
-Buka url berikut
-http://ctf.asgama.tk:40003/
-Kita akan melihat sebuah form
-Terdapat hint berupa source code, mari kita lihat /sauce.txt
-&amp;lt;?php if(isset($_GET[&amp;quot;nama&amp;quot;])){ $nama = $_GET[&amp;quot;nama&amp;quot;]; passthru(&amp;quot;echo &amp;quot; . $nama .</description>
-    </item>
-    
-    <item>
       <title>Web Security Basic - Cross Site Scripting</title>
       <link>/web-security-basic-cross-site-scripting/</link>
       <pubDate>Sat, 21 Jul 2018 08:09:25 +0000</pubDate>
