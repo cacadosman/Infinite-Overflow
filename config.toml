@@ -1,0 +1,56 @@
+baseurl = "/"
+languageCode = "en-us"
+theme = "hello-friend-ng"
+disqusShortname = "infinite-overflow"
+
+[params]
+  dateform        = "Jan 2, 2006"
+  dateformShort   = "Jan 2"
+  dateformNum     = "2006-01-02"
+  dateformNumTime = "2006-01-02 15:04 -0700"
+  comments = true
+
+  imgMain = "main3.jpg"
+
+  # Metadata mostly used in document's head
+  description = "Sebuah Coretan Tak Bermakna"
+  keywords = "tutorial, computer, computer science, programming, php, html, python, js, javascript"
+  images = [""]
+
+  # Directory name of your blog content (default is `content/posts`)
+  contentTypeName = "posts"
+  # Default theme "light" or "dark"
+  defaultTheme = "light"
+
+[languages]
+  [languages.en]
+    title = "Infinite Overflow"
+    subtitle = "Sebuah Coretan Tak Bermakna"
+    homeSubtitle = "Sebuah Coretan Tak Bermakna"
+    keywords = "tutorial, computer, computer science, programming, php, html, python, js, javascript"
+    copyright = "cacadosman"
+    readOtherPosts = "Read other posts"
+    staticDir = ["static"]
+
+    [languages.en.params.logo]
+      logoText = "Infinite Overflow"
+      logoHomeLink = "/"
+    # or
+    #
+    # path = "/img/your-example-logo.svg"
+    # alt = "Your example logo alt text"
+
+	# You can create a language based menu
+    [languages.en.menu]
+      [[languages.en.menu.main]]
+        identifier = "about"
+        name = "About"
+        url = "/about"
+      [[languages.en.menu.main]]
+        identifier = "posts"
+        name = "Posts"
+        url = "/posts"
+      [[languages.en.menu.main]]
+        identifier = "chat"
+        name = "Chatbox"
+        url = "/chat"

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Infinite Overflow</title>
+    <link>/categories/</link>
+    <description>Recent content in Categories on Infinite Overflow</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>cacadosman</copyright>
+    <lastBuildDate>Mon, 07 Oct 2019 17:06:28 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Automation</title>
+      <link>/categories/automation/</link>
+      <pubDate>Mon, 07 Oct 2019 17:06:28 +0000</pubDate>
+      
+      <guid>/categories/automation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>/categories/python/</link>
+      <pubDate>Mon, 07 Oct 2019 17:06:28 +0000</pubDate>
+      
+      <guid>/categories/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CTF</title>
+      <link>/categories/ctf/</link>
+      <pubDate>Sun, 10 Feb 2019 02:46:54 +0000</pubDate>
+      
+      <guid>/categories/ctf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cyber Security</title>
+      <link>/categories/cyber-security/</link>
+      <pubDate>Sun, 10 Feb 2019 02:46:54 +0000</pubDate>
+      
+      <guid>/categories/cyber-security/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Gemastik</title>
+      <link>/categories/gemastik/</link>
+      <pubDate>Thu, 04 Oct 2018 07:12:19 +0000</pubDate>
+      
+      <guid>/categories/gemastik/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tutorial</title>
+      <link>/categories/tutorial/</link>
+      <pubDate>Thu, 04 Oct 2018 07:12:19 +0000</pubDate>
+      
+      <guid>/categories/tutorial/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Web Dev</title>
+      <link>/categories/web-dev/</link>
+      <pubDate>Wed, 25 Jul 2018 16:55:46 +0000</pubDate>
+      
+      <guid>/categories/web-dev/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

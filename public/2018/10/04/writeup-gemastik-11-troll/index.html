@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author"
+    content="cacadosman">
+<meta name="description"
+    content="Terdapat sebuah service yang memiliki source code berikut:
+&amp;lt;html&amp;gt; &amp;lt;head&amp;gt;&amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;input type=&amp;quot;text&amp;quot; name=&amp;quot;f&amp;quot; id=&amp;quot;f&amp;quot; &amp;gt;&amp;lt;input type=&amp;quot;submit&amp;quot; value=&amp;quot;Check&amp;quot; onclick=&amp;quot;ck()&amp;quot;&amp;gt; &amp;lt;script&amp;gt; ll = &amp;quot;length&amp;quot;; ca = &amp;quot;charCodeAt&amp;quot; function k(c) { return (c==&#39;O&#39;||c==&#39;0&#39;); } function n(){ for (; !k(a[i])&amp;amp;&amp;amp; i&amp;lt;a[ll]; i&#43;&#43;); } function ck(){ a = troll.innerHTML; bb = {} for(i =0; i &amp;lt; 127; i&#43;&#43;) { s = &amp;quot;&amp;quot;; for (j = 6; j &amp;gt;=0 ; j--) { s &#43;= (i &amp;amp; (1&amp;lt;&amp;lt;j))?" />
+<meta name="keywords" content="tutorial, computer, computer science, programming, php, html, python, js, javascript" />
+<meta name="robots" content="noodp" />
+<meta name="google-site-verification" content="-h6YUy6TfirY69dSHiwzAi_kGF5T9QeAID4fX8aazpc" />
+<meta property="og:image" content="main3.jpg">
+<link rel="canonical" href="/2018/10/04/writeup-gemastik-11-troll/" />
+
+
+<title>
+    
+    Writeup Gemastik 11 - Troll :: Infinite Overflow  — Sebuah Coretan Tak Bermakna
+    
+</title>
+
+
+
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Source+Code+Pro" rel="stylesheet"
+    type="text/css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="/scss/main.min.d3f9aeb956e8804b6cf26fc1cec66bc5b2937561cfc468e6e6f9244b88ad4bc9.css">
+
+
+<style>
+    .img-main {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 200px;
+        height: auto;
+        max-height: 200px;
+        border-radius: 50%;
+    }
+</style>
+
+
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#252627">
+<link rel="shortcut icon" href="/favicon.ico">
+<meta name="theme-color" content="#252627">
+<meta itemprop="name" content="Writeup Gemastik 11 - Troll">
+<meta itemprop="description" content="Terdapat sebuah service yang memiliki source code berikut:
+&lt;html&gt; &lt;head&gt;&lt;/head&gt; &lt;body&gt; &lt;input type=&quot;text&quot; name=&quot;f&quot; id=&quot;f&quot; &gt;&lt;input type=&quot;submit&quot; value=&quot;Check&quot; onclick=&quot;ck()&quot;&gt; &lt;script&gt; ll = &quot;length&quot;; ca = &quot;charCodeAt&quot; function k(c) { return (c==&#39;O&#39;||c==&#39;0&#39;); } function n(){ for (; !k(a[i])&amp;&amp; i&lt;a[ll]; i&#43;&#43;); } function ck(){ a = troll.innerHTML; bb = {} for(i =0; i &lt; 127; i&#43;&#43;) { s = &quot;&quot;; for (j = 6; j &gt;=0 ; j--) { s &#43;= (i &amp; (1&lt;&lt;j))?">
+
+
+<meta itemprop="datePublished" content="2018-10-04T07:12:19&#43;00:00" />
+<meta itemprop="dateModified" content="2018-10-04T07:12:19&#43;00:00" />
+<meta itemprop="wordCount" content="508">
+
+
+
+<meta itemprop="keywords" content="ctf,gemastik,tutorial,writeup," />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/"/>
+
+<meta name="twitter:title" content="Writeup Gemastik 11 - Troll"/>
+<meta name="twitter:description" content="Terdapat sebuah service yang memiliki source code berikut:
+&lt;html&gt; &lt;head&gt;&lt;/head&gt; &lt;body&gt; &lt;input type=&quot;text&quot; name=&quot;f&quot; id=&quot;f&quot; &gt;&lt;input type=&quot;submit&quot; value=&quot;Check&quot; onclick=&quot;ck()&quot;&gt; &lt;script&gt; ll = &quot;length&quot;; ca = &quot;charCodeAt&quot; function k(c) { return (c==&#39;O&#39;||c==&#39;0&#39;); } function n(){ for (; !k(a[i])&amp;&amp; i&lt;a[ll]; i&#43;&#43;); } function ck(){ a = troll.innerHTML; bb = {} for(i =0; i &lt; 127; i&#43;&#43;) { s = &quot;&quot;; for (j = 6; j &gt;=0 ; j--) { s &#43;= (i &amp; (1&lt;&lt;j))?"/>
+
+
+
+<meta property="article:section" content="CTF" />
+<meta property="article:section" content="Cyber Security" />
+<meta property="article:section" content="Gemastik" />
+<meta property="article:section" content="Tutorial" />
+
+<meta property="article:published_time" content="2018-10-04 07:12:19 &#43;0000 &#43;0000" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">Infinite Overflow</span>
+            <span class="logo__cursor"></span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="/about">About</a></li><li><a href="/chat">Chatbox</a></li><li><a href="/posts">Posts</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="/2018/10/04/writeup-gemastik-11-troll/">Writeup Gemastik 11 - Troll</a></h2>
+
+            
+
+            <div class="post-content">
+                <p>Terdapat sebuah service yang memiliki source code berikut:</p>
+
+<pre><code class="language-html">&lt;html&gt;
+&lt;head&gt;&lt;/head&gt;
+&lt;body&gt;
+    &lt;input type=&quot;text&quot; name=&quot;f&quot; id=&quot;f&quot; &gt;&lt;input type=&quot;submit&quot; value=&quot;Check&quot; onclick=&quot;ck()&quot;&gt;
+&lt;script&gt;
+ll = &quot;length&quot;;
+ca = &quot;charCodeAt&quot;
+
+function k(c) {
+  return (c=='O'||c=='0');
+}
+
+function n(){
+  for (; !k(a[i])&amp;&amp; i&lt;a[ll]; i++);
+}
+
+function ck(){
+    a = troll.innerHTML;
+    bb = {}
+    for(i =0; i &lt; 127; i++) {
+        s = &quot;&quot;;
+        for (j = 6; j &gt;=0 ; j--) {
+            s += (i &amp; (1&lt;&lt;j))?&quot;O&quot;:&quot;0&quot;;				
+        }
+        bb[i] = s;
+    }
+    ff = &quot;&quot;
+    i = 0;
+    cc = 0;
+    n();
+
+    for (j = 0; j&lt;f.value[ll]; j++) {
+        c = bb[f.value[ca](j)]
+        for (w = 0; w &lt; 7; w++) {
+            cc |= c[ca](w)^a[ca](i);
+            i++;
+            n();
+        }
+    }
+    n();
+
+    msg = [&quot;Incorrect flag&quot;, &quot;Correct flag&quot;];
+    alert(msg[0+(!(k(a[i])) &amp;&amp; (cc==0))]);
+}
+&lt;/script&gt;
+&lt;pre id=&quot;troll&quot;&gt;
+QQOQ0QQQQQQQQ00QOQOOQQQQQO0QQ00OQ0QQQQQQQQOQQQQOQQQQ0QQQQ0QQQQQQQQQQQOQQQQO
+QQQ0OQQOQQQQQQQ0QQQQQQQ0QQQQQQQQQQQQ0QQ0Q0QQQOQQQQQQQQQO0QQQO0Q0QQOQQQQOQQQ
+QQO0QQO0QOQQQ0QQQQQQQ0QOQQQQQ0QQQ0QQQQO0QQ0QQQQQQQQQQQOO0QQQ0QQQQQQQQQQQOQQ
+0QOOQQQOOQQQQQQQOQQWOQ0OOWWWBBBHHHHHHHHHBWWWQOQ0QOQQQQ0QQQQ0OQQQQQQQQQO0QQQ
+OQQQOQQQQ0QQQQQD!`__ssaaaaaaaaaass_ass_s____.  -~&quot;&quot;??9VWQQQ00QQ0OOQQQQQQ0Q0
+QQQQ00QOQOOQ0P'_wmQQQWWBWV?GwwwmmWQmwwwwwgmZUVVHAqwaaaac,&quot;?9$QQQQOQQQQQQQQQ
+QOQ0Q0QQQO0W! aQWQQQQW?qw#TTSgwawwggywawwpY?T?TYTYTXmwwgZ$ma/-?4QQOQQOQQQOQ
+OQQQQQQOQQW' jOQ00WTqwDYauT9mmwwawww?WWWWQQQQQ@TT?TVTT9HO0QQQ0w,-40QQQQQOQQ
+QQQ0QQQO0Q[ jO0QQQyWVw2$wWWQQ0WWQWWWW7WQQQO00QQPWWQOQWQQw7WO0QWWc)WWQQQQOQO
+QQQQQQQQQf jQ0QQQWWmWmm0WU???????9WWQmWQQQQQOQWjWQQOQQQQWQmQQQ0WL 4QQ0QQQOQ
+Q0QQOQQP'.yOOQQQQOQOOQP&quot;       xwa,.!4WQQQQQ0QWdWP??!&quot;??4WWQ0QWQQc ?0WQQQQQ
+QQQQ0P'_a._aamQQQW!_yF &quot;!` ..  &quot;??$Qa &quot;WQOQWTVP'    &quot;??' =QQmWWV?46/ ?QQQQ0
+QQOP'sdyWQP?!`.-&quot;?46mOQ0O0QT!m0Ogaa. ;wWQQWQaa _aawmWWQQOOQ0QQQWP4a7g -WWO0
+QQ[ j@mQP'adQQP4ga, -????&quot; +jQQQOQWQQQQQQQQQWW;)WOWWWW9QQP?&quot;`  -?QzO7L ]O0O
+QW j0k0@ jWQOD'-?$QOQ00QQOOQQQQOQQQWWQWQQQWQQQc &quot;4QQQ0a   .QP4QQQQfWkl jQQQ
+OE ]0kOk $D?`  waa &quot;?9WWOOQP??T?47`_aamQQQQQOWWQw,-?OWWQQQOQ`&quot;QQQD\Qf(.QWQQ
+OQ,-Qm4Q/-0mQ6 &quot;WWQma/  &quot;??OQQQQQL 4W&quot;- -?$QOOQWP`s,awT$QQQ@  &quot;QW@?$:.yQ0QQ
+QQm/-4wTQgQWOO,  ?4WWk 4waac -???$wa0QQQQQQQF??'imWWWWWQW?^  ` ]60Q' yQQOQQ
+OQOQw,-?QmWQOOQw  a,    ?QWWQ00w _.  &quot;????9VWaamQWV???&quot;  a j/  ]QQf jQQOQ0O
+QQQQQQw,&quot;4QQQOQ0m,-$Qa     ???4F jQOQQ0wc ,aaas _aaaaa 4OW ]E  )WQ`=Q0QQQQQ
+0QQOQOWQ/ $QQO0QQ0a ?H ]Wwa,     ???9WWWh dQWWW,=QWWU?  ?!     )WO ]QQQQQQQ
+QQQQQ0QQQc-QWQQ0QQW6,  QWOWQQOk ,c                             jWQ ]QQQQQQ0
+QQQ00QQQQQ,&quot;$WQQWQQQ0g,.&quot;?OQQQ'.mQ0Qmaa,.,                . .; QWQ.]Q0OQOQ0
+QQ0OQQQ0QWQa ?$WQ0WQQQQQa,.&quot;?( mQQQQQQW[:QQQQm[ ammF jy! j( } jQOQ(:QQQQOQQ
+QQQQ0QQQQ0WWma &quot;9gw?9gdB?QQwa, -??T$WOQ;:QQOWQ ]WWD _Qf +?! _jQQQWf QQOOQQO
+0QQQQOQQQQQQQQQws &quot;Tqau?9maZ?WQmaas,,    --~-- ---  . _ssawmQQQQQQk 3QQQQWQ
+QQQQQQQQQQQQQQQQWQga,-?9mwad?1wdT9WQQQQQWVVTTYY?YTVWQQQQWWD5mQQPQQQ ]QQQQQQ
+QQQQQQQWQQQQQQQQQQQWQQwa,-??$QwadV}mwBHHVHWWBHHUWWBVTTTV5awBQQD6QQQ ]QQQQQQ
+QQQQQQQQQQQQQQQQQQQQQQWWQQga,-&quot;9$WQQmmwwmBUUHTTVWBWQQQQWVT?96aQWQQQ ]QQQQQQ
+QQQQQQQQQQWQQQQWQQQQQQQQQQQWQQma,-?9$QQWWQQQQQQQWmQmmmmmQWQQQQWQQW(.yQQQQQW
+QQQQQQQQQQQQQWQQQQQQWQQQQQQQQQQQQQga%,.  -??9$QQQQQQQQQQQWQQWQQV? sWQQQQQQQ
+QQQQQQQQQWQQQQQQQQQQQQQQWQQQQQQQQQQQWQQQQmywaa,;~^&quot;!???????!^`_saQWWQQQQQQQ
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQWWWWQQQQQmwywwwwwwmQQWQQQQQQQQQQQ
+QQQQQQQWQQQWQQQQQQWQQQWQQQQQWQQQQQQQQQQQQQQQQWQQQQQWQQQWWWQQQQQQQQQQQQQQQWQ
+&lt;/pre&gt;
+&lt;/body&gt;
+</code></pre>
+
+<p>Soal yang sangat ngetroll &gt;:(</p>
+
+<p>Tidak perlu memperdulikan gambar trollnya walaupun memang dari SC nya sendiri ngecek dari gambar trollnya. Pada awalnya saya sangat kesal karena tertipu oleh muka troll yang menyebalkan, sehingga saya melamun sambil menangid bingung.</p>
+
+<p><img src="/wp-content/2018/10/nangid.png" alt="" /></p>
+
+<p>Oh sial, saya kena troll &gt;:(</p>
+
+<p>Ternyata saya sadar, ternyata sangat simpel. Kode tersebut akan melakukan pengecekan setiap string dari S[i=0] sampai S[i=n] dan apabila string tersebut salah maka nilai dari variabel <strong>cc</strong> pada index i itu bukan 0. Okay langsung saja kita lakukan <strong>bruteforce </strong>dengan memanfaatkan kodingan yang ada untuk mendapatkan flagnya.</p>
+
+<p>Modifikasi fungsi ck() seperti ini dan lakukan override function/method pada menu console saat melakukan inspect element:</p>
+
+<pre><code class="language-javascript">function ck(){
+    var status = true;
+    a = troll.innerHTML;
+    bb = {}
+    for(i =0; i &lt; 127; i++) {
+        s = &quot;&quot;;
+        for (j = 6; j &gt;=0 ; j--) {
+            s += (i &amp; (1&lt;&lt;j))?&quot;O&quot;:&quot;0&quot;;				
+        }
+        bb[i] = s;
+    }
+    ff = &quot;&quot;
+    i = 0;
+    cc = 0;
+    n();
+
+    for (j = 0; j&lt;bendera[ll]; j++) {
+        c = bb[bendera[ca](j)]
+        for (w = 0; w &lt; 7; w++) {
+            cc |= c[ca](w)^a[ca](i);
+            if(cc != 0){
+                status = false;
+            }
+            i++;
+            n();
+        }
+    }
+    n();
+
+    return status;
+}
+</code></pre>
+
+<p>Setelah itu, kita jalankan kode tambahan untuk melakukan bruteforce:</p>
+
+<pre><code class="language-javascript">char = &quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_}{ &quot;;
+bendera = &quot;GEMASTIK{&quot;;
+
+while(true){
+    for(var ctr=0; ctr &lt; char.length; ctr++){
+        tmp = bendera;
+        bendera += char[ctr];
+        if(ck()){
+            console.log(bendera);
+            break;
+        }else{
+            bendera = tmp;
+        }
+    }
+    if(bendera[bendera.length-1] == &quot;}&quot;){
+        break;
+    }
+}
+</code></pre>
+
+<p><img src="/wp-content/2018/10/brute.png" alt="" /></p>
+
+<p>Akhirnya kita berhasil mendapatkan flag
+<strong>GEMASTIK{S0al_HTML_BikiN_ngeTr0LL}</strong></p>
+
+<p>Terima Kasih.</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+  				<p>
+  					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="/tags/ctf">ctf</a></span><span class="tag"><a href="/tags/gemastik">gemastik</a></span><span class="tag"><a href="/tags/tutorial">tutorial</a></span><span class="tag"><a href="/tags/writeup">writeup</a></span>
+  				</p>
+  			</div>
+
+        
+          <div id="comments" class="thin">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "infinite-overflow" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+        
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2019</span>
+            
+            <span>cacadosman</span>
+            <span> <a href="/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+            <span>Made with &#10084; by <a href="https://github.com/rhazdon">rhazdon</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+
+<script type="text/javascript" src="/js/bundle.39e9a47febcec1a326d3c4a9b36fc4401073cb0b91b97aad920bbb5456da655960cb5c5cc3f1a0a82c27e21d4113ad35f884c26bfd76350814cb0551eb9797b9.js" integrity="sha512-Oemkf&#43;vOwaMm08Sps2/EQBBzywuRuXqtkgu7VFbaZVlgy1xcw/GgqCwn4h1BE601&#43;ITCa/12NQgUywVR65eXuQ=="></script>
+
+
+
+    </body>
+</html>

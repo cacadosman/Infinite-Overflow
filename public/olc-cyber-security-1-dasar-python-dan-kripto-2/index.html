@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author"
+    content="cacadosman">
+<meta name="description"
+    content="Materi : Dasar Python dan Kriptografi
+Sebuah modul yang dibuat untuk semua pada umumnya dan peserta OmahTI Learning Center pada kususnya. Yah walaupun modulnya kurang menarik. Ditujukan untuk membagikan ilmu kepada sesama, karena pada hakikatnya ilmu itu perlu untuk dibagikan/sebarluaskan.
+Requirements:
+ Niat yang mantaap Dijalankan dengan sungguh-sungguh Mandiri, tidak selalu minta disuap Tidak disalahgunakan untuk kemudaratan  *Jika terdapat penyalahgunaan di kemudian hari, kami tidak bertanggungjawab atas apa yang anda lakukan." />
+<meta name="keywords" content="tutorial, computer, computer science, programming, php, html, python, js, javascript" />
+<meta name="robots" content="noodp" />
+<meta name="google-site-verification" content="-h6YUy6TfirY69dSHiwzAi_kGF5T9QeAID4fX8aazpc" />
+<meta property="og:image" content="main3.jpg">
+<link rel="canonical" href="/olc-cyber-security-1-dasar-python-dan-kripto-2/" />
+
+
+<title>
+    
+    OLC Cyber Security 1 - Dasar Python dan Kripto :: Infinite Overflow  — Sebuah Coretan Tak Bermakna
+    
+</title>
+
+
+
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Source+Code+Pro" rel="stylesheet"
+    type="text/css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="/scss/main.min.7264fc679e658e0464961200ebeb014bf324cbeddf76bddf201c2b37017e06e7.css">
+
+
+<style>
+    .img-main {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 200px;
+        height: auto;
+        max-height: 200px;
+        border-radius: 50%;
+    }
+</style>
+
+
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#252627">
+<link rel="shortcut icon" href="/favicon.ico">
+<meta name="theme-color" content="#252627"><meta itemprop="name" content="OLC Cyber Security 1 - Dasar Python dan Kripto">
+<meta itemprop="description" content="Materi : Dasar Python dan Kriptografi
+Sebuah modul yang dibuat untuk semua pada umumnya dan peserta OmahTI Learning Center pada kususnya. Yah walaupun modulnya kurang menarik. Ditujukan untuk membagikan ilmu kepada sesama, karena pada hakikatnya ilmu itu perlu untuk dibagikan/sebarluaskan.
+Requirements:
+ Niat yang mantaap Dijalankan dengan sungguh-sungguh Mandiri, tidak selalu minta disuap Tidak disalahgunakan untuk kemudaratan  *Jika terdapat penyalahgunaan di kemudian hari, kami tidak bertanggungjawab atas apa yang anda lakukan.">
+<meta itemprop="datePublished" content="2018-07-20T16:38:22&#43;00:00" />
+<meta itemprop="dateModified" content="2018-07-20T16:38:22&#43;00:00" />
+<meta itemprop="wordCount" content="1052">
+<meta itemprop="image" content="/"/>
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/"/>
+
+<meta name="twitter:title" content="OLC Cyber Security 1 - Dasar Python dan Kripto"/>
+<meta name="twitter:description" content="Materi : Dasar Python dan Kriptografi
+Sebuah modul yang dibuat untuk semua pada umumnya dan peserta OmahTI Learning Center pada kususnya. Yah walaupun modulnya kurang menarik. Ditujukan untuk membagikan ilmu kepada sesama, karena pada hakikatnya ilmu itu perlu untuk dibagikan/sebarluaskan.
+Requirements:
+ Niat yang mantaap Dijalankan dengan sungguh-sungguh Mandiri, tidak selalu minta disuap Tidak disalahgunakan untuk kemudaratan  *Jika terdapat penyalahgunaan di kemudian hari, kami tidak bertanggungjawab atas apa yang anda lakukan."/>
+
+
+
+<meta property="article:section" content="CTF" />
+<meta property="article:section" content="Cyber Security" />
+<meta property="article:section" content="Tutorial" />
+
+<meta property="article:published_time" content="2018-07-20 16:38:22 &#43;0000 &#43;0000" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">Infinite Overflow</span>
+            <span class="logo__cursor"></span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="/about">About</a></li><li><a href="/chat">Chatbox</a></li><li><a href="/posts">Posts</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="/olc-cyber-security-1-dasar-python-dan-kripto-2/">OLC Cyber Security 1 - Dasar Python dan Kripto</a></h2>
+
+            
+
+            <div class="post-content">
+                <p><strong>Materi : Dasar Python dan Kriptografi</strong></p>
+<p>Sebuah modul yang dibuat untuk semua pada umumnya dan peserta OmahTI Learning Center pada kususnya. Yah walaupun modulnya kurang menarik. Ditujukan untuk membagikan ilmu kepada sesama, karena pada hakikatnya ilmu itu perlu untuk dibagikan/sebarluaskan.</p>
+<p><strong>Requirements:</strong></p>
+<ol>
+<li>Niat yang mantaap</li>
+<li>Dijalankan dengan sungguh-sungguh</li>
+<li>Mandiri, tidak selalu minta disuap</li>
+<li>Tidak disalahgunakan untuk kemudaratan</li>
+</ol>
+<p>*Jika terdapat penyalahgunaan di kemudian hari, kami tidak bertanggungjawab atas apa yang anda lakukan. Selalu ingat bahwasannya yang diatas selalu mengawasi, gunakan ilmu sebaik-baiknya :)</p>
+<p><strong>0x01 Introduction</strong></p>
+<p>Apa yang anda ketahui tentang hacker?</p>
+<p>Seseorang yang jahat dan berusaha melakukan tidak pidana kejahatan siber?</p>
+<p>Yap, jangan selalu memikirkan konotasi negatif terhadap hacker. Karena hacker itu bukanlah orang jahat yang seperti kalian pikirkan. Hacker adalah orang yang dapat mempelajari, menganalisa, membuat, memodifikasi, atau bahkan mengeksploitasi sistem.</p>
+<p>Sudah jelas bahwa programmer dapat kita kategorikan sebagai hacker juga, bahkan lomba membuat apps dalam semalam pun diberi nama hackathon, padahal dalam hackathon tidak ada yang namanya mengeskploitasi sistem. Akan tetapi kita mengeksploitasi batas kemampuan kita agar dalam waktu yang singkat kita dapat mempelajari, menganalisa, membuat, dan menyelesaikan masalah yang ada dengan pendekatan IT. Jadi jangan pernah berkonotasi negatif terhadap hacker :)</p>
+<p>Lantas, disebut apakah mereka yang senang merusak suatu sistem ?</p>
+<p>Kita sebut saja mereka <strong>hekel kebanyakan micin</strong> atau istilah kerennya sih <strong><del>malkist</del> cracker</strong>. Tapi apa kalian tega jika ilmu yang kalian dapat digunakan untuk merusak?</p>
+<p>Oke, kita lanjut. .</p>
+<p>Pertanyaannya adalah dimana kita dapat mempelajari hal tersebut?</p>
+<p>Jawabannya adalah <del>dihatimu :*</del> disini. Kali ini saya akan memperkenalkan CTF (Capture The Flag) kepada kalian. Bisa kalian baca disini -&gt; <a href="https://yohan.es/ctf/">https://yohan.es/ctf/</a></p>
+<p>Setelah dibaca, kita lanjut membahas materi utama kita :)</p>
+<p><strong>0x02 Dasar Python</strong></p>
+<p>Referensi Pembelajaran/Materi:</p>
+<ol>
+<li><a href="https://www.tutorialspoint.com/python/index.htm">https://www.tutorialspoint.com/python/index.htm</a></li>
+<li><a href="https://www.codecademy.com/learn/learn-python">https://www.codecademy.com/learn/learn-python</a></li>
+<li><a href="https://www.codepolitan.com/tutorial-set/belajar-bahasa-pemrograman-python">https://www.codepolitan.com/tutorial-set/belajar-bahasa-pemrograman-python</a></li>
+<li><a href="https://www.learnpython.org/">https://www.learnpython.org/</a></li>
+<li><a href="https://www.youtube.com/watch?v=cpPG0bKHYKc">https://www.youtube.com/watch?v=cpPG0bKHYKc</a></li>
+</ol>
+<p>Kita kembali ke requirements ya, jadi mohon kerjasamanya url diatas untuk dibuka dan dipelajari :)</p>
+<p>Tapi tenang, saya akan memberi contoh untuk coding python nya hehehe.</p>
+<p>Bagi yang belum punya python, monggo di download <a href="https://www.python.org/downloads/">https://www.python.org/downloads/</a></p>
+<p><strong>Variabel dan Tipe Data</strong></p>
+<p>Variabel berfungsi untuk menyimpan nilai, sedangkan tipe data adalah jenis nilai apakah yang disimpan di database</p>
+<p>Tipe Data:</p>
+<ol>
+<li>Integer (bilangan bulat)</li>
+<li>Float (bilangan pecahan/koma)</li>
+<li>String (teks)</li>
+<li>Boolean (true/false)</li>
+<li>None (kosong)</li>
+</ol>
+<p>Contoh kode (jalankan pada python):</p>
+<pre><code>&lt;code&gt;#ini komentar, tidak akan dieksekusi oleh program
+a = 10 #integer
+print a #keluarkan/output variabel a
+a = 7.5 #float
+print a
+a = &quot;Halo dunia&quot; #string
+print a
+a = True #boolean
+print a
+a = None #none/kosong
+print a
+&lt;/code&gt;
+</code></pre>
+<p><strong>Operator</strong></p>
+<p>Contoh: tambah, kurang, bagi, kali, dan lainnya</p>
+<pre><code>&lt;code&gt;a = 5
+b = 2
+#Operator Aritmatika 
+print a + b
+print a - b
+print a * b #kali
+print a / b #bagi
+print a ** b #pangkat
+print a % b #modulo(sisa pembagian)
+#Operator Pembanding (Hasil cuma true/false)
+print a == b
+print a &gt; b
+print a &lt; b
+print a &gt;= b
+print a &lt;= b
+print a != b
+#Operator Logika (Hasil cuma true/false)
+x = True
+y = False
+print x and y
+print x or y
+print x ^ y #xor
+&lt;/code&gt;
+</code></pre>
+<p><strong>Control Statements</strong></p>
+<p>Jika a maka x</p>
+<pre><code>&lt;code&gt;a = 10
+if a == 10:
+    print &quot;a adalah 10&quot;
+&lt;/code&gt;
+</code></pre>
+<p>Jika a maka x, jika bukan a maka y</p>
+<pre><code>&lt;code&gt;a = 5
+if a == 10:
+    print &quot;a adalah 10&quot;
+else:
+    print &quot;a bukan 10&quot;
+&lt;/code&gt;
+</code></pre>
+<p>Jika a maka x, jika b maka y, jika bukan a dan b maka z</p>
+<pre><code>&lt;code&gt;a = 5
+if a == 10:
+    print &quot;a adalah 10&quot;
+elif a == 5:
+    print &quot;a adalah 5&quot;
+else:
+    print &quot;a bukan 10 dan 5&quot;
+&lt;/code&gt;
+</code></pre>
+<p><strong>Perulangan/Loop</strong></p>
+<p>Misal: Tulislah &ldquo;Halo Dunia&rdquo; sebanyak 10 baris</p>
+<pre><code>&lt;code&gt;a = &quot;Halo Dunia&quot;
+for i in range(0,10):
+    print a
+
+b = &quot;Halo OLC&quot;
+c = 0
+while c &lt; 10:
+    c += 1
+    print b
+&lt;/code&gt;
+</code></pre>
+<p><strong>0x03 Kriptografi</strong></p>
+<p>Misal anda mempunyai kata &ldquo;halo&rdquo; dan ingin memberikan ke teman anda berinisial Mr.Sutards, namun selain Mr.Sutards tidak ada yang boleh mengetahui kata apa yang anda kirimkan. Kita bisa menggunakan Kriptografi untuk menyandikan data :)</p>
+<p>Ada beberapa jenis penyandian:</p>
+<ol>
+<li>Enkripsi</li>
+<li>Encoding</li>
+<li>Hash</li>
+</ol>
+<p>Contoh:</p>
+<p>Data Asli kita sebut Plaintext</p>
+<p>Data Tersandikan kita sebut Ciphertext</p>
+<p>Enkripsi = Plaintext &lt; &mdash;&gt; Algoritma + key &lt; &mdash;&gt; Ciphertext</p>
+<p>Encoding = Plaintext &lt; &mdash;&gt; Algoritma &lt; &mdash;&gt; Ciphertext</p>
+<p>Hash = Plaintext &mdash;&gt; Algoritma &mdash;&gt; Ciphertext (irreversible)</p>
+<p><strong>Caesar Cipher (Geser)</strong></p>
+<p>Misal kita mempunyai plaintext m = &ldquo;halo&rdquo; dan memiliki key k = 2, maka cipher textnya c kita geser/tambahkan digit karakter sebesar key k pada plaintext dari m[i=1] sampai m[L] dimana L adalah jumlah karakter pada plaintext m dan n adalah jumlah/total alphabet dari index &ldquo;a&quot;=0 sampai index &ldquo;z&quot;=25 (n = 26).</p>
+<p><em>Formula/Rumus:</em></p>
+<!-- raw HTML omitted -->
+<blockquote>
+<p>c(m) = (m + k) mod n</p>
+</blockquote>
+<p>m(c ) = ((c - k) + n) mod n</p>
+<blockquote>
+</blockquote>
+<!-- raw HTML omitted -->
+<p>m = &ldquo;halo&rdquo; k = 2 maka c = &ldquo;jcnq&rdquo;</p>
+<p>Contoh simpel menggunakan Python (standar tanpa mod):</p>
+<pre><code>&lt;code&gt;m = &quot;halo&quot;
+c = &quot;&quot;
+k = 2
+for i in m:
+    c += chr(ord(i) + k)
+print c
+&lt;/code&gt;
+</code></pre>
+<p><strong>Subtitution Cipher</strong></p>
+<p>Memasukkan/Mengganti karakter x dengan y</p>
+<p>Contoh:</p>
+<p>a &lt; -&gt; b</p>
+<p>o &lt; -&gt; c</p>
+<p>u &lt; -&gt; d</p>
+<p>m = &ldquo;halo dunia&rdquo;</p>
+<p>maka c = &ldquo;hblc ddnib&rdquo; (karakter a, o, dan u digantikan/subtitusi oleh karakter b, c, dan d)</p>
+<p><strong>XOR Cipher</strong></p>
+<p>xor cipher merupakan kriptografi <strong>modern</strong> dimana metode pengenkripsiannya tidak pada level karakter/alphabet seperti caesar maupun subtitution, akan tetapi pada level bit nya.</p>
+<p><em>XOR Truth Table:</em></p>
+<p>|x| y |output |</p>
+<p>| 1 | 1 | 0 |</p>
+<p>| 1 | 0 | 1 |</p>
+<p>| 0 | 1 | 1 |</p>
+<p>| 0 | 0 | 0 |</p>
+<p>Misal m = &ldquo;halo&rdquo; maka nilai ascii (0-255) masing-masing karakter adalah:</p>
+<p>104, 97, 108, 111</p>
+<p>Maka representasi bilangan basis dua (binary) nya adalah:</p>
+<p>01101000, 01100001, 01101100, 01101111</p>
+<p>Dimisalkan pula key = 10, maka binary nya adalah 00001010 Sehingga ciphernya adalah kita xor kan masing-masing karakter dengan keynya</p>
+<p>h = 104 &mdash;&gt; 01101000 (xor) 00001010 = 01100010 (98)</p>
+<p>a = 97 &mdash;&gt; 01100001 (xor) 00001010 = 01101011 (107)</p>
+<p>l = 108 &mdash;&gt; 01101100 (xor) 00001010 = 01100110 (102)</p>
+<p>o = 111 &mdash;&gt; 01101111 (xor) 00001010 = 01100101 (101)</p>
+<p>Maka kita mendapatkan ciphernya yaitu:</p>
+<p>c = 98, 107, 102, 101</p>
+<p>Kita konversi ke dalam bentuk karakter:</p>
+<p>c = &ldquo;bkfe&rdquo;</p>
+<p><em>Contoh menggunakan python:</em></p>
+<pre><code>&lt;code&gt;m = &quot;halo&quot;
+k = 10
+c = &quot;&quot;
+for i in m:
+    c += chr(ord(i) ^ k)
+print c
+&lt;/code&gt;
+</code></pre>
+<p>Selesai, semoga bermanfaat~</p>
+<p>Thanks to: OmahTI UGM and Aliansi Siber Gadjah Mada</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+  			</div>
+
+        
+          <div id="comments" class="thin">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "infinite-overflow" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+        
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2020</span>
+            
+            <span>cacadosman</span>
+            <span> <a href="/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+            <span>Made with &#10084; by <a href="https://github.com/rhazdon">rhazdon</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+
+<script type="text/javascript" src="/js/bundle.abff56b08bd787982410ce8f1a451a0f77c24deea16240244843b3c9e0eb4c9602069fe96367634e4a4b6e6fd7325327e1fa1a6bf8c6428468cfbac794eddde8.js" integrity="sha512-q/9WsIvXh5gkEM6PGkUaD3fCTe6hYkAkSEOzyeDrTJYCBp/pY2djTkpLbm/XMlMn4foaa/jGQoRoz7rHlO3d6A=="></script>
+
+
+
+    </body>
+</html>
