@@ -1,6 +1,11 @@
+services:
+- docker
 before_install:
 - openssl aes-256-cbc -K $encrypted_b4c242718f2c_key -iv $encrypted_b4c242718f2c_iv
   -in deploy_key.enc -out ./deploy_key -d
 install:
 - curl -LO https://github.com/gohugoio/hugo/releases/download/v0.64.1/hugo_extended_0.64.1_Linux-64bit.deb
 - sudo dpkg -i hugo_extended_0.64.1_Linux-64bit.deb
+script:
+- sudo hugo -D
+- pwd
