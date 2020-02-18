@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  server-app:
+    image: nginx:alpine
+    restart: always
+    tty: true
+    volumes:
+      - ./public:/var/www
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    expose:
+      - "80"
+    environment:
+      - VIRTUAL_HOST=cacadosman.com,www.cacadosman.com
+    networks:
+      - app-network
+
+#Docker Networks
+networks:
+  app-network:
+    driver: bridge
+#Volumes
+volumes:
+  dbdata:
+    driver: local
