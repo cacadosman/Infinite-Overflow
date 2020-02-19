@@ -5,13 +5,10 @@ services:
     image: cacadosman/infinite-overflow
     restart: always
     tty: true
-    expose: 
+    expose:
       - "80"
-      - "443"
     environment:
       - VIRTUAL_HOST=cacadosman.com,www.cacadosman.com
-      - VIRTUAL_PROTO=https
-      - VIRTUAL_PORT=443
       - LETSENCRYPT_HOST=cacadosman.com,www.cacadosman.com
     networks:
       - nginx-proxy
