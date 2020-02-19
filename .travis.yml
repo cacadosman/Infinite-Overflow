@@ -3,9 +3,17 @@ services:
 before_install:
 - openssl aes-256-cbc -K $encrypted_b4c242718f2c_key -iv $encrypted_b4c242718f2c_iv
   -in deploy_key.enc -out ./deploy_key -d
+- chmod 600 ./deploy_key
+- eval "$(ssh-agent -s)"
+- echo -e "Host $SERVER_IP_ADDRESS\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+- ssh-add ./deploy_key
 install:
 - curl -LO https://github.com/gohugoio/hugo/releases/download/v0.64.1/hugo_extended_0.64.1_Linux-64bit.deb
 - sudo dpkg -i hugo_extended_0.64.1_Linux-64bit.deb
 script:
 - sudo hugo -D
-- pwd
+- docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
+- docker build -t cacadosman/infinite-overflow .
+- docker push cacadosman/infinite-overflow
+- scp -i ./deploy_key ./docker-compose.yml $SERVER_USERNAME@$SERVER_IP_ADDRESS:~/apps/infinite-overflow/docker-compose.yml
+- ssh -i ./deploy_key $SERVER_USERNAME@$SERVER_IP_ADDRESS bash -c 'cd ~/apps/Infinite-Overflow && docker-compose pull && docker compose down && docker compose up -d'

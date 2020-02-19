@@ -1,17 +1,16 @@
 version: '3'
 
 services:
-  server-app:
-    image: nginx:alpine
+  app:
+    image: cacadosman/infinite-overflow
     restart: always
     tty: true
-    volumes:
-      - ./public:/var/www
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf
     expose:
       - "80"
+      - "443"
     environment:
       - VIRTUAL_HOST=cacadosman.com,www.cacadosman.com
+      - VIRTUAL_PROTO=https
     networks:
       - app-network
 
@@ -19,7 +18,3 @@ services:
 networks:
   app-network:
     driver: bridge
-#Volumes
-volumes:
-  dbdata:
-    driver: local
