@@ -6,7 +6,7 @@ services:
     restart: always
     tty: true
     expose:
-      - "443"
+      - "80"
     environment:
       - VIRTUAL_HOST=cacadosman.com,www.cacadosman.com
       - VIRTUAL_PROTO=https
