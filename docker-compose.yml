@@ -13,9 +13,9 @@ services:
       - VIRTUAL_PROTO=https
       - LETSENCRYPT_HOST=cacadosman.com,www.cacadosman.com
     networks:
-      - app-network
+      - nginx-proxy
 
 #Docker Networks
 networks:
-  app-network:
-    driver: bridge
+  nginx-proxy:
+    external: true
