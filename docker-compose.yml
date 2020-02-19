@@ -11,6 +11,7 @@ services:
     environment:
       - VIRTUAL_HOST=cacadosman.com,www.cacadosman.com
       - VIRTUAL_PROTO=https
+      - LETSENCRYPT_HOST=cacadosman.com,www.cacadosman.com
     networks:
       - app-network
 
