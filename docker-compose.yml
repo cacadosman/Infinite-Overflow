@@ -9,6 +9,7 @@ services:
       - "80"
     environment:
       - VIRTUAL_HOST=cacadosman.com,www.cacadosman.com
+      - VIRTUAL_PORT=80
       - VIRTUAL_PROTO=https
       - LETSENCRYPT_HOST=cacadosman.com,www.cacadosman.com
     networks:

@@ -16,7 +16,6 @@ script:
 - docker build -t cacadosman/infinite-overflow .
 - docker push cacadosman/infinite-overflow
 - scp -i ./deploy_key ./docker-compose.yml $SERVER_USERNAME@$SERVER_IP_ADDRESS:~/apps/infinite-overflow/docker-compose.yml
-- ssh -i ./deploy_key $SERVER_USERNAME@$SERVER_IP_ADDRESS bash -c 
-  'docker-compose -f apps/infinite-overflow/docker-compose.yml pull; 
+- ssh -i ./deploy_key $SERVER_USERNAME@$SERVER_IP_ADDRESS bash -c 'docker-compose -f apps/infinite-overflow/docker-compose.yml pull; 
   docker-compose -f apps/infinite-overflow/docker-compose.yml down; 
   docker-compose -f apps/infinite-overflow/docker-compose.yml up -d'
