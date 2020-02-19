@@ -1,7 +1,7 @@
 services:
 - docker
 before_install:
-- openssl aes-256-cbc -K $encrypted_b4c242718f2c_key -iv $encrypted_b4c242718f2c_iv
+- openssl aes-256-cbc -K $encrypted_b4c242718f2c_key -iv $encrypted_b4c242718f2c_iv 
   -in deploy_key.enc -out ./deploy_key -d
 - chmod 600 ./deploy_key
 - eval "$(ssh-agent -s)"
@@ -16,4 +16,7 @@ script:
 - docker build -t cacadosman/infinite-overflow .
 - docker push cacadosman/infinite-overflow
 - scp -i ./deploy_key ./docker-compose.yml $SERVER_USERNAME@$SERVER_IP_ADDRESS:~/apps/infinite-overflow/docker-compose.yml
-- ssh -i ./deploy_key $SERVER_USERNAME@$SERVER_IP_ADDRESS bash -c 'cd ~/apps/infinite-overflow/; pwd; docker-compose pull; docker-compose down; docker-compose up -d'
+- ssh -i ./deploy_key $SERVER_USERNAME@$SERVER_IP_ADDRESS bash -c 
+  'docker-compose -f apps/infinite-overflow/docker-compose.yml pull; 
+  docker-compose -f apps/infinite-overflow/docker-compose.yml down; 
+  docker-compose -f apps/infinite-overflow/docker-compose.yml up -d'
