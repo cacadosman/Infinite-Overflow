@@ -1,4 +1,4 @@
-baseurl = "/"
+baseurl = "https://cacadosman.com/"
 languageCode = "en-us"
 theme = "hello-friend-ng"
 disqusShortname = "infinite-overflow"
