@@ -4,6 +4,7 @@ author: cacadosman
 type: post
 date: 2019-10-07T17:06:28+00:00
 url: /tutorial-scraping-dengan-python-selenium/
+comments: true
 categories:
   - Automation
   - Python
