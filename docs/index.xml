@@ -7,10 +7,21 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>cacadosman</copyright>
-    <lastBuildDate>Sun, 03 May 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 18 Sep 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://cacadosman.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Writeup Quals Cyber Jawara 2020</title>
+      <link>https://cacadosman.com/writeup-quals-cyber-jawara-2020/</link>
+      <pubDate>Fri, 18 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://cacadosman.com/writeup-quals-cyber-jawara-2020/</guid>
+      <description>Writeup Quals Cyber Jawara 2020. Halo semua, sekarang saya akan membagian WU Quals Cyber Jawara 2020
+Semoga artikel ini dapat bermanfaat.
+Terima kasih.</description>
+    </item>
     
     <item>
       <title>Writeup CTF JOINTS 2020 - Twitter Collection</title>
@@ -130,24 +141,6 @@ Yaitu pada **data.php **dan kita bisa memasukkan inputan pada parameter id denga
     </item>
     
     <item>
-      <title>Web Security Basic - Local File Inclusion</title>
-      <link>https://cacadosman.com/2018/07/21/web-security-basic-local-file-inclusion/</link>
-      <pubDate>Sat, 21 Jul 2018 08:21:07 +0000</pubDate>
-      
-      <guid>https://cacadosman.com/2018/07/21/web-security-basic-local-file-inclusion/</guid>
-      <description>Apa itu LFI?
-Local File Inclusion memungkinkan kita untuk melakukan inklusi/include sebuah file (Mengeksekusi/membaca file lain yang berada pada server yang seharusnya tidak boleh kita eksekusi diluar prosedur)
-Apa itu include?
-http://php.net/manual/en/function.include.php
-Latihan:
-Mari kita buka url berikut ini
-http://ctf.asgama.tk:40004/
-Terdapat menu home dan kontak, serta terdapat sebuah source code.
-Mari kita buka source code tsb.
-&amp;lt;?php if(isset($_GET[&amp;quot;page&amp;quot;])): ?&amp;gt;&amp;lt;p&amp;gt;&amp;lt;?php include $_GET[&amp;quot;page&amp;quot;]; ?&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;?php else: ?&amp;gt;&amp;lt;p&amp;gt;Nothing to do here&amp;lt;/p&amp;gt;&amp;lt;?</description>
-    </item>
-    
-    <item>
       <title>Web Security Basic - Cross Site Scripting</title>
       <link>https://cacadosman.com/web-security-basic-cross-site-scripting/</link>
       <pubDate>Sat, 21 Jul 2018 08:09:25 +0000</pubDate>
@@ -161,57 +154,6 @@ Belajar PHP :https://www.tutorialspoint.com/php/index.htm
 Vulnerability
 XSS Merupakan salah satu vuln yang masih sering ditemukan pada aplikasi web. Tujuannya ialah menyisipkan sebuah payload (malicious code) yang dapat dieksekusi oleh browser (client). Sehingga dalam kasus tersebut, target kita adalah pada client side (Tidak memengaruhi server).
 Macam-macam vuln XSS:</description>
-    </item>
-    
-    <item>
-      <title>Web Security Basic - Kodingmu Harimaumu</title>
-      <link>https://cacadosman.com/2018/07/21/web-security-basic-kodingmu-harimaumu/</link>
-      <pubDate>Sat, 21 Jul 2018 08:03:55 +0000</pubDate>
-      
-      <guid>https://cacadosman.com/2018/07/21/web-security-basic-kodingmu-harimaumu/</guid>
-      <description>Jangan sepelekan koding, mungkin iya project kita bisa selesai. Namun belum tentu apa yang kita koding itu aman, kadang masih meninggalkan celah keamanan.
-Biasanya celah keamanan ditemukan pada input yang tidak difilter maupun kesalahan penggunaan fungsi bawaan yang deprecated, jadi kita bisa dengan mudah melakukan injeksi pada form input.
-Salah satu poin penting disini ialah Jangan Percaya Inputan User.
-Contoh Soal:
-Berikut adalah contoh soal dengan celah keamanan pada fungsi bawaan php yaitu strcmp yang berfungsi untuk membandingkan nilai.</description>
-    </item>
-    
-    <item>
-      <title>Web Security Basic - Bahasa Pemrograman</title>
-      <link>https://cacadosman.com/2018/07/21/web-security-basic-bahasa-pemrograman/</link>
-      <pubDate>Sat, 21 Jul 2018 02:18:21 +0000</pubDate>
-      
-      <guid>https://cacadosman.com/2018/07/21/web-security-basic-bahasa-pemrograman/</guid>
-      <description>Semua aplikasi pastinya dibuat dengan menggunakan bahasa pemrograman, oleh karena itu agar kita dapat menemukan suatu celah keamanan dari aplikasi kita harus menguasai bahasa pemrograman terlebih dahulu untuk dapat menganalisa source code (baik source code utuh maupun dengan reverse engineering). Kebanyakan anak jaman now seringkali saya jumpai ingin menjadi hacker tapi secara instan dengan mengandalkan tools dan dorking, namun malas untuk mempelajari dasar bahasa pemrograman dan konsep dari eksploitasinya. Hal seperti itulah yang harus kita hindari, kita harus mempunyai pondasi yang mantap sebelum ke tahap selanjutnya.</description>
-    </item>
-    
-    <item>
-      <title>Web Security Basic - Pengenalan Website</title>
-      <link>https://cacadosman.com/2018/07/20/web-security-basic-pengenalan-website/</link>
-      <pubDate>Fri, 20 Jul 2018 17:05:41 +0000</pubDate>
-      
-      <guid>https://cacadosman.com/2018/07/20/web-security-basic-pengenalan-website/</guid>
-      <description>Bagaimana cara kerja website?
-Simpelnya ialah melakukan request dan response. {{$.Site.BaseURL}}
-Kita analogikan client itu adalah kita, lalu kita melakukan sebuah HTTP Request ke server (Bagaikan kita meminta tolong kepada seseorang). Kemudian server memproses dan memberikan sebuah response kepada client (Bagaikan seseorang itu menerima permintaan tolong kita lalu memberikan respon untuk membantu).
-HTTP Headers
-HTTP Headers memungkinkan kita untuk memberikan informasi tambahan pada Request/Response. Intinya ialah informasi yang tersimpan pada request/response message.</description>
-    </item>
-    
-    <item>
-      <title>Web Security Basic - Source Code</title>
-      <link>https://cacadosman.com/2018/07/20/web-security-basic-source-code/</link>
-      <pubDate>Fri, 20 Jul 2018 16:49:48 +0000</pubDate>
-      
-      <guid>https://cacadosman.com/2018/07/20/web-security-basic-source-code/</guid>
-      <description>Pertama yang harus kita lakukan adalah menganalisa atau mencari informasi.
-Salah satu yang paling mudah ialah melihat source code dari halaman web.
-Pada browser (Chrome/Firefox) kita hanya perlu menekan kombinasi tombol
-ctrl + U Pada Keyboard untuk menampilkan source code.
-Kadangkala sebuah halaman web tidak mengizinkan kita untuk melihat source code, solusi alternatifnya adalah membuka url tersebut di tab baru dgn tambahan prefix view-source: diawal url
-Contoh:
- view-source:https://google.com/
- Latihan:</description>
     </item>
     
     <item>

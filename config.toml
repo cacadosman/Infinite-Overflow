@@ -2,6 +2,7 @@ baseurl = "https://cacadosman.com/"
 languageCode = "en-us"
 theme = "hello-friend-ng"
 disqusShortname = "infinite-overflow"
+publishDir = "docs"
 
 [params]
   dateform        = "Jan 2, 2006"
