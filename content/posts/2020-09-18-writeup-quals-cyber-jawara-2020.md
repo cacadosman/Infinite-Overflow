@@ -26,7 +26,7 @@ Writeup Quals Cyber Jawara 2020. Halo semua, sekarang saya akan membagian WU Qua
 {{< /rawhtml >}}
 
 {{< rawhtml >}}
-    <object data="/CJ2020_VtuberSIMP.pdf" type="application/pdf" width="1000px" height="1000px">
+    <object data="/CJ2020_VtuberSIMP.pdf" type="application/pdf" width="100%" height="1000px">
 {{< /rawhtml >}}
 
 Semoga artikel ini dapat bermanfaat.  
