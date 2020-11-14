@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="cacadosman">
 <meta name="description" content="Terdapat sebuah service yang memiliki source code berikut:
-&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;&amp;lt;/head&amp;gt;&amp;lt;body&amp;gt;&amp;lt;input type=&amp;#34;text&amp;#34; name=&amp;#34;f&amp;#34; id=&amp;#34;f&amp;#34; &amp;gt;&amp;lt;input type=&amp;#34;submit&amp;#34; value=&amp;#34;Check&amp;#34; onclick=&amp;#34;ck()&amp;#34;&amp;gt;&amp;lt;script&amp;gt;ll = &amp;#34;length&amp;#34;;ca = &amp;#34;charCodeAt&amp;#34;function k(c) {return (c==&amp;#39;O&amp;#39;||c==&amp;#39;0&amp;#39;);}function n(){for (; !k(a[i])&amp;amp;&amp;amp; i&amp;lt;a[ll]; i&#43;&#43;);}function ck(){a = troll.innerHTML;bb = {}for(i =0; i &amp;lt; 127; i&#43;&#43;) {s = &amp;#34;&amp;#34;;for (j = 6; j &amp;gt;=0 ; j--) {s &#43;= (i &amp;amp; (1&amp;lt;&amp;lt;j))?" />
+&amp;lt;html&amp;gt; &amp;lt;head&amp;gt;&amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;input type=&amp;#34;text&amp;#34; name=&amp;#34;f&amp;#34; id=&amp;#34;f&amp;#34; &amp;gt;&amp;lt;input type=&amp;#34;submit&amp;#34; value=&amp;#34;Check&amp;#34; onclick=&amp;#34;ck()&amp;#34;&amp;gt; &amp;lt;script&amp;gt; ll = &amp;#34;length&amp;#34;; ca = &amp;#34;charCodeAt&amp;#34; function k(c) { return (c==&amp;#39;O&amp;#39;||c==&amp;#39;0&amp;#39;); } function n(){ for (; !k(a[i])&amp;amp;&amp;amp; i&amp;lt;a[ll]; i&#43;&#43;); } function ck(){ a = troll.innerHTML; bb = {} for(i =0; i &amp;lt; 127; i&#43;&#43;) { s = &amp;#34;&amp;#34;; for (j = 6; j &amp;gt;=0 ; j--) { s &#43;= (i &amp;amp; (1&amp;lt;&amp;lt;j))?" />
 <meta name="keywords" content="tutorial, computer, computer science, programming, php, html, python, js, javascript, ctf, gemastik, tutorial, writeup" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
@@ -34,20 +34,21 @@
 
 <meta itemprop="name" content="Writeup Gemastik 11 - Troll">
 <meta itemprop="description" content="Terdapat sebuah service yang memiliki source code berikut:
-&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;input type=&#34;text&#34; name=&#34;f&#34; id=&#34;f&#34; &gt;&lt;input type=&#34;submit&#34; value=&#34;Check&#34; onclick=&#34;ck()&#34;&gt;&lt;script&gt;ll = &#34;length&#34;;ca = &#34;charCodeAt&#34;function k(c) {return (c==&#39;O&#39;||c==&#39;0&#39;);}function n(){for (; !k(a[i])&amp;&amp; i&lt;a[ll]; i&#43;&#43;);}function ck(){a = troll.innerHTML;bb = {}for(i =0; i &lt; 127; i&#43;&#43;) {s = &#34;&#34;;for (j = 6; j &gt;=0 ; j--) {s &#43;= (i &amp; (1&lt;&lt;j))?">
-<meta itemprop="datePublished" content="2018-10-04T07:12:19&#43;00:00" />
-<meta itemprop="dateModified" content="2018-10-04T07:12:19&#43;00:00" />
+&lt;html&gt; &lt;head&gt;&lt;/head&gt; &lt;body&gt; &lt;input type=&#34;text&#34; name=&#34;f&#34; id=&#34;f&#34; &gt;&lt;input type=&#34;submit&#34; value=&#34;Check&#34; onclick=&#34;ck()&#34;&gt; &lt;script&gt; ll = &#34;length&#34;; ca = &#34;charCodeAt&#34; function k(c) { return (c==&#39;O&#39;||c==&#39;0&#39;); } function n(){ for (; !k(a[i])&amp;&amp; i&lt;a[ll]; i&#43;&#43;); } function ck(){ a = troll.innerHTML; bb = {} for(i =0; i &lt; 127; i&#43;&#43;) { s = &#34;&#34;; for (j = 6; j &gt;=0 ; j--) { s &#43;= (i &amp; (1&lt;&lt;j))?">
+<meta itemprop="datePublished" content="2018-10-04T07:12:19+00:00" />
+<meta itemprop="dateModified" content="2018-10-04T07:12:19+00:00" />
 <meta itemprop="wordCount" content="508">
 <meta itemprop="image" content="https://cacadosman.com/"/>
 
 
 
-<meta itemprop="keywords" content="ctf,gemastik,tutorial,writeup," /><meta name="twitter:card" content="summary_large_image"/>
+<meta itemprop="keywords" content="ctf,gemastik,tutorial,writeup," />
+<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://cacadosman.com/"/>
 
 <meta name="twitter:title" content="Writeup Gemastik 11 - Troll"/>
 <meta name="twitter:description" content="Terdapat sebuah service yang memiliki source code berikut:
-&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;input type=&#34;text&#34; name=&#34;f&#34; id=&#34;f&#34; &gt;&lt;input type=&#34;submit&#34; value=&#34;Check&#34; onclick=&#34;ck()&#34;&gt;&lt;script&gt;ll = &#34;length&#34;;ca = &#34;charCodeAt&#34;function k(c) {return (c==&#39;O&#39;||c==&#39;0&#39;);}function n(){for (; !k(a[i])&amp;&amp; i&lt;a[ll]; i&#43;&#43;);}function ck(){a = troll.innerHTML;bb = {}for(i =0; i &lt; 127; i&#43;&#43;) {s = &#34;&#34;;for (j = 6; j &gt;=0 ; j--) {s &#43;= (i &amp; (1&lt;&lt;j))?"/>
+&lt;html&gt; &lt;head&gt;&lt;/head&gt; &lt;body&gt; &lt;input type=&#34;text&#34; name=&#34;f&#34; id=&#34;f&#34; &gt;&lt;input type=&#34;submit&#34; value=&#34;Check&#34; onclick=&#34;ck()&#34;&gt; &lt;script&gt; ll = &#34;length&#34;; ca = &#34;charCodeAt&#34; function k(c) { return (c==&#39;O&#39;||c==&#39;0&#39;); } function n(){ for (; !k(a[i])&amp;&amp; i&lt;a[ll]; i&#43;&#43;); } function ck(){ a = troll.innerHTML; bb = {} for(i =0; i &lt; 127; i&#43;&#43;) { s = &#34;&#34;; for (j = 6; j &gt;=0 ; j--) { s &#43;= (i &amp; (1&lt;&lt;j))?"/>
 
 
 

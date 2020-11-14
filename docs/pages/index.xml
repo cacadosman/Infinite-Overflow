@@ -7,11 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>cacadosman</copyright>
-    <lastBuildDate>Wed, 20 Mar 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://cacadosman.com/pages/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 20 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://cacadosman.com/pages/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Chatbox</title>
       <link>https://cacadosman.com/chat/</link>

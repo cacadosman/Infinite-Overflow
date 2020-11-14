@@ -8,7 +8,7 @@
 <meta name="description" content="Walaupun SQL Injection tergolong vuln yang sudah sangat tua, namun masih saja banyak programmer yang belum mengetahui bahaya dari SQL Injection. Sehingga banyak sekali website yang mudah terkena deface. Kali ini saya ingin memberikan cara mudah untuk mencegah SQL Injection dengan menggunakan prepared statement.
 Untuk kali ini, contoh kasusnya kita menggunakan bahasa pemrograman PHP. Karena bahasa tersebut merupakan salah satu bahasa yang paling banyak penggunanya.
 PDO:
-$conn = new PDO(&amp;#34;mysql:host=$db_servername;dbname=$dbname&amp;#34;, $db_username, $db_password);$stmt = $conn-&amp;gt;prepare(&amp;#34;SELECT * FROM posts WHERE id=:id&amp;#34;);$stmt-&amp;gt;bindParam(&amp;#34;:id&amp;#34;, $post_id);$stmt-&amp;gt;execute();$posts = $stmt-&amp;gt;fetchAll();Mysqli:" />
+$conn = new PDO(&amp;#34;mysql:host=$db_servername;dbname=$dbname&amp;#34;, $db_username, $db_password); $stmt = $conn-&amp;gt;prepare(&amp;#34;SELECT * FROM posts WHERE id=:id&amp;#34;); $stmt-&amp;gt;bindParam(&amp;#34;:id&amp;#34;, $post_id); $stmt-&amp;gt;execute(); $posts = $stmt-&amp;gt;fetchAll(); Mysqli:" />
 <meta name="keywords" content="tutorial, computer, computer science, programming, php, html, python, js, javascript" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
@@ -38,22 +38,23 @@ $conn = new PDO(&amp;#34;mysql:host=$db_servername;dbname=$dbname&amp;#34;, $db_
 <meta itemprop="description" content="Walaupun SQL Injection tergolong vuln yang sudah sangat tua, namun masih saja banyak programmer yang belum mengetahui bahaya dari SQL Injection. Sehingga banyak sekali website yang mudah terkena deface. Kali ini saya ingin memberikan cara mudah untuk mencegah SQL Injection dengan menggunakan prepared statement.
 Untuk kali ini, contoh kasusnya kita menggunakan bahasa pemrograman PHP. Karena bahasa tersebut merupakan salah satu bahasa yang paling banyak penggunanya.
 PDO:
-$conn = new PDO(&#34;mysql:host=$db_servername;dbname=$dbname&#34;, $db_username, $db_password);$stmt = $conn-&gt;prepare(&#34;SELECT * FROM posts WHERE id=:id&#34;);$stmt-&gt;bindParam(&#34;:id&#34;, $post_id);$stmt-&gt;execute();$posts = $stmt-&gt;fetchAll();Mysqli:">
-<meta itemprop="datePublished" content="2018-07-25T16:55:46&#43;00:00" />
-<meta itemprop="dateModified" content="2018-07-25T16:55:46&#43;00:00" />
+$conn = new PDO(&#34;mysql:host=$db_servername;dbname=$dbname&#34;, $db_username, $db_password); $stmt = $conn-&gt;prepare(&#34;SELECT * FROM posts WHERE id=:id&#34;); $stmt-&gt;bindParam(&#34;:id&#34;, $post_id); $stmt-&gt;execute(); $posts = $stmt-&gt;fetchAll(); Mysqli:">
+<meta itemprop="datePublished" content="2018-07-25T16:55:46+00:00" />
+<meta itemprop="dateModified" content="2018-07-25T16:55:46+00:00" />
 <meta itemprop="wordCount" content="126">
 <meta itemprop="image" content="https://cacadosman.com/"/>
 
 
 
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary_large_image"/>
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://cacadosman.com/"/>
 
 <meta name="twitter:title" content="Cara Mencegah SQL Injection"/>
 <meta name="twitter:description" content="Walaupun SQL Injection tergolong vuln yang sudah sangat tua, namun masih saja banyak programmer yang belum mengetahui bahaya dari SQL Injection. Sehingga banyak sekali website yang mudah terkena deface. Kali ini saya ingin memberikan cara mudah untuk mencegah SQL Injection dengan menggunakan prepared statement.
 Untuk kali ini, contoh kasusnya kita menggunakan bahasa pemrograman PHP. Karena bahasa tersebut merupakan salah satu bahasa yang paling banyak penggunanya.
 PDO:
-$conn = new PDO(&#34;mysql:host=$db_servername;dbname=$dbname&#34;, $db_username, $db_password);$stmt = $conn-&gt;prepare(&#34;SELECT * FROM posts WHERE id=:id&#34;);$stmt-&gt;bindParam(&#34;:id&#34;, $post_id);$stmt-&gt;execute();$posts = $stmt-&gt;fetchAll();Mysqli:"/>
+$conn = new PDO(&#34;mysql:host=$db_servername;dbname=$dbname&#34;, $db_username, $db_password); $stmt = $conn-&gt;prepare(&#34;SELECT * FROM posts WHERE id=:id&#34;); $stmt-&gt;bindParam(&#34;:id&#34;, $post_id); $stmt-&gt;execute(); $posts = $stmt-&gt;fetchAll(); Mysqli:"/>
 
 
 
@@ -139,18 +140,18 @@ $conn = new PDO(&#34;mysql:host=$db_servername;dbname=$dbname&#34;, $db_username
                 <p>Walaupun SQL Injection tergolong vuln yang sudah sangat tua, namun masih saja banyak programmer yang belum mengetahui bahaya dari SQL Injection. Sehingga banyak sekali website yang mudah terkena deface. Kali ini saya ingin memberikan cara mudah untuk mencegah SQL Injection dengan menggunakan prepared statement.</p>
 <p>Untuk kali ini, contoh kasusnya kita menggunakan bahasa pemrograman PHP. Karena bahasa tersebut merupakan salah satu bahasa yang paling banyak penggunanya.</p>
 <p><strong>PDO:</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$conn = new PDO(&#34;mysql:host=$db_servername;dbname=$dbname&#34;, $db_username, $db_password);
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$conn <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">PDO</span>(<span style="color:#e6db74">&#34;mysql:host=</span><span style="color:#e6db74">$db_servername</span><span style="color:#e6db74">;dbname=</span><span style="color:#e6db74">$dbname</span><span style="color:#e6db74">&#34;</span>, $db_username, $db_password);
 
-$stmt = $conn-&gt;prepare(&#34;SELECT * FROM posts WHERE id=:id&#34;);
-$stmt-&gt;bindParam(&#34;:id&#34;, $post_id);
-$stmt-&gt;execute();
+$stmt <span style="color:#f92672">=</span> $conn<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">prepare</span>(<span style="color:#e6db74">&#34;SELECT * FROM posts WHERE id=:id&#34;</span>);
+$stmt<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">bindParam</span>(<span style="color:#e6db74">&#34;:id&#34;</span>, $post_id);
+$stmt<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">execute</span>();
 
-$posts = $stmt-&gt;fetchAll();
+$posts <span style="color:#f92672">=</span> $stmt<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fetchAll</span>();
 </code></pre></div><p><strong>Mysqli:</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$conn = new mysqli($db_servername, $db_username, $db_password, $db_name);
-$stmt = $conn-&gt;prepare(&#34;INSERT INTO posts (title, author, content) VALUES (?, ?, ?)&#34;);
-$stmt-&gt;bind_param(&#34;sss&#34;, $post_title, $post_author, $post_content);
-$stmt-&gt;execute();
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$conn <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">mysqli</span>($db_servername, $db_username, $db_password, $db_name);
+$stmt <span style="color:#f92672">=</span> $conn<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">prepare</span>(<span style="color:#e6db74">&#34;INSERT INTO posts (title, author, content) VALUES (?, ?, ?)&#34;</span>);
+$stmt<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">bind_param</span>(<span style="color:#e6db74">&#34;sss&#34;</span>, $post_title, $post_author, $post_content);
+$stmt<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">execute</span>();
 </code></pre></div><p>Dengan menggunakan method prepare dan bind_param, kita dapat mencegah SQL Injection.</p>
 <p>Semoga bermanfaat, terima kasih.</p>
 
