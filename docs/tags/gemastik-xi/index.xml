@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>gemastik xi on Infinite Overflow</title>
-    <link>https://cacadosman.com/tags/gemastik-xi/</link>
+    <link>https://cacadosman.my.id/tags/gemastik-xi/</link>
     <description>Recent content in gemastik xi on Infinite Overflow</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>cacadosman</copyright>
-    <lastBuildDate>Thu, 04 Oct 2018 06:37:23 +0000</lastBuildDate><atom:link href="https://cacadosman.com/tags/gemastik-xi/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 04 Oct 2018 06:37:23 +0000</lastBuildDate><atom:link href="https://cacadosman.my.id/tags/gemastik-xi/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Writeup Gemastik 11 - Aplikasi Web (?)</title>
-      <link>https://cacadosman.com/writeup-gemastik-11-aplikasi-web/</link>
+      <link>https://cacadosman.my.id/writeup-gemastik-11-aplikasi-web/</link>
       <pubDate>Thu, 04 Oct 2018 06:37:23 +0000</pubDate>
       
-      <guid>https://cacadosman.com/writeup-gemastik-11-aplikasi-web/</guid>
+      <guid>https://cacadosman.my.id/writeup-gemastik-11-aplikasi-web/</guid>
       <description>Terdapat sebuah service yang memiliki source code seperti berikut:
 Simpelnya, kita perlu membayar minimal amount 20000 untuk mendapatkan sebuah flag. Akan tetapi tidak semudah itu karena pada proses check, kita hanya diperbolehkan memasukkan amount max 10000. Walaupun dilakukan inspect element, itu percuma saja karena disini dilakukan pengecekan hash untuk memastikan integritas data dari form sebelumnya itu isinya sama dengan form yang akan disubmit.
 Menariknya, kode diatas terdapat sebuah celah keamanan yang sangat fatal.</description>

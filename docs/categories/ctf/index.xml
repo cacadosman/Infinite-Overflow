@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>CTF on Infinite Overflow</title>
-    <link>https://cacadosman.com/categories/ctf/</link>
+    <link>https://cacadosman.my.id/categories/ctf/</link>
     <description>Recent content in CTF on Infinite Overflow</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>cacadosman</copyright>
-    <lastBuildDate>Fri, 18 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://cacadosman.com/categories/ctf/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 18 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://cacadosman.my.id/categories/ctf/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Writeup Quals Cyber Jawara 2020</title>
-      <link>https://cacadosman.com/writeup-quals-cyber-jawara-2020/</link>
+      <link>https://cacadosman.my.id/writeup-quals-cyber-jawara-2020/</link>
       <pubDate>Fri, 18 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://cacadosman.com/writeup-quals-cyber-jawara-2020/</guid>
+      <guid>https://cacadosman.my.id/writeup-quals-cyber-jawara-2020/</guid>
       <description>Writeup Quals Cyber Jawara 2020. Halo semua, sekarang saya akan membagian WU Quals Cyber Jawara 2020
 (adsbygoogle = window.adsbygoogle || []).push({});Semoga artikel ini dapat bermanfaat.
 Terima kasih.</description>
@@ -21,10 +21,10 @@ Terima kasih.</description>
     
     <item>
       <title>Writeup CTF JOINTS 2020 - Twitter Collection</title>
-      <link>https://cacadosman.com/writeup-ctf-joints-2020-twitter-collection/</link>
+      <link>https://cacadosman.my.id/writeup-ctf-joints-2020-twitter-collection/</link>
       <pubDate>Sun, 03 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://cacadosman.com/writeup-ctf-joints-2020-twitter-collection/</guid>
+      <guid>https://cacadosman.my.id/writeup-ctf-joints-2020-twitter-collection/</guid>
       <description>Writeup CTF JOINTS 2020 - Twitter Collection. Halo semua, sekarang kita akan membahas cara menyelesaikan soal Twitter Collection pada CTF JOINTS 2020.
 URL Challenge: http://ctf.joints.id:10001/
 Tutorial on youtube:  https://www.youtube.com/watch?v=tzwgIUPOQyw
@@ -34,10 +34,10 @@ Terima kasih.</description>
     
     <item>
       <title>Writeup CTF Unity 2020 - Backdoor</title>
-      <link>https://cacadosman.com/writeup-ctf-unity-2020-backdoor/</link>
+      <link>https://cacadosman.my.id/writeup-ctf-unity-2020-backdoor/</link>
       <pubDate>Mon, 16 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://cacadosman.com/writeup-ctf-unity-2020-backdoor/</guid>
+      <guid>https://cacadosman.my.id/writeup-ctf-unity-2020-backdoor/</guid>
       <description>Writeup CTF Unity 2020 - Backdoor. Halo semua, sekarang kita akan membahas cara menyelesaikan soal Backdoor pada CTF Unity 2020.
 URL Challenge: http://68.183.176.121/
 Diberikan sebuah sourcecode yang didalamnya terdapat sebuah backdoor. Benar saja, terdapat source yang mencurigakan pada file ./assets/img/default.jfif Namun, file tersebut masih terobfuscate, sehingga kita rapikan kodenya agar mudah dibaca.
@@ -47,10 +47,10 @@ Berikut adalah hasil kode yang sudah dirapikan:
     
     <item>
       <title>Writeup CTF Brainduck Final Arkavidia 5.0</title>
-      <link>https://cacadosman.com/writeup-ctf-brainduck-final-arkavidia-5-0/</link>
+      <link>https://cacadosman.my.id/writeup-ctf-brainduck-final-arkavidia-5-0/</link>
       <pubDate>Sun, 10 Feb 2019 02:46:54 +0000</pubDate>
       
-      <guid>https://cacadosman.com/writeup-ctf-brainduck-final-arkavidia-5-0/</guid>
+      <guid>https://cacadosman.my.id/writeup-ctf-brainduck-final-arkavidia-5-0/</guid>
       <description>Terdapat sebuah web yang memiliki fitur untuk menginterpretasikan esolang brainfuck.
 Jadi kira hanya perlu mengupload file yang berisikan bahasa brainfuck untuk diinterpretasikan dan juga dapat mendownload file yang telah kita upload.
 Saat kita lakukan inspect element/view source terdapat hint ?debug=V untuk dapat melihat source code php nya. Lalu kita akan mendapat source seperti berikut:
@@ -59,20 +59,20 @@ Saat kita lakukan inspect element/view source terdapat hint ?debug=V untuk dapat
     
     <item>
       <title>Writeup Gemastik 11 - Troll</title>
-      <link>https://cacadosman.com/writeup-gemastik-11-troll/</link>
+      <link>https://cacadosman.my.id/writeup-gemastik-11-troll/</link>
       <pubDate>Thu, 04 Oct 2018 07:12:19 +0000</pubDate>
       
-      <guid>https://cacadosman.com/writeup-gemastik-11-troll/</guid>
+      <guid>https://cacadosman.my.id/writeup-gemastik-11-troll/</guid>
       <description>Terdapat sebuah service yang memiliki source code berikut:
 &amp;lt;html&amp;gt; &amp;lt;head&amp;gt;&amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;input type=&amp;#34;text&amp;#34; name=&amp;#34;f&amp;#34; id=&amp;#34;f&amp;#34; &amp;gt;&amp;lt;input type=&amp;#34;submit&amp;#34; value=&amp;#34;Check&amp;#34; onclick=&amp;#34;ck()&amp;#34;&amp;gt; &amp;lt;script&amp;gt; ll = &amp;#34;length&amp;#34;; ca = &amp;#34;charCodeAt&amp;#34; function k(c) { return (c==&amp;#39;O&amp;#39;||c==&amp;#39;0&amp;#39;); } function n(){ for (; !k(a[i])&amp;amp;&amp;amp; i&amp;lt;a[ll]; i++); } function ck(){ a = troll.innerHTML; bb = {} for(i =0; i &amp;lt; 127; i++) { s = &amp;#34;&amp;#34;; for (j = 6; j &amp;gt;=0 ; j--) { s += (i &amp;amp; (1&amp;lt;&amp;lt;j))?</description>
     </item>
     
     <item>
       <title>Writeup Gemastik 11 - Aplikasi Web (?)</title>
-      <link>https://cacadosman.com/writeup-gemastik-11-aplikasi-web/</link>
+      <link>https://cacadosman.my.id/writeup-gemastik-11-aplikasi-web/</link>
       <pubDate>Thu, 04 Oct 2018 06:37:23 +0000</pubDate>
       
-      <guid>https://cacadosman.com/writeup-gemastik-11-aplikasi-web/</guid>
+      <guid>https://cacadosman.my.id/writeup-gemastik-11-aplikasi-web/</guid>
       <description>Terdapat sebuah service yang memiliki source code seperti berikut:
 Simpelnya, kita perlu membayar minimal amount 20000 untuk mendapatkan sebuah flag. Akan tetapi tidak semudah itu karena pada proses check, kita hanya diperbolehkan memasukkan amount max 10000. Walaupun dilakukan inspect element, itu percuma saja karena disini dilakukan pengecekan hash untuk memastikan integritas data dari form sebelumnya itu isinya sama dengan form yang akan disubmit.
 Menariknya, kode diatas terdapat sebuah celah keamanan yang sangat fatal.</description>
@@ -80,10 +80,10 @@ Menariknya, kode diatas terdapat sebuah celah keamanan yang sangat fatal.</descr
     
     <item>
       <title>Writeup SlashRoot CTF - Header Inspector 200</title>
-      <link>https://cacadosman.com/writeup-slashroot-ctf-header-inspector-200/</link>
+      <link>https://cacadosman.my.id/writeup-slashroot-ctf-header-inspector-200/</link>
       <pubDate>Tue, 31 Jul 2018 10:12:31 +0000</pubDate>
       
-      <guid>https://cacadosman.com/writeup-slashroot-ctf-header-inspector-200/</guid>
+      <guid>https://cacadosman.my.id/writeup-slashroot-ctf-header-inspector-200/</guid>
       <description>Pada soal, diberikan sebuah url web
 http://103.200.7.156:7080/
 Saat kita buka url tsb, ternyata kita dapat mengecek header dari suatu url, misal google
@@ -96,20 +96,20 @@ Kita eksekusi dengan memasukkan payload berikut</description>
     
     <item>
       <title>WriteUp SQLi BTP - Lorem Ipsum (300)</title>
-      <link>https://cacadosman.com/writeup-sqli-btp-lorem-ipsum-300/</link>
+      <link>https://cacadosman.my.id/writeup-sqli-btp-lorem-ipsum-300/</link>
       <pubDate>Tue, 24 Jul 2018 14:30:19 +0000</pubDate>
       
-      <guid>https://cacadosman.com/writeup-sqli-btp-lorem-ipsum-300/</guid>
+      <guid>https://cacadosman.my.id/writeup-sqli-btp-lorem-ipsum-300/</guid>
       <description>Terdapat sebuah web yang sekilas terlihat biasa saja, namun saat kita memcoba mengakses hyperlink, ternyata menggunakan ajax. Sampai disini kita curiga bahwa terdapat vuln SQLi pada url api yang menggunakan ajax, sehingga dengan menggunakan HTTP Trace kita dapat mengetahui url api nya.
 Yaitu pada **data.php **dan kita bisa memasukkan inputan pada parameter id dengan metode post, namun inputan harus dalam bentuk base64. Lalu kita coba kirimkan sebuah payload ke url tsb:</description>
     </item>
     
     <item>
       <title>Web Security Basic - Cross Site Scripting</title>
-      <link>https://cacadosman.com/web-security-basic-cross-site-scripting/</link>
+      <link>https://cacadosman.my.id/web-security-basic-cross-site-scripting/</link>
       <pubDate>Sat, 21 Jul 2018 08:09:25 +0000</pubDate>
       
-      <guid>https://cacadosman.com/web-security-basic-cross-site-scripting/</guid>
+      <guid>https://cacadosman.my.id/web-security-basic-cross-site-scripting/</guid>
       <description>Apa itu Cross Site Scripting (XSS) ?
 https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)
 Requirements:
@@ -122,10 +122,10 @@ Macam-macam vuln XSS:</description>
     
     <item>
       <title>OLC Cyber Security 1 - Dasar Python dan Kripto</title>
-      <link>https://cacadosman.com/olc-cyber-security-1-dasar-python-dan-kripto-2/</link>
+      <link>https://cacadosman.my.id/olc-cyber-security-1-dasar-python-dan-kripto-2/</link>
       <pubDate>Fri, 20 Jul 2018 16:38:22 +0000</pubDate>
       
-      <guid>https://cacadosman.com/olc-cyber-security-1-dasar-python-dan-kripto-2/</guid>
+      <guid>https://cacadosman.my.id/olc-cyber-security-1-dasar-python-dan-kripto-2/</guid>
       <description>Materi : Dasar Python dan Kriptografi
 Sebuah modul yang dibuat untuk semua pada umumnya dan peserta OmahTI Learning Center pada kususnya. Yah walaupun modulnya kurang menarik. Ditujukan untuk membagikan ilmu kepada sesama, karena pada hakikatnya ilmu itu perlu untuk dibagikan/sebarluaskan.
 Requirements:
